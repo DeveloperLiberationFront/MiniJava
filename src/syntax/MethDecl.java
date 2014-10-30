@@ -61,10 +61,19 @@ public class MethDecl extends Decls {
         for (; formals != null; formals = formals.getNext()) {
             Id   paramId   = formals.getId();
             Type paramType = formals.getType().check(ctxt);
+            String methodName = "methodName";
             if (VarEnv.find(paramId.getName(), params) != null) {
                 ctxt.report(new Failure(paramId.getPos(),
                                         "Multiple uses of parameter " +
-                                        paramId));
+                                        paramId + ". " +
+                                        "First use here."));
+                ctxt.report(new Failure(paramId.getPos(),
+                                        "Multiple uses of parameter " +
+                                        paramId + ". " +
+                                        "Second use here."));
+                ctxt.report(new Failure("The two parameters to " +
+                                        methodName +
+                                        " have conflicting names."));
             }
             params = new VarEnv(paramId, paramType, params);
         }
