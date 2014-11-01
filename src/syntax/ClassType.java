@@ -161,12 +161,15 @@ public class ClassType extends Type {
             if (extendsType != null) {
                 if (this.equal(extendsType)) {
                     /* cannot proceed after this since many method searches rely on being able to terminate */
+                    // throw new RecursiveReferenceFailure(declaredTypeName, extendedTypeName,
+                    // new ExtendsRelationship())
                     throw new Failure(id.getPos(),
                                       "Class " + id + " extends itself!");
                 }
                 extendsClass = extendsType.isClass();
                 if (extendsClass == null) {
                     extendsType = null;
+                    // ctxt.report(new InheritanceClashFailure(id, extendsClass, "extends"))
                     ctxt.report(new Failure(id.getPos(),
                                             "Illegal superclass"));
                 } else {

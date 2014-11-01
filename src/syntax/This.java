@@ -40,6 +40,11 @@ public final class This extends Expression {
     public Type typeOf(Context ctxt, VarEnv env)
     throws Diagnostic {
         if (ctxt.isStatic()) {
+            // conceptually, is `this` an unbound variable? or something else?
+            // challenge: you want to point out that you're trying to use it
+            // in a static context -- but then how does pointing out context
+            // generalize?
+            // throw new UnboundNameError(pos)
             throw new Failure(pos, "Cannot access this in a static context");
         }
         size = ctxt.getCurrMethod().getSize();
