@@ -48,6 +48,12 @@ public abstract class Handler {
         respondTo(d);
     }
 
+    public void report(CompoundDiagnostic cd) {
+        for (Diagnostic d: cd.getDiagnostics()) {
+            report(d);
+        }
+    }
+
     /** Respond to a diagnostic report.  Subclasses should
      *  override this method to deal with diagnostic reports in an
      *  appropriate way.  Diagnostics will normally be passed to this

@@ -20,35 +20,13 @@
 
 package compiler;
 
-/** A simple implementation of the Handler interface that prints the
- *  position and description of each diagnostic on System.err, and
- *  then returns to the caller.
+import syntax.Id;
+import checker.Context;
+
+/** Represents an error diagnostic.  To avoid a clash with java.lang.Error,
+ *  we resisted the temptation to call this class Error.
  */
-public class SimpleHandler extends Handler {
-    /** Respond to a diagnostic by displaying it on the error output
-     *  stream.
+public abstract class ClashFailure extends CompoundDiagnostic {
+    /** Construct a simple failure report with a fixed description.
      */
-
-    protected void respondTo(CompoundDiagnostic cd) {
-        for (Diagnostic d: cd.getDiagnostics()) {
-            respondTo(d);
-        }
-    }
-
-    protected void respondTo(Diagnostic d) {
-        Position pos  = d.getPos();
-        if (d instanceof Warning) {
-            System.err.print("WARNING: ");
-        } else {
-            System.err.print("ERROR: ");
-        }
-        if (pos != null) {
-            System.err.println(pos.describe());
-        }
-        String txt = d.getText();
-        if (txt != null) {
-            System.err.println(txt);
-        }
-        System.err.println();
-    }
 }
