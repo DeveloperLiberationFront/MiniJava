@@ -27,7 +27,7 @@ import checker.Context;
  *  we resisted the temptation to call this class Error.
  */
 public abstract class CompoundDiagnostic {
-    protected Diagnostic[] diagnostics;
+    protected ArrayList<Diagnostic> diagnostics;
     public Diagnostic[] getDiagnostics() {
         return diagnostics.clone();
     }

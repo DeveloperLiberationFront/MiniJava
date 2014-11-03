@@ -24,19 +24,10 @@ import compiler.Diagnostic;
 import syntax.Id;
 import checker.Env;
 
-/** Represents an error diagnostic.  To avoid a clash with java.lang.Error,
- *  we resisted the temptation to call this class Error.
- */
 public class NameClashFailure extends CompoundDiagnostic {
-    /** Construct a simple failure report with a fixed description.
-     */
     public NameClashFailure(Id newId, Id prevId, Env env) {
-        this.diagnostics = new Diagnostic[3];
-        this.diagnostics[0] = new Failure(
-            "Name clash in " + env.getId().toString()
-            );
-        this.diagnostics[0] = new Warning(
-            newId.getName() + " clashes with " + prevId.getName()
-            );
+        this.diagnostics = new Diagnostic[2];
+        this.diagnostics[0] = new Failure("Name clash in " + env.getId().toString());
+        this.diagnostics[1] = new Warning(newId.getName() + " clashes with " + prevId.getName());
     }
 }
