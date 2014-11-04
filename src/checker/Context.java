@@ -131,10 +131,7 @@ public final class Context extends Phase {
         for (int i = classes.length - 1; i >= 0; i--) {
             for (int j = 0; j < i; j++) {
                 if (classes[i].getId().sameId(classes[j].getId())) {
-                    // report(new DeclarationClashFailure(classes[i], classes[j]))
-                    report(new Failure(classes[i].getPos(),
-                                       "Multiple definitions for class " +
-                                       classes[i].getId()));
+                    report(new NameClashDiagnostic(classes[i].getId(), classes[j].getId()));
                     break;
                 }
             }

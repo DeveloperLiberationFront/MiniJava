@@ -11,11 +11,6 @@ public class NameClashDiagnostic extends RichDiagnostic {
 
 	@Override
 	public String getText() {
-		return this.toString();
-	}
-
-	@Override
-	public String toString() {
 		return "Name Clash between " + firstDeclaration + " and " + secondDeclaration +
 				"at "+ firstDeclaration.getPos().describe() +
 				" and " + secondDeclaration.getPos().describe();
