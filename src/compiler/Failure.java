@@ -23,7 +23,7 @@ package compiler;
 /** Represents an error diagnostic.  To avoid a clash with java.lang.Error,
  *  we resisted the temptation to call this class Error.
  */
-public class Failure extends Diagnostic {
+public class Failure extends SimpleDiagnostic {
     /** Construct a simple failure report with a fixed description.
      */
     public Failure(String text) {
