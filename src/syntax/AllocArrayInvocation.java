@@ -48,6 +48,7 @@ public class AllocArrayInvocation extends ExternalInvocation {
     throws Diagnostic {
         arrayType = array.check(ctxt).isArray();
         if (arrayType == null) {
+            // throw new TypeClashFailure(ctxt, "Array")
             throw new Failure("AllocArrayInvocation expects array type");
         }
         return super.typeOf(ctxt, env);

@@ -38,6 +38,7 @@ public final class CharLiteral extends Literal {
      */
     public Type typeOf(Context ctxt, VarEnv env)
     throws Diagnostic {
+        // don't see how this throws a Diagnostic
         return Type.CHAR;
     }
 

@@ -46,6 +46,7 @@ public class Checker {
             Reader reader = new FileReader(inputFile);
             check(handler, reader, inputFile);
         } catch (FileNotFoundException e) {
+            // not an AST error
             handler.report(new Failure("Cannot open input file " +
                                        inputFile));
         }
