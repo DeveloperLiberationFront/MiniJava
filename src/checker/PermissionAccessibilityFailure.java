@@ -30,7 +30,7 @@ public class PermissionAccessibilityFailure extends RichDiagnostic {
 		return "Permission Accessibilty error: " + this.cls.toString() +
 				" cannot access " + this.member.describe() + 
 				" at " + this.cls.getPos().describe() + 
-				"\n(" + this.member.describe() + " declared with " + modsDescription +
+				"\n\t(" + this.member.describe() + " declared with " + modsDescription +
 				" at " + this.member.getPos().describe() + ")";
 	}
 
