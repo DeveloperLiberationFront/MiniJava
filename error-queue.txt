@@ -1,0 +1,196 @@
+# Done:
+src/checker/Checker.java:49:            handler.report(new Failure("Cannot open input file " +
+src/checker/Context.java:112:    public boolean noFailures() {
+src/checker/Context.java:113:        return getHandler().getNumFailures() == 0;
+src/checker/Context.java:133:                    report(new Failure(classes[i].getPos(),
+src/checker/MemberEnv.java:67:            ctxt.report(new Failure(pos, "Cannot access " + describe()
+src/syntax/CharLiteral.java:40:    throws Diagnostic {
+src/syntax/This.java:43:            throw new Failure(pos, "Cannot access this in a static context");
+src/syntax/AllocArrayInvocation.java:48:    throws Diagnostic {
+src/syntax/ClassType.java:170:                    ctxt.report(new Failure(id.getPos(),
+src/syntax/ClassType.java:164:                    throw new Failure(id.getPos(),
+# To-do:
+src/syntax/AssignExpr.java:47:    throws Diagnostic {
+src/checker/MethEnv.java:176:                ctxt.report(new Failure(body.getPos(),
+src/syntax/BitOpExpr.java:45:            ctxt.report(new Failure(pos, "Incompatible operand types"));
+src/syntax/SuperInvocation.java:60:            throw new Failure(pos, "No super constructor determined for super()");
+src/syntax/Invocation.java:45:    throws Diagnostic {
+src/syntax/SuperInvocation.java:67:            throw new Failure(pos,
+src/compiler/Failure.java:26:public class Failure extends Diagnostic {
+src/lexer/MjcLexer.java:229:                report(new Failure(getPos(), "Unterminated comment"));
+src/Compiler.java:127:                    handler.report(new Failure("Cannot open file " +
+src/checker/Context.java:250:                report(new Failure("No method main in class Main"));
+src/syntax/Mjc.jacc:405:                report(new Failure(mods.getPos(),
+src/syntax/ArrayLiteral.java:57:            throw new Failure(pos, "ArrayLiteral Type must be array type not " + type);
+src/syntax/ArrayAccess.java:60:            throw new Failure(pos,
+src/syntax/LocalVarDecl.java:89:                } catch (Diagnostic d) {
+src/syntax/ArrayAccess.java:63:            throw new Failure(pos,
+src/syntax/SimpleAccess.java:42:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/syntax/MethDecl.java:66:                ctxt.report(new Failure(paramId.getPos(),
+src/syntax/ClassAccess.java:41:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/compiler/Handler.java:46:            numFailures++;
+src/syntax/RelOpExpr.java:60:        } catch (Diagnostic d) {
+src/compiler/Handler.java:36:    private int numFailures = 0;
+src/syntax/ClassType.java:198:                ctxt.report(new Failure(id.getPos(),
+src/syntax/ClassInvocation.java:50:            throw new Failure(pos,
+src/syntax/BooleanLiteral.java:41:    throws Diagnostic {
+src/syntax/ObjectAccess.java:44:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/syntax/Mjc.jacc:417:                report(new Failure(mods.getPos(),
+src/syntax/ClassAccess.java:43:            throw new Failure(pos,
+src/compiler/Warning.java:25:public class Warning extends Diagnostic {
+src/compiler/Handler.java:63:        numDiagnostics = 0;
+src/syntax/ClassInvocation.java:47:            throw new Failure(pos,
+src/syntax/NameType.java:63:            ctxt.report(new Failure(name.getPos(), "Unknown type " + name));
+src/compiler/Handler.java:31:        return numDiagnostics;
+src/syntax/SuperInvocation.java:70:            throw new Failure(pos,
+src/syntax/ClassType.java:288:                ctxt.report(new Failure(id.getPos(),
+src/compiler/Handler.java:38:        return numFailures;
+src/compiler/Warning.java:41:    public Warning(Position position, String text) {
+src/syntax/StringLiteral.java:56:    throws Diagnostic {
+src/syntax/DoWhile.java:51:        } catch (Diagnostic d) {
+src/syntax/Mjc.jacc:388:        report(new Failure(mods.getPos(),
+src/syntax/NameInvocation.java:43:    throws Diagnostic {
+src/compiler/Handler.java:45:        if (d instanceof Failure) {
+src/syntax/While.java:49:                ctxt.report(new Failure(pos,
+src/Compiler.java:113:                handler.report(new Failure("Cannot open input file " +
+src/syntax/Mjc.jacc:366:        report(new Failure(mods.getPos(), "Illegal class access modifier"));
+src/syntax/AllocArrayInvocation.java:51:            throw new Failure("AllocArrayInvocation expects array type");
+src/checker/FieldEnv.java:101:                } catch (Diagnostic d) {
+src/syntax/NewExpr.java:46:            throw new Failure(pos, "Undefined name " + name);
+src/lexer/Test.java:57:            handler.report(new Failure("Cannot open input file " +
+src/syntax/NewArrayExpr.java:47:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/syntax/NullCheck.java:54:    throws Diagnostic {
+src/syntax/Mjc.jacc:284:        report(new Failure(lexer.getPos(), msg));
+src/checker/Context.java:252:                report(new Failure(mainMeth.getPos(),
+src/syntax/Mjc.jacc:438:            report(new Failure(mods.getPos(),
+src/syntax/SuperInvocation.java:65:            throw new Failure(pos, "Super constructor can only be in a constructor.");
+src/compiler/Diagnostic.java:72:    public Diagnostic(Position position) {
+src/compiler/JavaSource.java:130:                            report(new Warning(
+src/syntax/NumericOpExpr.java:39:    throws Diagnostic {
+src/checker/VarEnv.java:81:            ctxt.report(new Failure(pos, "Too few arguments"));
+src/syntax/NameAccess.java:44:    throws Diagnostic {
+src/syntax/ArrayAccess.java:55:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/syntax/Return.java:61:                } catch (Diagnostic d) {
+src/syntax/ClassType.java:384:            ctxt.report(new Failure(id.getPos(),
+src/syntax/ClassType.java:250:                            ctxt.report(new Failure(menv.getPos(),
+src/syntax/NumericOpExpr.java:43:        } catch (Diagnostic d) {
+src/interp/Interp.java:48:            handler.report(new Failure("Cannot open input file " +
+src/syntax/TypeLen.java:42:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/compiler/Diagnostic.java:66:    public Diagnostic(String text) {
+src/checker/VarEnv.java:83:            ctxt.report(new Failure(args.getArg().getPos(),
+src/syntax/Mjc.jacc:409:                report(new Warning(mods.getPos(),
+src/syntax/NullLiteral.java:39:    throws Diagnostic {
+src/syntax/This.java:41:    throws Diagnostic {
+src/lexer/MjcLexer.java:279:            report(new Failure(getPos(),
+src/syntax/DoWhile.java:48:                ctxt.report(new Failure(pos,
+src/syntax/NewExpr.java:48:            throw new Failure(pos, "Unable to instantiate abstract class or interface " +
+src/syntax/Invocation.java:65:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/syntax/Mjc.jacc:329:        report(new Warning(mods.getPos(),
+src/syntax/ClassType.java:282:    throws Diagnostic {
+src/syntax/SuperAccess.java:49:            throw new Failure(pos,
+src/syntax/NewArrayExpr.java:49:            throw new Failure(pos, "Array size must be of Type INT");
+src/compiler/Handler.java:43:    public void report(Diagnostic d) {
+src/syntax/MethDecl.java:70:                ctxt.report(new Failure(paramId.getPos(),
+src/lexer/MjcLexer.java:370:        report(new Warning(getPos(), "Ignoring illegal character '" + c + "'"));
+src/syntax/SuperAccess.java:47:            throw new Failure(pos, "Current class has no super class");
+src/syntax/SuperInvocation.java:62:            throw new Failure(pos,
+src/syntax/NullCheck.java:59:                throw new Failure(pos, "Object.nullCheck must return type Object (returns " + f
+src/syntax/ThisInvocation.java:43:    Type typeInvocation(Context ctxt, VarEnv env) throws Diagnostic {
+src/syntax/ObjectInvocation.java:46:    throws Diagnostic {
+src/syntax/MethDecl.java:74:                ctxt.report(new Failure("The two parameters to " +
+src/syntax/ExprStmt.java:50:        } catch (Diagnostic d) {
+src/checker/Context.java:245:            report(new Failure(
+src/checker/VarEnv.java:67:                    ctxt.report(new Failure(args.getArg().getPos(),
+src/syntax/NegExpr.java:38:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/syntax/LocalVarDecl.java:65:                        ctxt.report(new Failure(pos,
+src/syntax/ObjectInvocation.java:50:            throw new Failure(pos,
+src/checker/Context.java:143:                return noFailures();
+src/syntax/ObjectInvocation.java:54:            throw new Failure(pos,
+src/syntax/Mjc.jacc:435:            report(new Failure(mods.getPos(), "A field cannot be abstract"));
+src/syntax/ClassType.java:358:            ctxt.report(new Failure(id.getPos(),
+src/syntax/SuperInvocation.java:58:            throw new Failure(pos, "Current class has no super class");
+src/compiler/Phase.java:43:    public void report(Diagnostic d) {
+src/compiler/Warning.java:28:    public Warning(String text) {
+src/syntax/LogicOpExpr.java:38:    throws Diagnostic {
+src/syntax/ObjectAccess.java:48:            throw new Failure(pos,
+src/compiler/Warning.java:34:    public Warning(Position position) {
+src/syntax/ObjectAccess.java:52:            throw new Failure(pos,
+src/lexer/MjcLexer.java:27:import compiler.Warning;
+src/syntax/Mjc.jacc:374:        report(new Failure(mods.getPos(), "Illegal interface access modifier"));
+src/compiler/Diagnostic.java:24: *  Errors should be implemented as subclasses of Failure, while
+src/lexer/MjcLexer.java:177:                    report(new Failure("Incorrectly terminated char literal"));
+src/compiler/Failure.java:29:    public Failure(String text) {
+src/syntax/Mjc.jacc:395:            report(new Failure(mods.getPos(),
+src/syntax/SuperAccess.java:44:    throws Diagnostic {
+src/syntax/SuperInvocation.java:52:    Type typeInvocation(Context ctxt, VarEnv env) throws Diagnostic {
+src/checker/Context.java:222:        return noFailures();
+src/syntax/CastExpr.java:40:    throws Diagnostic {
+src/syntax/ClassInvocation.java:44:    throws Diagnostic {
+src/syntax/Mjc.jacc:358:                report(new Failure("Unhandled Class Decl Type"));
+src/compiler/Warning.java:25:public class Warning extends Diagnostic {
+src/compiler/Diagnostic.java:27:public abstract class Diagnostic extends Exception {
+src/syntax/While.java:52:        } catch (Diagnostic d) {
+src/syntax/Return.java:54:                        ctxt.report(new Failure(pos,
+src/syntax/ClassType.java:299:                        ctxt.report(new Failure(this_meth.getPos(),
+src/compiler/Failure.java:35:    public Failure(Position position) {
+src/compiler/Handler.java:37:    public int getNumFailures() {
+src/checker/FieldEnv.java:98:                        ctxt.report(new Failure("Type of member initialization does not match." +
+src/checker/Context.java:141:            } catch (Diagnostic d) {
+src/syntax/Mjc.jacc:347:                report(new Failure("Unhandled Class Decl Type"));
+src/compiler/SimpleHandler.java:33:        if (d instanceof Warning) {
+src/syntax/Return.java:65:                ctxt.report(new Failure(pos,
+src/syntax/Return.java:69:            ctxt.report(new Failure(pos, "A return value is required"));
+src/syntax/RelOpExpr.java:49:                ctxt.report(new Failure(pos,
+src/syntax/ArrayLiteral.java:63:                    throw new Failure(pos,
+src/syntax/ClassType.java:295:                        ctxt.report(new Failure(id.getPos(),
+src/syntax/Mjc.jacc:15:import compiler.Warning;
+src/syntax/LogicOpExpr.java:44:        } catch (Diagnostic d) {
+src/syntax/NotExpr.java:41:        } catch (Diagnostic d) {
+src/compiler/Handler.java:30:    public int getNumDiagnostics() {
+src/syntax/Mjc.jacc:14:import compiler.Failure;
+src/syntax/SuperAccess.java:52:            throw new Failure(pos,
+src/lexer/MjcLexer.java:254:            report(new Failure(getPos(),
+src/syntax/ClassType.java:151:    throws Diagnostic {
+src/syntax/Expression.java:41:    throws Diagnostic;
+src/compiler/Failure.java:26:public class Failure extends Diagnostic {
+src/compiler/Handler.java:53:     *  appropriate way.  Diagnostics will normally be passed to this
+src/checker/Context.java:255:                report(new Failure(mainMeth.getPos(),
+src/compiler/Diagnostic.java:25: *  warnings are normally implemented as as subclasses of Warning.
+src/syntax/NotExpr.java:38:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/lexer/MjcLexer.java:28:import compiler.Failure;
+src/syntax/ClassType.java:154:            throw new Failure(id.getPos(),
+src/syntax/Name.java:108:            //         throw new Failure(pos,
+src/syntax/Invocation.java:68:            throw new Failure(pos, "Method does not return a value");
+src/compiler/Failure.java:42:    public Failure(Position position, String text) {
+src/syntax/Mjc.jacc:401:                report(new Failure(mods.getPos(),
+src/checker/Context.java:235:        return noFailures();
+src/syntax/IfThenElse.java:53:                ctxt.report(new Failure(pos,
+src/syntax/BitOpExpr.java:37:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/syntax/ArrayLiteral.java:54:    throws Diagnostic {
+src/syntax/IfThenElse.java:56:        } catch (Diagnostic d) {
+src/syntax/Mjc.jacc:421:                report(new Warning(mods.getPos(),
+src/syntax/Expression.java:48:            ctxt.report(new Failure(pos, where  + " has type " +
+src/compiler/Handler.java:64:        numFailures    = 0;
+src/compiler/SimpleHandler.java:31:    protected void respondTo(Diagnostic d) {
+src/syntax/NameInvocation.java:46:            throw new Failure(pos, "Undefined name " + name);
+src/compiler/StdinSource.java:67:                report(new Failure("Error in input stream"));
+src/syntax/FrameAccess.java:41:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/syntax/AssignExpr.java:52:            throw new Failure(pos, "Cannot assign value of type " + rt +
+src/syntax/Mjc.jacc:382:        report(new Failure(mods.getPos(), "A field cannot be abstract"));
+src/syntax/RelOpExpr.java:43:    throws Diagnostic {
+src/syntax/NameAccess.java:47:            throw new Failure(pos, "Undefined name " + name);
+src/syntax/StatementExpr.java:38:    void checkExpr(Context ctxt, VarEnv env) throws Diagnostic {
+src/syntax/Mjc.jacc:336:        report(new Failure(mods.getPos(), "Cannot combine " + msg));
+src/syntax/Mjc.jacc:442:            report(new Warning(mods.getPos(),
+src/syntax/IntLiteral.java:44:    throws Diagnostic {
+src/syntax/Invocation.java:52:    throws Diagnostic;
+src/syntax/NegExpr.java:41:        } catch (Diagnostic d) {
+src/compiler/Diagnostic.java:79:    public Diagnostic(Position position, String text) {
+src/compiler/Handler.java:56:    protected abstract void respondTo(Diagnostic d);
+src/syntax/NewExpr.java:43:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+src/syntax/LocalVarDecl.java:97:            ctxt.report(new Failure(pos, "Declarations have no use"));
+src/compiler/Handler.java:29:    private int numDiagnostics = 0;
+src/syntax/LocalVarDecl.java:68:                        ctxt.report(new Failure(pos, "Cannot initialize value of type " + type +
+src/checker/Context.java:216:            } catch (Diagnostic d) {
+src/compiler/Handler.java:44:        numDiagnostics++;
+src/checker/VarEnv.java:74:            } catch (Diagnostic d) {
