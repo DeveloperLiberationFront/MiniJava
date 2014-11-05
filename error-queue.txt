@@ -9,8 +9,8 @@ src/syntax/This.java:43:            throw new Failure(pos, "Cannot access this i
 src/syntax/AllocArrayInvocation.java:48:    throws Diagnostic {
 src/syntax/ClassType.java:170:                    ctxt.report(new Failure(id.getPos(),
 src/syntax/ClassType.java:164:                    throw new Failure(id.getPos(),
-# To-do:
 src/syntax/AssignExpr.java:47:    throws Diagnostic {
+# To-do:
 src/checker/MethEnv.java:176:                ctxt.report(new Failure(body.getPos(),
 src/syntax/BitOpExpr.java:45:            ctxt.report(new Failure(pos, "Incompatible operand types"));
 src/syntax/SuperInvocation.java:60:            throw new Failure(pos, "No super constructor determined for super()");

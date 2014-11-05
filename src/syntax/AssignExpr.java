@@ -27,6 +27,16 @@ import interp.*;
 
 /** Provides a representation for assignment expressions.
  */
+
+interface VariableDeclaration {
+	// TODO: unifies FieldDecl, Decls?, MethDecl, LocalVarDecl...
+}
+
+class DummyVariableDeclaration implements VariableDeclaration {
+	public DummyVariableDeclaration() {
+	}
+}
+
 public final class AssignExpr extends StatementExpr {
     private LeftHandSide lhs;
     private Expression rhs;
@@ -49,8 +59,10 @@ public final class AssignExpr extends StatementExpr {
         Type rt = rhs.typeOf(ctxt, env);
 
         if (!lt.isSuperOf(rt)) {
-            throw new Failure(pos, "Cannot assign value of type " + rt +
-            " to variable of type " + lt);
+        	throw new TypeError(lhs, new DummyVariableDeclaration(), rhs, new DummyVariableDeclaration(), this);
+//            throw new TypeClashFailure("assignment", ctxt, rt, lt);
+            // throw new Failure(pos, "Cannot assign value of type " + rt +
+            // " to variable of type " + lt);
         } else if (!lt.equal(rt)) {
             rhs = new CastExpr(pos, lt, rhs);
         }
