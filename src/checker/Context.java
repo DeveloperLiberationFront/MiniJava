@@ -241,8 +241,9 @@ public final class Context extends Phase {
     private MethEnv checkMain() {
         ClassType mainClass = findClass("Main");
         if (mainClass == null) {
-            report(new Failure(
-                       "Program does not contain a definition for class Main"));
+        	report(new MissingRequiredNameDiagnostic(new ClassType(null, new Id(null, "Main"), null, null, null), this));
+//            report(new Failure(
+//                       "Program does not contain a definition for class Main"));
         } else {
             MethEnv mainMeth = mainClass.findMethod("main");
             if (mainMeth == null) {
