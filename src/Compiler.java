@@ -124,6 +124,7 @@ public class Compiler {
                 String assemblyFile = cmd.getOptionValue("x");
                 Assembly assembly = Assembly.assembleToFile(assemblyFile);
                 if (assembly == null) {
+                	// out of scope
                     handler.report(new Failure("Cannot open file " +
                                                assemblyFile + " for output"));
                 } else {
