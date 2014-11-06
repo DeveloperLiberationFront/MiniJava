@@ -24,6 +24,7 @@ import java.util.Hashtable;
 import compiler.Source;
 import compiler.SourceLexer;
 import compiler.Handler;
+import compiler.UnterminatedSyntaxDiagnostic;
 import compiler.Warning;
 import compiler.Failure;
 import syntax.Id;
@@ -226,7 +227,8 @@ public class MjcLexer extends SourceLexer implements Tokens {
                 }
             }
             if (c == EOF) {
-                report(new Failure(getPos(), "Unterminated comment"));
+            	report(new UnterminatedSyntaxDiagnostic(getPos(), "*/"));
+//                report(new Failure(getPos(), "Unterminated comment"));
                 return;
             }
             if (c == EOL) {

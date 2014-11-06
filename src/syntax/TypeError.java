@@ -8,13 +8,13 @@ public class TypeError extends RichDiagnostic {
 	public TypeError(Expression lhs,
 			VariableDeclaration lhsDecl, Expression rhs,
 			VariableDeclaration rhsDecl,
-			Expression expr) {
+			Expression errorContext) {
 		// TODO Auto-generated constructor stub
 	}
 
 	public TypeError(Expression lhs,
 			VariableDeclaration lhsDecl, Expression rhs,
-			Expression expr) {
+			Expression errorContext) {
 		// for when, e.g., rhs is a literal
 		// TODO Auto-generated constructor stub
 	}

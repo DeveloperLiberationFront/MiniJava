@@ -4,7 +4,7 @@ package compiler;
 
 import syntax.Id;
 
-public class NameClashDiagnostic extends RichDiagnostic {
+public class NameClashDiagnostic extends RichDiagnostic implements ClashDiagnostic {
 
 	private Id firstDeclaration;
 	private Id secondDeclaration;
