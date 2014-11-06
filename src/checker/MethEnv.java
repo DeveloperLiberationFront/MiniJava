@@ -173,7 +173,7 @@ public final class MethEnv extends MemberEnv implements Iterable<MethEnv>,
         if (body != null) {
             ctxt.setCurrMethod(this);
             if (body.check(ctxt, params, 0) && !type.equal(Type.VOID)) {
-            	ctxt.report(new MissingLanguageRequiredStatementFailure(new Return(body.getPos())));
+            	ctxt.report(new MissingTerminatingExpressionDiagnostic(new Return(body.getPos())));
             }
             localBytes = ctxt.getLocalBytes();
             ctxt.setCurrMethod(null);

@@ -6,7 +6,7 @@ import syntax.Statement;
 import compiler.Position;
 import compiler.RichDiagnostic;
 
-public class MissingLanguageRequiredStatementFailure extends RichDiagnostic {
+public class MissingTerminatingExpressionDiagnostic extends RichDiagnostic implements UnterminatedProgramElementDiagnostic {
 
 	private Position pos;
 	private Expression exp;
@@ -23,12 +23,12 @@ public class MissingLanguageRequiredStatementFailure extends RichDiagnostic {
 		return null;
 	}
 	
-	public MissingLanguageRequiredStatementFailure(Position pos, Expression exp) {
+	public MissingTerminatingExpressionDiagnostic(Position pos, Expression exp) {
 		this.pos = pos;
 		this.exp = exp;
 	}
 
-	public MissingLanguageRequiredStatementFailure(Statement stat) {
+	public MissingTerminatingExpressionDiagnostic(Statement stat) {
 	}
 
 }
