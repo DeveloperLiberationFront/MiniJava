@@ -1,14 +1,15 @@
 package checker;
 
+import syntax.AccessibilityDiagnostic;
 import syntax.ClassType;
 import compiler.Position;
 import compiler.RichDiagnostic;
 
-public class PermissionAccessibilityFailure extends RichDiagnostic {
+public class PermissionAccessibilityDiagnostic extends RichDiagnostic implements AccessibilityDiagnostic {
 	private ClassType cls;
 	private MemberEnv member;
 
-	public PermissionAccessibilityFailure(MemberEnv member, ClassType cls) {
+	public PermissionAccessibilityDiagnostic(MemberEnv member, ClassType cls) {
 		this.member = member;
 		this.cls = cls;
 	}

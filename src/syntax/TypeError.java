@@ -5,16 +5,16 @@ import compiler.RichDiagnostic;
 
 public class TypeError extends RichDiagnostic {
 
-	public TypeError(LeftHandSide lhs,
+	public TypeError(Expression lhs,
 			VariableDeclaration lhsDecl, Expression rhs,
 			VariableDeclaration rhsDecl,
-			AssignExpr assignExpr) {
+			Expression expr) {
 		// TODO Auto-generated constructor stub
 	}
 
 	public TypeError(Expression lhs,
 			VariableDeclaration lhsDecl, Expression rhs,
-			AssignExpr assignExpr) {
+			Expression expr) {
 		// for when, e.g., rhs is a literal
 		// TODO Auto-generated constructor stub
 	}

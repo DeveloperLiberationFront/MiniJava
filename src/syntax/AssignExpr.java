@@ -60,9 +60,6 @@ public final class AssignExpr extends StatementExpr {
 
         if (!lt.isSuperOf(rt)) {
         	throw new TypeError(lhs, new DummyVariableDeclaration(), rhs, new DummyVariableDeclaration(), this);
-//            throw new TypeClashFailure("assignment", ctxt, rt, lt);
-            // throw new Failure(pos, "Cannot assign value of type " + rt +
-            // " to variable of type " + lt);
         } else if (!lt.equal(rt)) {
             rhs = new CastExpr(pos, lt, rhs);
         }

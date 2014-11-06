@@ -10,11 +10,11 @@ src/syntax/AllocArrayInvocation.java:48:    throws Diagnostic {
 src/syntax/ClassType.java:170:                    ctxt.report(new Failure(id.getPos(),
 src/syntax/ClassType.java:164:                    throw new Failure(id.getPos(),
 src/syntax/AssignExpr.java:47:    throws Diagnostic {
-# To-do:
 src/checker/MethEnv.java:176:                ctxt.report(new Failure(body.getPos(),
 src/syntax/BitOpExpr.java:45:            ctxt.report(new Failure(pos, "Incompatible operand types"));
 src/syntax/SuperInvocation.java:60:            throw new Failure(pos, "No super constructor determined for super()");
 src/syntax/Invocation.java:45:    throws Diagnostic {
+# To-do:
 src/syntax/SuperInvocation.java:67:            throw new Failure(pos,
 src/compiler/Failure.java:26:public class Failure extends Diagnostic {
 src/lexer/MjcLexer.java:229:                report(new Failure(getPos(), "Unterminated comment"));

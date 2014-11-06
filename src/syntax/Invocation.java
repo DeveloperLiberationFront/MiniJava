@@ -42,7 +42,7 @@ public abstract class Invocation extends StatementExpr {
      *  return void.
      */
     void checkExpr(Context ctxt, VarEnv env)
-    throws Diagnostic {
+    throws Diagnostic { // abstract method, can't implement here
         typeInvocation(ctxt, env);
     }
 
