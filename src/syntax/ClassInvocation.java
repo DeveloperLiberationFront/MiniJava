@@ -47,6 +47,7 @@ public final class ClassInvocation extends Invocation {
             throw new Failure(pos,
             "Cannot find method " + name + " in class " + cls);
         } else if (!this.menv.isStatic()) {
+        	throw new MissingFieldDiagnostic(this, cls); // missing information: what to call to get an instance
             throw new Failure(pos,
             "Cannot access method " + name +
             " without an object of class " + cls);
