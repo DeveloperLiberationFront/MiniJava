@@ -191,17 +191,17 @@ public class ClassType extends Type {
             for (; decls != null; decls = decls.getNext()) {
                 decls.addToClass(ctxt, this);
             }
-            int constructor_count = 0;
+            
+            ArrayList<MethEnv> constructors = new ArrayList<MethEnv>();
             for (MethEnv menv = methods; menv != null; menv = menv.getNext()) {
                 if (menv.isConstructor()) {
-                    constructor_count++;
+                    constructors.add(menv);
                 }
             }
-            if (constructor_count > 1) {
-                ctxt.report(new Failure(id.getPos(),
-                                        "Only one constructor is allowed per class."));
+            if (constructors.size() > 1) {
+            	ctxt.report(new DeclarationClashDiagnostic(constructors));
             }
-            boolean has_constructor = constructor_count != 0;
+            boolean has_constructor = !constructors.isEmpty();
 
             if (!has_constructor && this.isInterface() == null) {
                 /* if no constructor, add a default with nothing to it */
