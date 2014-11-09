@@ -288,6 +288,7 @@ public class ClassType extends Type {
             Type checked = t.check(ctxt);
             InterfaceType iface;
             if ((iface = checked.isInterface()) == null) {
+            	ctxt.report(new InheritanceKindError(this, t, new InterfaceType(null, null, null, null)));
                 ctxt.report(new Failure(id.getPos(),
                 "Can only implement interface types. " + checked + " is not an interface."));
             } else {
