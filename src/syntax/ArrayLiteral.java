@@ -54,7 +54,8 @@ public final class ArrayLiteral extends Literal {
     throws Diagnostic {
         ArrayType a_type = type.check(ctxt).isArray();
         if (a_type == null) {
-        	throw new TypeError(null, null, initialization, null);
+        	// it's not clear to me what kind of source would throw this
+            throw new TypeError(null, null, initialization, null);
         } else {
             Type element = a_type.getElementType();
             for (Expression e : literals) {
