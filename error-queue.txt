@@ -18,9 +18,9 @@ src/syntax/SuperInvocation.java:67:            throw new Failure(pos,
 src/compiler/Failure.java:26:public class Failure extends Diagnostic {
 src/lexer/MjcLexer.java:229:                report(new Failure(getPos(), "Unterminated comment"));
 src/Compiler.java:127:                    handler.report(new Failure("Cannot open file " +
-# To-do:
 src/checker/Context.java:250:                report(new Failure("No method main in class Main"));
 src/syntax/Mjc.jacc:405:                report(new Failure(mods.getPos(),
+# To-do:
 src/syntax/ArrayLiteral.java:57:            throw new Failure(pos, "ArrayLiteral Type must be array type not " + type);
 src/syntax/ArrayAccess.java:60:            throw new Failure(pos,
 src/syntax/LocalVarDecl.java:89:                } catch (Diagnostic d) {
