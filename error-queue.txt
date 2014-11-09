@@ -59,10 +59,10 @@ src/syntax/NewExpr.java:46:            throw new Failure(pos, "Undefined name " 
 src/lexer/Test.java:57:            handler.report(new Failure("Cannot open input file " +
 src/syntax/NewArrayExpr.java:47:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
 src/syntax/NullCheck.java:54:    throws Diagnostic {
-# To-do:
 src/syntax/Mjc.jacc:284:        report(new Failure(lexer.getPos(), msg));
 src/checker/Context.java:252:                report(new Failure(mainMeth.getPos(),
 src/syntax/Mjc.jacc:438:            report(new Failure(mods.getPos(),
+# To-do:
 src/syntax/SuperInvocation.java:65:            throw new Failure(pos, "Super constructor can only be in a constructor.");
 src/compiler/Diagnostic.java:72:    public Diagnostic(Position position) {
 src/compiler/JavaSource.java:130:                            report(new Warning(

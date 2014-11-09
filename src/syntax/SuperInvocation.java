@@ -63,7 +63,8 @@ public final class SuperInvocation extends Invocation {
             throw new Failure(pos,
             "Super constructor must be first instruction in constructor.");
         } else if (unnamed && ctxt.getCurrMethod() != null && !ctxt.getCurrMethod().isConstructor()) {
-            throw new Failure(pos, "Super constructor can only be in a constructor.");
+        	throw new ScopeAccessibilityError(this, ctxt.getCurrentMethod(), new ArrayList<MethDecl>());
+//            throw new Failure(pos, "Super constructor can only be in a constructor.");
         } else if (ctxt.isStatic()) {
         	throw new ScopeAccessibilityError(pos, ctxt); // missing: reason it won't work
         } else if ((this.menv = sup.findMethod(name)) == null) {
