@@ -31,7 +31,6 @@ src/compiler/Handler.java:46:            numFailures++;
 src/syntax/RelOpExpr.java:60:        } catch (Diagnostic d) {
 src/compiler/Handler.java:36:    private int numFailures = 0;
 src/syntax/ClassType.java:198:                ctxt.report(new Failure(id.getPos(),
-# To-do:
 src/syntax/ClassInvocation.java:50:            throw new Failure(pos,
 src/syntax/BooleanLiteral.java:41:    throws Diagnostic {
 src/syntax/ObjectAccess.java:44:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
@@ -40,6 +39,7 @@ src/syntax/ClassAccess.java:43:            throw new Failure(pos,
 src/compiler/Warning.java:25:public class Warning extends Diagnostic {
 src/compiler/Handler.java:63:        numDiagnostics = 0;
 src/syntax/ClassInvocation.java:47:            throw new Failure(pos,
+# To-do:
 src/syntax/NameType.java:63:            ctxt.report(new Failure(name.getPos(), "Unknown type " + name));
 src/compiler/Handler.java:31:        return numDiagnostics;
 src/syntax/SuperInvocation.java:70:            throw new Failure(pos,
