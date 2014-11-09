@@ -249,6 +249,7 @@ public final class Context extends Phase {
             if (mainMeth == null) {
                 report(new Failure("No method main in class Main"));
             } else if (!mainMeth.isStatic()) {
+            	report(new MissingPermissionModifierDiagnostic(mainMeth, Modifiers.STATIC));
                 report(new Failure(mainMeth.getPos(),
                                    "Main.main is not static"));
             } else if (!mainMeth.eqSig(Type.VOID, null)) {
