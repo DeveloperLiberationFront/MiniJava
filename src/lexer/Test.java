@@ -54,6 +54,7 @@ public class Test implements Tokens {
             System.out.println("ENDINPUT");
 
         } catch (FileNotFoundException e) {
+        	// out of scope
             handler.report(new Failure("Cannot open input file " +
                                        inputFile));
         }
