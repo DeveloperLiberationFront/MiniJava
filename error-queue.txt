@@ -23,7 +23,6 @@ src/syntax/Mjc.jacc:405:                report(new Failure(mods.getPos(),
 src/syntax/ArrayLiteral.java:57:            throw new Failure(pos, "ArrayLiteral Type must be array type not " + type);
 src/syntax/ArrayAccess.java:60:            throw new Failure(pos,
 src/syntax/LocalVarDecl.java:89:                } catch (Diagnostic d) {
-# To-do:
 src/syntax/ArrayAccess.java:63:            throw new Failure(pos,
 src/syntax/SimpleAccess.java:42:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
 src/syntax/MethDecl.java:66:                ctxt.report(new Failure(paramId.getPos(),
@@ -32,6 +31,7 @@ src/compiler/Handler.java:46:            numFailures++;
 src/syntax/RelOpExpr.java:60:        } catch (Diagnostic d) {
 src/compiler/Handler.java:36:    private int numFailures = 0;
 src/syntax/ClassType.java:198:                ctxt.report(new Failure(id.getPos(),
+# To-do:
 src/syntax/ClassInvocation.java:50:            throw new Failure(pos,
 src/syntax/BooleanLiteral.java:41:    throws Diagnostic {
 src/syntax/ObjectAccess.java:44:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
