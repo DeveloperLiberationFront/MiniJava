@@ -6,7 +6,8 @@ import syntax.Statement;
 import compiler.Position;
 import compiler.RichDiagnostic;
 
-public class MissingTerminatingExpressionDiagnostic extends RichDiagnostic implements UnterminatedProgramElementDiagnostic {
+public class MissingTerminatingExpressionDiagnostic extends RichDiagnostic
+	implements UnterminatedProgramElementDiagnostic {
 
 	private Position pos;
 	private Expression exp;
@@ -23,11 +24,13 @@ public class MissingTerminatingExpressionDiagnostic extends RichDiagnostic imple
 		return null;
 	}
 	
-	public MissingTerminatingExpressionDiagnostic(Position pos, Expression exp) {
-		this.pos = pos;
-		this.exp = exp;
-	}
-
+//	public MissingTerminatingExpressionDiagnostic(Position pos, Expression exp) {
+//		this.pos = pos;
+//		this.exp = exp;
+//	}
+	
+	// pass in context information?
+	// the two things here are the return type and the missing thing
 	public MissingTerminatingExpressionDiagnostic(Statement stat) {
 	}
 
