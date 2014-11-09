@@ -5,8 +5,10 @@ import checker.UnterminatedProgramElementDiagnostic;
 public class UnterminatedSyntaxDiagnostic extends RichDiagnostic implements
 		UnterminatedProgramElementDiagnostic {
 
-	public UnterminatedSyntaxDiagnostic(Position pos, String symbol) {
-		// TODO Auto-generated constructor stub
+	private Position pos;
+	// things we want: antecedant, expected consequent 
+	public UnterminatedSyntaxDiagnostic(Position pos, Position pos, Token symbol) {
+		this.pos = pos;
 	}
 
 	@Override
