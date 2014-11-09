@@ -110,6 +110,7 @@ public class Compiler {
                     class_list.addAll(Arrays.asList(parser.getClasses()));
                 }
             } catch (FileNotFoundException e) {
+            	// this one's out of scope
                 handler.report(new Failure("Cannot open input file " +
                                            i));
             }
