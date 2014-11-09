@@ -1,10 +1,14 @@
 package syntax;
 
+import checker.Context;
 import compiler.Position;
 import compiler.RichDiagnostic;
 
 public class TypeError extends RichDiagnostic {
 
+	private Expression expression;
+	private Context ctxt;
+	private Type expectedType;
 	public TypeError(Expression lhs,
 			VariableDeclaration lhsDecl, Expression rhs,
 			VariableDeclaration rhsDecl,
@@ -21,8 +25,14 @@ public class TypeError extends RichDiagnostic {
 
 
 	
-	public TypeError(Expression test, Type expectedType, Statement statement) {
+	public TypeError(Expression expression, Type expectedType, Statement statement) {
 		// TODO Auto-generated constructor stub
+	}
+
+	public TypeError(Expression expression, Context ctxt, Type expected) {
+		this.expression = expression;
+		this.ctxt = ctxt;
+		this.expectedType = expected;
 	}
 
 	@Override
