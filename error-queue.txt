@@ -56,10 +56,10 @@ src/syntax/Mjc.jacc:366:        report(new Failure(mods.getPos(), "Illegal class
 src/syntax/AllocArrayInvocation.java:51:            throw new Failure("AllocArrayInvocation expects array type");
 src/checker/FieldEnv.java:101:                } catch (Diagnostic d) {
 src/syntax/NewExpr.java:46:            throw new Failure(pos, "Undefined name " + name);
-# To-do:
 src/lexer/Test.java:57:            handler.report(new Failure("Cannot open input file " +
 src/syntax/NewArrayExpr.java:47:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
 src/syntax/NullCheck.java:54:    throws Diagnostic {
+# To-do:
 src/syntax/Mjc.jacc:284:        report(new Failure(lexer.getPos(), msg));
 src/checker/Context.java:252:                report(new Failure(mainMeth.getPos(),
 src/syntax/Mjc.jacc:438:            report(new Failure(mods.getPos(),
