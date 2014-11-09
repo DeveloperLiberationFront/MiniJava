@@ -45,8 +45,7 @@ public final class DoWhile extends Statement {
     public boolean check(Context ctxt, VarEnv env, int frameOffset) {
         try {
             if (!test.typeOf(ctxt, env).equal(Type.BOOLEAN)) {
-                ctxt.report(new Failure(pos,
-                                        "Boolean valued expression required for test"));
+                ctxt.report(new TypeError(this.test, Type.BOOLEAN, this));
             }
         } catch (Diagnostic d) {
             ctxt.report(d);

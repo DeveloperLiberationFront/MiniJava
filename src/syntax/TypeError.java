@@ -21,6 +21,10 @@ public class TypeError extends RichDiagnostic {
 
 
 	
+	public TypeError(Expression test, Type expectedType, Statement statement) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String getText() {
 		// TODO Auto-generated method stub
