@@ -40,9 +40,7 @@ public final class ClassAccess extends FieldAccess {
      */
     public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
         if (!this.env.isStatic()) {
-            throw new Failure(pos,
-            "Cannot access field " + this.env.getName() +
-            " without an object of class " + this.env.getOwner());
+        	throw new SyntaxRequiresTypeDiagnostic(this, this.env.getOwner());
         }
         this.env.accessCheck(ctxt, pos);
         return this.env.getType();
