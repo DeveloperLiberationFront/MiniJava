@@ -87,6 +87,7 @@ public class LocalVarDecl extends Statement {
                         s.check(ctxt, prev_env, frameOffset);
                     }
                 } catch (Diagnostic d) {
+                	// catching, not generating code
                     ctxt.report(d);
                 }
             }
