@@ -40,6 +40,7 @@ public final class SimpleAccess extends FieldAccess {
      *  type (or throw an exception if an unrecoverable error occurs).
      */
     public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
+    	// error-catching, not producing
         this.env.accessCheck(ctxt, pos);
         size = ctxt.getCurrMethod().getSize();
         return this.env.getType();
