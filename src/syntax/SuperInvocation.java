@@ -67,6 +67,7 @@ public final class SuperInvocation extends Invocation {
         } else if (ctxt.isStatic()) {
         	throw new ScopeAccessibilityError(pos, ctxt); // missing: reason it won't work
         } else if ((this.menv = sup.findMethod(name)) == null) {
+        	throw new MissingMethodDiagnostic(this, sup);
             throw new Failure(pos,
             "Cannot find method " + name + " in superclass");
         }
