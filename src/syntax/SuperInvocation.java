@@ -20,6 +20,8 @@
 
 package syntax;
 
+import java.util.ArrayList;
+
 import compiler.*;
 import checker.*;
 import codegen.*;
@@ -63,7 +65,7 @@ public final class SuperInvocation extends Invocation {
             throw new Failure(pos,
             "Super constructor must be first instruction in constructor.");
         } else if (unnamed && ctxt.getCurrMethod() != null && !ctxt.getCurrMethod().isConstructor()) {
-        	throw new ScopeAccessibilityError(this, ctxt.getCurrentMethod(), new ArrayList<MethDecl>());
+        	throw new ScopeAccessibilityError(this, ctxt.getCurrMethod(), new ArrayList<MethDecl>());
 //            throw new Failure(pos, "Super constructor can only be in a constructor.");
         } else if (ctxt.isStatic()) {
         	throw new ScopeAccessibilityError(pos, ctxt); // missing: reason it won't work

@@ -62,7 +62,6 @@ src/syntax/NullCheck.java:54:    throws Diagnostic {
 src/syntax/Mjc.jacc:284:        report(new Failure(lexer.getPos(), msg));
 src/checker/Context.java:252:                report(new Failure(mainMeth.getPos(),
 src/syntax/Mjc.jacc:438:            report(new Failure(mods.getPos(),
-# To-do:
 src/syntax/SuperInvocation.java:65:            throw new Failure(pos, "Super constructor can only be in a constructor.");
 src/compiler/Diagnostic.java:72:    public Diagnostic(Position position) {
 src/compiler/JavaSource.java:130:                            report(new Warning(
@@ -87,6 +86,7 @@ src/syntax/NewExpr.java:48:            throw new Failure(pos, "Unable to instant
 src/syntax/Invocation.java:65:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
 src/syntax/Mjc.jacc:329:        report(new Warning(mods.getPos(),
 src/syntax/ClassType.java:282:    throws Diagnostic {
+# To-do:
 src/syntax/SuperAccess.java:49:            throw new Failure(pos,
 src/syntax/NewArrayExpr.java:49:            throw new Failure(pos, "Array size must be of Type INT");
 src/compiler/Handler.java:43:    public void report(Diagnostic d) {

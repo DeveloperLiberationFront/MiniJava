@@ -78,10 +78,9 @@ public final class VarEnv extends Env {
             formals = formals.next;
         }
         if (formals != null) {
-            ctxt.report(new Failure(pos, "Too few arguments"));
+        	ctxt.report(new ArgumentMismatchDiagnostic(env, formals));
         } else if (args != null) {
-            ctxt.report(new Failure(args.getArg().getPos(),
-                                    "Too many arguments"));
+        	ctxt.report(new ArgumentMismatchDiagnostic(env, formals));
         }
     }
 

@@ -45,8 +45,9 @@ public class NewExpr extends StatementExpr {
         if (cls == null) {
         	throw new UnknownNameDiagnostic(name, ctxt);
         } else if (cls.getMods().includes(Modifiers.ABSTRACT)) {
-            throw new Failure(pos, "Unable to instantiate abstract class or interface " +
-            name);
+        	throw new InvalidUseOfModifiedClassDiagnostic(this, cls);
+//            throw new Failure(pos, "Unable to instantiate abstract class or interface " +
+//            name);
         }
         return cls;
     }

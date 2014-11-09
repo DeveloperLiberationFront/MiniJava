@@ -127,6 +127,7 @@ public class JavaSource extends Source {
                             skip();
                         }
                         if (i != 4) {
+                        	// out of scope
                             report(new Warning(
                                        "Error in Unicode escape sequence"));
                         } else {

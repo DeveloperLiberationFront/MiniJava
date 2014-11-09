@@ -15,14 +15,15 @@ public class ScopeAccessibilityError extends RichDiagnostic implements
 
 	private Object valid;
 	private Env currEnv;
-	private Invocation invocation;
+	private Expression invocation;
+	private Collection<MethDecl> validEnvironments;
 	public ScopeAccessibilityError(Position pos, Context ctxt) {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ScopeAccessibilityError(Invocation invocation,
+	public ScopeAccessibilityError(Expression superAccess,
 			Env currEnv, Collection<MethDecl> environments) {
-		this.invocation = invocation;
+		this.invocation = superAccess;
 		this.currEnv = currEnv;
 		this.validEnvironments = environments;
 	}

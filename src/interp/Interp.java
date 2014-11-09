@@ -45,6 +45,7 @@ public class Interp {
             Reader reader  = new FileReader(inputFile);
             interp(reader, inputFile, handler);
         } catch (FileNotFoundException e) {
+        	// out of scope
             handler.report(new Failure("Cannot open input file " +
                                        inputFile));
         }

@@ -250,6 +250,7 @@ public class ClassType extends Type {
                     if (extendsClass != null) {
                         m = extendsClass.findMethod(extendsClass.getId().getName());
                         if (super_cons == null && m != null && m.getParams() != null) {
+                        	ctxt.report(new MissingReqiredStatementDiagnostic(new SuperInvocation(null, null, null), methods.getBody()));
                             ctxt.report(new Failure(menv.getPos(),
                                                     "Constructor needs a super class constructor (maybe it's not the first statement?)."));
                         } else if (super_cons == null && extendsClass != null) {
@@ -385,8 +386,7 @@ public class ClassType extends Type {
                           Id id, Type type,
                           VarEnv params, Statement body) {
         if (MethEnv.find(id.getName(), methods) != null) {
-            ctxt.report(new Failure(id.getPos(),
-                                    "Multiple definitions for method " + id));
+        	ctxt.report(new NameClashDiagnostic(id, MethEnv.find(id.getName(), methods)));
         } else {
             int size = VarEnv.fitToFrame(params);
             int slot = (-1);

@@ -65,7 +65,7 @@ public abstract class Invocation extends StatementExpr {
     public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
         Type result = typeInvocation(ctxt, env);
         if (result == null) {
-            throw new Failure(pos, "Method does not return a value");
+        	throw new MissingReqiredStatementDiagnostic(new Return(null, null), env);
         }
         return result;
     }

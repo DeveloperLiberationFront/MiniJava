@@ -46,8 +46,7 @@ public final class SuperAccess extends FieldAccess {
         if (sup == null) {
             throw new Failure(pos, "Current class has no super class");
         } else if (ctxt.isStatic()) {
-            throw new Failure(pos,
-            "Cannot access a super class in a static context");
+        	throw new ScopeAccessibilityError(this, ctxt.getCurrMethod(), null);
         } else if ((this.env = sup.findField(name)) == null) {
             throw new Failure(pos,
             "Cannot find field " + name + " in superclass");

@@ -2,12 +2,16 @@
 
 package compiler;
 
+import checker.Env;
+import checker.MethEnv;
 import syntax.Id;
 
 public class NameClashDiagnostic extends RichDiagnostic implements ClashDiagnostic {
 
 	private Id firstDeclaration;
 	private Id secondDeclaration;
+	private Id clashingDeclaration;
+	private Env otherDeclarations;
 
 	@Override
 	public String getText() {
@@ -24,5 +28,10 @@ public class NameClashDiagnostic extends RichDiagnostic implements ClashDiagnost
 	public NameClashDiagnostic(Id firstDeclaration, Id secondDeclaration) {
 		this.firstDeclaration = firstDeclaration;
 		this.secondDeclaration = secondDeclaration;
+	}
+
+	public NameClashDiagnostic(Id id, Env clashingDeclarations) {
+		this.clashingDeclaration = id;
+		this.otherDeclarations = clashingDeclarations;
 	}
 }

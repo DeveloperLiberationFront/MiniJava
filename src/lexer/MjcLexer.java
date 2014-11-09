@@ -21,17 +21,19 @@
 package lexer;
 
 import java.util.Hashtable;
-import compiler.Source;
-import compiler.SourceLexer;
-import compiler.Handler;
-import compiler.UnterminatedSyntaxDiagnostic;
-import compiler.Warning;
-import compiler.Failure;
+
+import syntax.CharLiteral;
 import syntax.Id;
 import syntax.IntLiteral;
 import syntax.StringLiteral;
-import syntax.CharLiteral;
 import syntax.Tokens;
+
+import compiler.Failure;
+import compiler.Handler;
+import compiler.Source;
+import compiler.SourceLexer;
+import compiler.UnterminatedSyntaxDiagnostic;
+import compiler.Warning;
 
 /** A lexical analyzer for the mini Java compiler.
  */
@@ -278,8 +280,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
             }
         } while (c != EOF && !endOfString);
         if (c == EOF) {
-            report(new Failure(getPos(),
-                               "Unterminated string literal"));
+            report(new UnterminatedSyntaxDiagnostic(new RichToken(0, 0, "\""), new RichToken(0, 0, "\"")));
         }
         nextChar(); // consume closing "
         semantic = new StringLiteral(getPos(), b.toString());
