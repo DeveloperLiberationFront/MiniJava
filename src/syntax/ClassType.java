@@ -360,8 +360,7 @@ public class ClassType extends Type {
                          Expression init_expr) {
         FieldEnv field = null;
         if (FieldEnv.find(id.getName(), fields) != null) {
-            ctxt.report(new Failure(id.getPos(),
-                                    "Multiple definitions for field " + id));
+        	ctxt.report(new NameClashDiagnostic(id, fields));
         } else if (mods.isStatic()) {
             field = new FieldEnv(mods, id, type, this, -1,  0, null, init_expr);
         } else {
