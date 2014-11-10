@@ -44,7 +44,7 @@ public final class NameAccess extends FieldAccess {
     throws Diagnostic {
         resolved = name.asValue(ctxt, env);
         if (resolved == null) {
-            throw new Failure(pos, "Undefined name " + name);
+        	throw new UnknownNameDiagnostic(name, env);
         }
         return resolved.typeOf(ctxt, env);
     }

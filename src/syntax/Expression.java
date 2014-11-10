@@ -45,9 +45,7 @@ public abstract class Expression extends Syntax {
      */
     protected void required(Context ctxt, String where, Type got, Type wanted) {
         if (!got.equal(wanted)) {
-            ctxt.report(new Failure(pos, where  + " has type " +
-                                    got    + "; a value of type " +
-                                    wanted + " is required"));
+        	ctxt.report(new TypeError(this, wanted));
         }
     }
 

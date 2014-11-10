@@ -152,8 +152,6 @@ public class ClassType extends Type {
         if (level == CHECKING) {
             /* cannot proceed after this since many method searches rely on being able to terminate */
         	throw new CyclicInheritanceDiagnostic(this);
-            throw new Failure(id.getPos(),
-            "Cyclic class hierarchy for class " + id);
         } else if (level == UNCHECKED) {
             ClassType extendsClass = null;
             if (extendsType != null) {

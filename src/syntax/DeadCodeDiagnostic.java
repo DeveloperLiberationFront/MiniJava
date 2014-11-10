@@ -1,18 +1,14 @@
 package syntax;
 
-import checker.Context;
-import checker.Env;
 import compiler.Position;
 import compiler.RichDiagnostic;
 
-public class UnknownNameDiagnostic extends RichDiagnostic {
+public class DeadCodeDiagnostic extends RichDiagnostic {
 
-	private Name name;
-	private Env env;
+	private Expression deadExpr;
 
-	public UnknownNameDiagnostic(Name name, Env env) {
-		this.name = name;
-		this.env= env;
+	public DeadCodeDiagnostic(Expression deadExpr) {
+		this.deadExpr = deadExpr;
 	}
 
 	@Override

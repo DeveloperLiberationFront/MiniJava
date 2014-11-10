@@ -63,11 +63,9 @@ public class LocalVarDecl extends Statement {
                     }
                     if (VarEnv.find(vs.getId().getName(), env) != null) {
                     	ctxt.report(new NameClashDiagnostic(vs.getId(), env));
-//                        ctxt.report(new Failure(pos,
-//                                                "Repeated definition for variable " + vs.getId()));
                     } else if (init != null && !type.isSuperOf(init)) {
-                        ctxt.report(new Failure(pos, "Cannot initialize value of type " + type +
-                                                " to variable of type " + init));
+//                    	ctxt.report(new TypeError(, vs.getInitExpr(), vs));
+                    	ctxt.report(new TypeError(vs.getId(), new DummyVariableDeclaration(), vs.getInitExpr()));
                     } else {
                         frameOffset -= size;
                         VarEnv prev_env = env;
@@ -96,7 +94,7 @@ public class LocalVarDecl extends Statement {
         }
         block = new Block(pos, assigns.toArray(new Statement[0]));
         if (!iter.hasNext()) {
-            ctxt.report(new Failure(pos, "Declarations have no use"));
+        	ctxt.report(new DeadCodeDiagnostic(this));
             return true;
         } else {
             Statement s = iter.next();

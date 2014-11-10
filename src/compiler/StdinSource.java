@@ -64,6 +64,7 @@ public class StdinSource extends Source {
             try {
                 c = System.in.read();
             } catch (Exception e) {
+            	// hmmmmm
                 report(new Failure("Error in input stream"));
             }
             if (c == '\n') {

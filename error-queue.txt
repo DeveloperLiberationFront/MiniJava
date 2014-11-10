@@ -157,7 +157,6 @@ src/checker/Context.java:255:                report(new Failure(mainMeth.getPos(
 src/compiler/Diagnostic.java:25: *  warnings are normally implemented as as subclasses of Warning.
 src/syntax/NotExpr.java:38:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
 src/lexer/MjcLexer.java:28:import compiler.Failure;
-# To-do:
 src/syntax/ClassType.java:154:            throw new Failure(id.getPos(),
 src/syntax/Name.java:108:            //         throw new Failure(pos,
 src/syntax/Invocation.java:68:            throw new Failure(pos, "Method does not return a value");
@@ -194,3 +193,4 @@ src/syntax/LocalVarDecl.java:68:                        ctxt.report(new Failure(
 src/checker/Context.java:216:            } catch (Diagnostic d) {
 src/compiler/Handler.java:44:        numDiagnostics++;
 src/checker/VarEnv.java:74:            } catch (Diagnostic d) {
+# To-do:

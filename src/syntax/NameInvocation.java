@@ -43,7 +43,7 @@ public class NameInvocation extends Invocation {
     throws Diagnostic {
         resolved = name.asMethod(ctxt, env, args);
         if (resolved == null) {
-            throw new Failure(pos, "Undefined name " + name);
+        	throw new UnknownNameDiagnostic(name, env);
         }
         return resolved.typeInvocation(ctxt, env);
     }

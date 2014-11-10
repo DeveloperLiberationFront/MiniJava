@@ -83,8 +83,9 @@ public class Name {
         return null;
     }
     /** Lookup name as a value.
+     * @throws UnknownNameDiagnostic 
      */
-    public FieldAccess asValue(Context ctxt, VarEnv env) {
+    public FieldAccess asValue(Context ctxt, VarEnv env) throws UnknownNameDiagnostic {
         if (prefix == null) {
             VarEnv ve = VarEnv.find(id.getName(), env);
             if (ve != null) {
@@ -105,8 +106,7 @@ public class Name {
             if (cls != null && (fe = cls.findField(id.getName())) != null) {
                 return new ClassAccess(fe);
             }
-            //         throw new Failure(pos,
-            //                    "Cannot find field " + name + " in class " + cls);
+            throw new UnknownNameDiagnostic(new Name(this.id), cls.getFields());
         }
         return null;
     }
