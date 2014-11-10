@@ -114,4 +114,9 @@ public abstract class Expression extends Syntax {
     /** Evaluate this expression.
      */
     public abstract Value eval(State st);
+
+	public Syntax getDeclaration() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -51,10 +51,7 @@ public final class Return extends Statement {
                 try {
                     Type it = result.typeOf(ctxt, env);
                     if (!rt.isSuperOf(it)) {
-                        ctxt.report(new Failure(pos,
-                                                "Cannot return a value of type " + it +
-                                                " where a value of type " + rt +
-                                                " is required"));
+                    	ctxt.report(new TypeError(this, rt));
                     } else if (rt != it) {
                         result = new CastExpr(pos, rt, result);
                     }
@@ -62,11 +59,12 @@ public final class Return extends Statement {
                     ctxt.report(d);
                 }
             } else {
-                ctxt.report(new Failure(pos,
-                                        "Method should not return value"));
+            	ctxt.report(new TypeError(this, new DummyVariableDeclaration(),
+            			ctxt.getCurrMethod().getDeclaration()));
             }
         } else if (rt != Type.VOID) {
-            ctxt.report(new Failure(pos, "A return value is required"));
+        	ctxt.report(new TypeError(this, new DummyVariableDeclaration(),
+        			ctxt.getCurrMethod().getDeclaration()));
         }
 
 

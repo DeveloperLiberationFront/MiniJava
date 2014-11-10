@@ -151,6 +151,7 @@ public class ClassType extends Type {
     throws Diagnostic {
         if (level == CHECKING) {
             /* cannot proceed after this since many method searches rely on being able to terminate */
+        	throw new CyclicInheritanceDiagnostic(this);
             throw new Failure(id.getPos(),
             "Cyclic class hierarchy for class " + id);
         } else if (level == UNCHECKED) {
@@ -290,13 +291,12 @@ public class ClassType extends Type {
             InterfaceType iface;
             if ((iface = checked.isInterface()) == null) {
             	ctxt.report(new InheritanceKindError(this, t, new InterfaceType(null, null, null, null)));
-                ctxt.report(new Failure(id.getPos(),
-                "Can only implement interface types. " + checked + " is not an interface."));
             } else {
                 iface.checkClass(ctxt);
                 for (MethEnv iface_meth : iface.getVtable()) {
                     MethEnv this_meth = findMethod(iface_meth.getName());
                     if (this_meth == null) {
+                    	ctxt.report(new MissingInheritedPropertyDiagnostic(this, iface, iface_meth));
                         ctxt.report(new Failure(id.getPos(),
                                                 id.getName() + " does not implement method " + iface_meth.getName() + " from " +
                                                 iface_meth.getOwner()));

@@ -49,8 +49,7 @@ public final class ObjectAccess extends FieldAccess {
         if (cls == null) {
         	throw new UnknownNameDiagnostic(new Name(this.id), env);
         } else if ((this.env = cls.findField(name)) == null) {
-            throw new Failure(pos,
-            "Cannot find field " + name + " in class " + cls);
+        	throw new UnknownNameDiagnostic(new Name(ctxt.getCurrClass().getId()), env);
         }
         this.env.accessCheck(ctxt, pos);
         return this.env.getType();

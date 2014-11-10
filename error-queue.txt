@@ -109,7 +109,6 @@ src/syntax/Mjc.jacc:435:            report(new Failure(mods.getPos(), "A field c
 src/syntax/ClassType.java:358:            ctxt.report(new Failure(id.getPos(),
 src/syntax/SuperInvocation.java:58:            throw new Failure(pos, "Current class has no super class");
 src/compiler/Phase.java:43:    public void report(Diagnostic d) {
-# To-do:
 src/compiler/Warning.java:28:    public Warning(String text) {
 src/syntax/LogicOpExpr.java:38:    throws Diagnostic {
 src/syntax/ObjectAccess.java:48:            throw new Failure(pos,
@@ -158,6 +157,7 @@ src/checker/Context.java:255:                report(new Failure(mainMeth.getPos(
 src/compiler/Diagnostic.java:25: *  warnings are normally implemented as as subclasses of Warning.
 src/syntax/NotExpr.java:38:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
 src/lexer/MjcLexer.java:28:import compiler.Failure;
+# To-do:
 src/syntax/ClassType.java:154:            throw new Failure(id.getPos(),
 src/syntax/Name.java:108:            //         throw new Failure(pos,
 src/syntax/Invocation.java:68:            throw new Failure(pos, "Method does not return a value");

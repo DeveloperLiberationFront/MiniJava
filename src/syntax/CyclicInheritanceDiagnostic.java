@@ -3,14 +3,12 @@ package syntax;
 import compiler.Position;
 import compiler.RichDiagnostic;
 
-public class MissingFieldDiagnostic extends RichDiagnostic {
+public class CyclicInheritanceDiagnostic extends RichDiagnostic {
 
-	private Type classType;
-	private Expression invocation;
+	private ClassType classType;
 
-	public MissingFieldDiagnostic(Expression invocation, Type type) {
-		this.invocation = invocation;
-		this.classType = type;
+	public CyclicInheritanceDiagnostic(ClassType classType) {
+		this.classType = classType;
 	}
 
 	@Override

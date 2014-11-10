@@ -46,6 +46,8 @@ public abstract class RelOpExpr extends BinaryOp {
             Type rt = right.typeOf(ctxt, env);
             Type cast = null;
             if (!lt.isSuperOf(rt) && !rt.isSuperOf(lt)) {
+            	ctxt.report(new TypeError(left, left.getDeclaration()
+            			right, right.getDeclaration()));
                 ctxt.report(new Failure(pos,
                 "Operands should have the same type, but the " +
                 " left operand has type " + lt +

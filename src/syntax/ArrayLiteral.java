@@ -61,8 +61,8 @@ public final class ArrayLiteral extends Literal {
             for (Expression e : literals) {
                 Type expr_type = e.typeOf(ctxt, env);
                 if (!element.isSuperOf(expr_type)) {
-                    throw new Failure(pos,
-                    "One or more elements of array literal does not match array type");
+                	throw new TypeError(e, new DummyVariableDeclaration(),
+                			this, new DummyVariableDeclaration());
                 }
             }
         }

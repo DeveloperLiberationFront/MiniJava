@@ -177,7 +177,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
                 }
                 nextChar();
                 if (c != '\'') {
-                    report(new Failure("Incorrectly terminated char literal"));
+                    report(new UnterminatedSyntaxDiagnostic(new RichToken(0, 0, "\'"), new RichToken(0, 0, "\'")));
                 }
                 nextChar();
                 return token = CHARLIT;
@@ -255,6 +255,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
         case '\'':
             return '\'';
         default:
+        	// how can we represent this as something other than "illegal char seq"
             report(new Failure(getPos(),
                                "Unknown string escape sequence: \\" + (char)c));
             break;

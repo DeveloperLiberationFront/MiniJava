@@ -60,6 +60,11 @@ public final class MethEnv extends MemberEnv implements Iterable<MethEnv>,
 
     private boolean isMain;
     private boolean isConstructor;
+    
+    private Expression declaration;
+    public Expression getDeclaration() {
+    	return this.declaration;
+    }
 
     public MethEnv(boolean isConstructor,
                    Modifiers mods, Type type, Id id, VarEnv params,

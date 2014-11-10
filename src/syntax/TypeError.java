@@ -6,26 +6,26 @@ import compiler.RichDiagnostic;
 
 public class TypeError extends RichDiagnostic {
 
-	private Expression expression;
+	private Syntax expression;
 	private Context ctxt;
 	private Type expectedType;
-	public TypeError(Expression lhs,
-			VariableDeclaration lhsDecl, Expression rhs,
-			VariableDeclaration rhsDecl,
-			Expression errorContext) {
+	private Statement statement;
+	public TypeError(Syntax lhs,
+			VariableDeclaration lhsDecl,
+			Syntax rhs,
+			VariableDeclaration rhsDecl) {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TypeError(Expression lhs,
-			VariableDeclaration lhsDecl, Expression rhs,
-			Expression errorContext) {
+	public TypeError(Syntax lhs,
+			VariableDeclaration lhsDecl, Syntax rhs) {
 		// for when, e.g., rhs is a literal
 		// TODO Auto-generated constructor stub
 	}
 
 
 	
-	public TypeError(Expression expression, Type expectedType, Statement statement) {
+	public TypeError(Expression expression, Type expectedType) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -35,8 +35,9 @@ public class TypeError extends RichDiagnostic {
 		this.expectedType = expected;
 	}
 
-	public TypeError(Expression actual, Type expected) {
-		// TODO Auto-generated constructor stub
+	public TypeError(Statement statement, Type expectedType) {
+		this.expectedType = expectedType;
+		this.statement = statement;
 	}
 
 	@Override

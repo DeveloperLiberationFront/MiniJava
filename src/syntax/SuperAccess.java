@@ -45,12 +45,10 @@ public final class SuperAccess extends FieldAccess {
         ClassType sup = ctxt.getCurrClass().getSuper();
         if (sup == null) {
         	throw new UndeclaredSuperclassDiagnostic(this, ctxt.getCurrClass().getDeclaration(), new ExtendsExpression());
-            throw new Failure(pos, "Current class has no super class");
         } else if (ctxt.isStatic()) {
         	throw new ScopeAccessibilityError(this, ctxt.getCurrMethod(), null);
         } else if ((this.env = sup.findField(name)) == null) {
-            throw new Failure(pos,
-            "Cannot find field " + name + " in superclass");
+        	throw new MissingFieldDiagnostic(this, sup);
         }
         this.env.accessCheck(ctxt, pos);
         size = ctxt.getCurrMethod().getSize();
