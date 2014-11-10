@@ -49,8 +49,7 @@ public class ObjectInvocation extends Invocation {
         if (cls == null) {
         	throw new MissingFieldDiagnostic(this, ctxt.getCurrClass());
         } else if ((this.menv = cls.findMethod(name)) == null) {
-            throw new Failure(pos,
-            "Cannot find method " + name + " in class " + cls);
+        	throw new MissingMethodDiagnostic(this, ctxt.getCurrClass());
         }
         return checkInvocation(ctxt, env, this.menv);
     }
