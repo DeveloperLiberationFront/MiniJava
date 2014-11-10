@@ -47,9 +47,7 @@ public class ObjectInvocation extends Invocation {
         Type receiver = object.typeOf(ctxt, env);
         ClassType cls = receiver.isClass();
         if (cls == null) {
-            throw new Failure(pos,
-            "Cannot access field " + name +
-            " in a value of type " + receiver);
+        	throw new MissingFieldDiagnostic(this, ctxt.getCurrClass());
         } else if ((this.menv = cls.findMethod(name)) == null) {
             throw new Failure(pos,
             "Cannot find method " + name + " in class " + cls);

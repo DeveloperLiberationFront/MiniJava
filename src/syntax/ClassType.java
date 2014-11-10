@@ -608,4 +608,8 @@ public class ClassType extends Type {
     public Expression defaultExpr(Position pos) {
         return new CastExpr(pos, this, new NullLiteral(pos));
     }
+
+	public Declaration getDeclaration() {
+		return null;
+	}
 }

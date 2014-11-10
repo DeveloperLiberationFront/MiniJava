@@ -86,7 +86,6 @@ src/syntax/NewExpr.java:48:            throw new Failure(pos, "Unable to instant
 src/syntax/Invocation.java:65:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
 src/syntax/Mjc.jacc:329:        report(new Warning(mods.getPos(),
 src/syntax/ClassType.java:282:    throws Diagnostic {
-# To-do:
 src/syntax/SuperAccess.java:49:            throw new Failure(pos,
 src/syntax/NewArrayExpr.java:49:            throw new Failure(pos, "Array size must be of Type INT");
 src/compiler/Handler.java:43:    public void report(Diagnostic d) {
@@ -103,6 +102,7 @@ src/checker/Context.java:245:            report(new Failure(
 src/checker/VarEnv.java:67:                    ctxt.report(new Failure(args.getArg().getPos(),
 src/syntax/NegExpr.java:38:    public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
 src/syntax/LocalVarDecl.java:65:                        ctxt.report(new Failure(pos,
+# To-do:
 src/syntax/ObjectInvocation.java:50:            throw new Failure(pos,
 src/checker/Context.java:143:                return noFailures();
 src/syntax/ObjectInvocation.java:54:            throw new Failure(pos,

@@ -370,6 +370,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
     }
 
     private void illegalCharacter() {
+    	// don't think I can get more descriptive than this
         report(new Warning(getPos(), "Ignoring illegal character '" + c + "'"));
     }
 }

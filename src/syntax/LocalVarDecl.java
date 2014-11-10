@@ -62,8 +62,9 @@ public class LocalVarDecl extends Statement {
                         init = vs.getInitExpr().typeOf(ctxt, env);
                     }
                     if (VarEnv.find(vs.getId().getName(), env) != null) {
-                        ctxt.report(new Failure(pos,
-                                                "Repeated definition for variable " + vs.getId()));
+                    	ctxt.report(new NameClashDiagnostic(vs.getId(), env));
+//                        ctxt.report(new Failure(pos,
+//                                                "Repeated definition for variable " + vs.getId()));
                     } else if (init != null && !type.isSuperOf(init)) {
                         ctxt.report(new Failure(pos, "Cannot initialize value of type " + type +
                                                 " to variable of type " + init));

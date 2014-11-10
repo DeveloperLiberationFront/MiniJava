@@ -44,6 +44,7 @@ public final class SuperAccess extends FieldAccess {
     throws Diagnostic {
         ClassType sup = ctxt.getCurrClass().getSuper();
         if (sup == null) {
+        	throw new UndeclaredSuperclassDiagnostic(this, ctxt.getCurrClass().getDeclaration(), new ExtendsExpression());
             throw new Failure(pos, "Current class has no super class");
         } else if (ctxt.isStatic()) {
         	throw new ScopeAccessibilityError(this, ctxt.getCurrMethod(), null);

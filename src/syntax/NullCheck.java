@@ -56,8 +56,7 @@ public class NullCheck extends Expression {
             Type f = nullCheck.typeOf(ctxt, env);
             Type t = object.typeOf(ctxt, env);
             if (!f.equals(ctxt.findClass("Object"))) {
-                throw new Failure(pos, "Object.nullCheck must return type Object (returns " + f
-                + ")");
+            	throw new TypeError(this, t);
             } else {
                 /* this is a very safe upcast */
                 nullCheck = new CastExpr(pos, t, nullCheck);

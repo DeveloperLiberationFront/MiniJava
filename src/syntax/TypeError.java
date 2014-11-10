@@ -35,6 +35,10 @@ public class TypeError extends RichDiagnostic {
 		this.expectedType = expected;
 	}
 
+	public TypeError(Expression actual, Type expected) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String getText() {
 		// TODO Auto-generated method stub
