@@ -57,7 +57,7 @@ public final class SuperInvocation extends Invocation {
             this.name = sup.getId().getName();
         }
         if (sup == null) {
-            throw new Failure(pos, "Current class has no super class");
+        	throw new ScopeAccessibilityError(this, ctxt.getCurrMethod(), null); // missing: ExtendsExpression 
         } else if (name == null) {
         	// really not sure about what this one does
             throw new Failure(pos, "No super constructor determined for super()");
@@ -71,8 +71,6 @@ public final class SuperInvocation extends Invocation {
         	throw new ScopeAccessibilityError(pos, ctxt); // missing: reason it won't work
         } else if ((this.menv = sup.findMethod(name)) == null) {
         	throw new MissingMethodDiagnostic(this, sup);
-            throw new Failure(pos,
-            "Cannot find method " + name + " in superclass");
         }
         size = ctxt.getCurrMethod().getSize();
         return checkInvocation(ctxt, env, this.menv);

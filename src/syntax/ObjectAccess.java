@@ -31,11 +31,13 @@ public final class ObjectAccess extends FieldAccess {
     private Expression object;
     private String     name;
     private FieldEnv   env;
+	private Id id;
 
     public ObjectAccess(Expression object, Id id) {
         super(id.getPos());
         this.object = new NullCheck(pos, object);
         this.name   = id.getName();
+        this.id = id;
     }
 
     /** Check this expression and return an object that describes its
@@ -45,9 +47,7 @@ public final class ObjectAccess extends FieldAccess {
         Type receiver = object.typeOf(ctxt, env);
         ClassType cls = receiver.isClass();
         if (cls == null) {
-            throw new Failure(pos,
-            "Cannot access field " + name +
-            " in a value of type " + receiver);
+        	throw new UnknownNameDiagnostic(new Name(this.id), env);
         } else if ((this.env = cls.findField(name)) == null) {
             throw new Failure(pos,
             "Cannot find field " + name + " in class " + cls);

@@ -1,6 +1,7 @@
 package syntax;
 
 import checker.Context;
+import checker.Env;
 import compiler.Position;
 import compiler.RichDiagnostic;
 
@@ -14,10 +15,10 @@ public class UnknownNameDiagnostic extends RichDiagnostic {
 		this.name = name;
 	}
 
-	private Context ctxt;
-	public UnknownNameDiagnostic(Name name, Context ctxt) {
+	private Env env;
+	public UnknownNameDiagnostic(Name name, Env env) {
 		this.name = name;
-		this.ctxt = ctxt;
+		this.env= env;
 	}
 
 	@Override

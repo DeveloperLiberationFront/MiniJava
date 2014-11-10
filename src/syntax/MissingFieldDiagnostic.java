@@ -5,12 +5,12 @@ import compiler.RichDiagnostic;
 
 public class MissingFieldDiagnostic extends RichDiagnostic {
 
-	private ClassType classType;
+	private Type classType;
 	private Invocation invocation;
 
-	public MissingFieldDiagnostic(Invocation invocation, ClassType classType) {
+	public MissingFieldDiagnostic(Invocation invocation, Type type) {
 		this.invocation = invocation;
-		this.classType = classType;
+		this.classType = type;
 	}
 
 	@Override
