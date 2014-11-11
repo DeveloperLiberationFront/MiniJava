@@ -295,9 +295,9 @@ public class ClassType extends Type {
                     MethEnv this_meth = findMethod(iface_meth.getName());
                     if (this_meth == null) {
                     	ctxt.report(new MissingInheritedPropertyDiagnostic(this, iface, iface_meth));
-                        ctxt.report(new Failure(id.getPos(),
-                                                id.getName() + " does not implement method " + iface_meth.getName() + " from " +
-                                                iface_meth.getOwner()));
+//                        ctxt.report(new Failure(id.getPos(),
+//                                                id.getName() + " does not implement method " + iface_meth.getName() + " from " +
+//                                                iface_meth.getOwner()));
                     } else if (!this_meth.eqMethSig(iface_meth)) {
                         ctxt.report(new Failure(this_meth.getPos(),
                                                 id.getName() + " does not match signature of " + iface_meth.getName() + " from "

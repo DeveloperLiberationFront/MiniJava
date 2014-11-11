@@ -25,11 +25,13 @@ public class NameClashDiagnostic extends RichDiagnostic implements ClashDiagnost
 		return this.firstDeclaration.getPos();
 	}
 
+
 	public NameClashDiagnostic(Id firstDeclaration, Id secondDeclaration) {
 		this.firstDeclaration = firstDeclaration;
 		this.secondDeclaration = secondDeclaration;
 	}
 
+	// should take list of clashing declarations
 	public NameClashDiagnostic(Id id, Env clashingDeclarations) {
 		this.clashingDeclaration = id;
 		this.otherDeclarations = clashingDeclarations;

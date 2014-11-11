@@ -96,8 +96,8 @@ public final class FieldEnv extends MemberEnv implements Iterable<FieldEnv>,
                     if (f.getInitExpr() != null
                         && !f.getType().isSuperOf(f.getInitExpr().typeOf(ctxt, null))) {
                     	ctxt.report(new TypeError(f.getInitExpr(), f.getInitExpr().typeOf(ctxt, null)));
-                        ctxt.report(new Failure("Type of member initialization does not match." +
-                                                f.getName()));
+//                        ctxt.report(new Failure("Type of member initialization does not match." +
+//                                                f.getName()));
                     }
                 } catch (Diagnostic d) {
                     ctxt.report(d);

@@ -51,7 +51,7 @@ public final class Return extends Statement {
                 try {
                     Type it = result.typeOf(ctxt, env);
                     if (!rt.isSuperOf(it)) {
-                    	ctxt.report(new TypeError(this, rt));
+                    	ctxt.report(new TypeError(this, rt)); // needs to point to return type of method declaration
                     } else if (rt != it) {
                         result = new CastExpr(pos, rt, result);
                     }
