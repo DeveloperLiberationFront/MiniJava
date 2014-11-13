@@ -617,4 +617,8 @@ public class ClassType extends Type {
 	public Declaration getDeclaration() {
 		return null;
 	}
+	
+	public Decls getDecls() {
+		return decls;
+	}
 }
