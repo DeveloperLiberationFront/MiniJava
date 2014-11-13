@@ -67,7 +67,7 @@ public class MethDecl extends Decls {
 			if (otherEnv != null) {
             	ctxt.report(new NameClashDiagnostic(paramId, otherEnv.getId()));
             }
-            params = new VarEnv(paramId, paramType, params);
+            params = new VarEnv(paramId, paramType, params, this);
         }
         if (is_constructor) {
             type = cls;

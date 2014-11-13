@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
+import notifications.IsDeclaration;
 import notifications.LocalVarDeclTypeError;
 import checker.Context;
 import checker.VarEnv;
@@ -39,7 +40,7 @@ import compiler.Position;
 
 /** Provides a representation for local variable declarations in a block.
  */
-public class LocalVarDecl extends Statement {
+public class LocalVarDecl extends Statement implements IsDeclaration {
     private Type type;
     private VarDecls varDecls;
     private Block block;
@@ -79,7 +80,7 @@ public class LocalVarDecl extends Statement {
                     } else {
                         frameOffset -= size;
                         VarEnv prev_env = env;
-                        env = new VarEnv(vs.getId(), type, frameOffset, env);
+                        env = new VarEnv(vs.getId(), type, frameOffset, env, this);
                         Expression e;
                         if (vs.getInitExpr() != null) {
                             e = vs.getInitExpr();
