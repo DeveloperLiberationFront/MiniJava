@@ -25,6 +25,7 @@ import java.util.Hashtable;
 
 import notifications.MainMethodVoidError;
 import notifications.MainMethodAccessibilityModifierError;
+import notifications.UnboundMainClassNameError;
 import syntax.Args;
 import syntax.ArrayLiteral;
 import syntax.Block;
@@ -268,7 +269,7 @@ public final class Context extends Phase {
     private MethEnv checkMain() {
         ClassType mainClass = findClass("Main");
         if (mainClass == null) {
-        	report(new MissingRequiredNameDiagnostic(new ClassType(null, new Id(null, "Main"), null, null, null), null)); // needs representation of scope
+        	report(new UnboundMainClassNameError());
 //            report(new Failure(
 //                       "Program does not contain a definition for class Main"));
         } else {
