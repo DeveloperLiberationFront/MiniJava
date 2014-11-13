@@ -46,7 +46,8 @@ public abstract class BitOpExpr extends BinaryOp {
         } else if (lt.equal(Type.INT) && rt.equal(Type.INT)) {
             return Type.INT;
         } else {
-            ctxt.report(new TypeError(left, new DummyVariableDeclaration(), right, new DummyVariableDeclaration(), this));
+        	ctxt.report(new BitOpExprTypeError(left, lt, right, rt, this));
+//            ctxt.report(new TypeError(left, new DummyVariableDeclaration(), right, new DummyVariableDeclaration(), this));
             return Type.BOOLEAN; // a guess, trying to minimize further errors
         }
     }

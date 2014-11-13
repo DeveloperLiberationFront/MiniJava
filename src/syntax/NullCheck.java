@@ -33,6 +33,8 @@ import compiler.Position;
 
 /** Provides a representation for expressions.
  */
+
+// used when accessing or invoking objects
 public class NullCheck extends Expression {
     private Expression nullCheck;
     private Expression object;
@@ -62,7 +64,7 @@ public class NullCheck extends Expression {
             Type f = nullCheck.typeOf(ctxt, env);
             Type t = object.typeOf(ctxt, env);
             if (!f.equals(ctxt.findClass("Object"))) {
-            	throw new TypeError(this, t);
+            	throw new NullCheckTypeError(object, t, this);
             } else {
                 /* this is a very safe upcast */
                 nullCheck = new CastExpr(pos, t, nullCheck);

@@ -61,14 +61,13 @@ public final class ArrayLiteral extends Literal {
         ArrayType a_type = type.check(ctxt).isArray();
         if (a_type == null) {
         	// it's not clear to me what kind of source would throw this
-            throw new TypeError(null, null, initialization, null);
+        	throw new ArrayLiteralTypeError(this, this.type);
         } else {
             Type element = a_type.getElementType();
             for (Expression e : literals) {
                 Type expr_type = e.typeOf(ctxt, env);
                 if (!element.isSuperOf(expr_type)) {
-                	throw new TypeError(e, new DummyVariableDeclaration(),
-                			this, new DummyVariableDeclaration());
+                	throw new ArrayLiteralMemberTypeError(e, expr_type, this, a_type);
                 }
             }
         }

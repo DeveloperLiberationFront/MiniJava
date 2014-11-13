@@ -49,7 +49,7 @@ public final class SuperAccess extends FieldAccess {
     throws Diagnostic {
         ClassType sup = ctxt.getCurrClass().getSuper();
         if (sup == null) {
-        	throw new UndeclaredSuperclassDiagnostic(this, ctxt.getCurrClass().getDeclaration(), new ExtendsExpression());
+        	throw new UndeclaredSuperclassDiagnostic(this, ctxt.getCurrClass().getDeclaration()); // needs representation of 'extends' modifier
         } else if (ctxt.isStatic()) {
         	throw new ScopeAccessibilityError(this, ctxt.getCurrMethod(), null);
         } else if ((this.env = sup.findField(name)) == null) {

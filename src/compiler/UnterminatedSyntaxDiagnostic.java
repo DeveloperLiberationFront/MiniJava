@@ -8,15 +8,15 @@ public class UnterminatedSyntaxDiagnostic extends RichDiagnostic implements
 		UnterminatedProgramElementDiagnostic {
 
 	private Position pos;
-	private RichToken end;
-	private RichToken begin;
+	private RichTokens end;
+	private RichTokens begin;
 	// things we want: antecedant, expected consequent 
-	public UnterminatedSyntaxDiagnostic(Position pos, Position pos, Token symbol) {
+	public UnterminatedSyntaxDiagnostic(Position startPos, Position endPos, Tokens symbol) {
 		this.pos = pos;
 	}
 
-	public UnterminatedSyntaxDiagnostic(RichToken begin,
-			RichToken end) {
+	public UnterminatedSyntaxDiagnostic(RichTokens begin,
+			RichTokens end) {
 		this.begin = begin;
 		this.end = end;
 	}

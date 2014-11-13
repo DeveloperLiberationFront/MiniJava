@@ -267,7 +267,7 @@ public final class Context extends Phase {
     private MethEnv checkMain() {
         ClassType mainClass = findClass("Main");
         if (mainClass == null) {
-        	report(new MissingRequiredNameDiagnostic(new ClassType(null, new Id(null, "Main"), null, null, null), new ScopeThing()));
+        	report(new MissingRequiredNameDiagnostic(new ClassType(null, new Id(null, "Main"), null, null, null), null)); // needs representation of scope
 //            report(new Failure(
 //                       "Program does not contain a definition for class Main"));
         } else {
@@ -279,7 +279,8 @@ public final class Context extends Phase {
                 report(new Failure(mainMeth.getPos(),
                                    "Main.main is not static"));
             } else if (!mainMeth.eqSig(Type.VOID, null)) {
-            	report(new TypeError(mainMeth.getDeclaration(), Type.VOID));
+            	report(new MainMethodVoidError(mainMeth, mainMeth.getType()));
+//            	report(new TypeError(mainMeth.getDeclaration(), Type.VOID));
             } else {
                 return mainMeth;
             }

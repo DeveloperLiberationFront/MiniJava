@@ -65,7 +65,7 @@ public final class AssignExpr extends StatementExpr {
         Type rt = rhs.typeOf(ctxt, env);
 
         if (!lt.isSuperOf(rt)) {
-        	throw new TypeError(lhs, new DummyVariableDeclaration(), rhs, new DummyVariableDeclaration());
+        	throw new AssignmentTypeError(rhs, rt, lhs, lt);
         } else if (!lt.equal(rt)) {
             rhs = new CastExpr(pos, lt, rhs);
         }

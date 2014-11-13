@@ -54,9 +54,10 @@ public final class While extends Statement {
     public boolean check(Context ctxt, VarEnv env, int frameOffset) {
         try {
             if (!test.typeOf(ctxt, env).equal(Type.BOOLEAN)) {
-            	ctxt.report(new TypeError(this.test, Type.BOOLEAN, this));
-                ctxt.report(new Failure(pos,
-                                        "Boolean valued expression required for test"));
+            	ctxt.report(new WhileTestTypeError(test, test.typeOf(ctxt, env), this)); 
+//            	ctxt.report(new TypeError(this.test, Type.BOOLEAN, this));
+//                ctxt.report(new Failure(pos,
+//                                        "Boolean valued expression required for test"));
             }
         } catch (Diagnostic d) {
             ctxt.report(d);

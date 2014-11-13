@@ -2,6 +2,7 @@ package syntax;
 
 import checker.Context;
 import checker.Env;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 
@@ -13,6 +14,14 @@ public class UnknownNameDiagnostic extends RichDiagnostic {
 	public UnknownNameDiagnostic(Name name, Env env) {
 		this.name = name;
 		this.env= env;
+	}
+
+	public UnknownNameDiagnostic(Name name2, ClassType cls) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public UnknownNameDiagnostic(Name name2, Context ctxt, NewExpr newExpr) {
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

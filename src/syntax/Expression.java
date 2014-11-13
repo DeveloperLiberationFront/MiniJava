@@ -45,14 +45,6 @@ public abstract class Expression extends Syntax {
     public abstract Type typeOf(Context ctxt, VarEnv env)
     throws Diagnostic;
 
-    /** A simple utility function to check that a type has the required value
-     *  and report an error if that test fails.
-     */
-    protected void required(Context ctxt, String where, Type got, Type wanted) {
-        if (!got.equal(wanted)) {
-        	ctxt.report(new TypeError(this, wanted));
-        }
-    }
 
     /** This value is used as the depth for an expression that can have
      *  side effects, and for which a change of evaluation order might
@@ -119,7 +111,7 @@ public abstract class Expression extends Syntax {
     public abstract Value eval(State st);
 
 	public Syntax getDeclaration() {
-		// TODO Auto-generated method stub
+		// dummy method for future error generation
 		return null;
 	}
 }

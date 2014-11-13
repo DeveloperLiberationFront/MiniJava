@@ -60,7 +60,7 @@ public final class Return extends Statement {
                 try {
                     Type it = result.typeOf(ctxt, env);
                     if (!rt.isSuperOf(it)) {
-                    	ctxt.report(new TypeError(this, rt)); // needs to point to return type of method declaration
+                    	ctxt.report(new ReturnTypeNotSubclassTypeError(this, rt, ctxt.getCurrMethod())); // needs to point to return type of method declaration
                     } else if (rt != it) {
                         result = new CastExpr(pos, rt, result);
                     }
@@ -68,12 +68,11 @@ public final class Return extends Statement {
                     ctxt.report(d);
                 }
             } else {
-            	ctxt.report(new TypeError(this, new DummyVariableDeclaration(),
-            			ctxt.getCurrMethod().getDeclaration()));
+            	ctxt.report(new ReturnExpressionFromVoidMethodTypeError(result, rt, ctxt.getCurrMethod()));
             }
         } else if (rt != Type.VOID) {
-        	ctxt.report(new TypeError(this, new DummyVariableDeclaration(),
-        			ctxt.getCurrMethod().getDeclaration()));
+        	// returning nothing in a non-`void` method
+        	ctxt.report(new ReturnNothingFromTypedMethodTypeError(result, rt, ctxt.getCurrMethod()));
         }
 
 

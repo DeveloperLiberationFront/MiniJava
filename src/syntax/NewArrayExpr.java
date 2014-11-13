@@ -46,7 +46,7 @@ public final class NewArrayExpr extends NewExpr {
      */
     public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
         if (size.typeOf(ctxt, env).equal(Type.INT)) {
-            throw new TypeError(size, ctxt, Type.INT);
+            throw new NewArraySizeTypeError(size, size.typeOf(ctxt, env), this);
         }
         return super.typeOf(ctxt, env);
     }

@@ -8,14 +8,12 @@ public class UndeclaredSuperclassDiagnostic extends RichDiagnostic {
 
 	private Declaration subclassDeclaration;
 	private SuperAccess superAccess;
-	private ExtendsExpression extendsExpression;
 
 	public UndeclaredSuperclassDiagnostic(SuperAccess superAccess,
-			Declaration subclassDeclaration, ExtendsExpression extendsExpression) {
+			Declaration subclassDeclaration) {
 		// instantiate "missing expression" and "scope accessibility" diagnostics
 		this.superAccess = superAccess;
 		this.subclassDeclaration = subclassDeclaration;
-		this.extendsExpression = extendsExpression;;
 	}
 
 	@Override

@@ -72,8 +72,10 @@ public class LocalVarDecl extends Statement {
                     if (VarEnv.find(vs.getId().getName(), env) != null) {
                     	ctxt.report(new NameClashDiagnostic(vs.getId(), env));
                     } else if (init != null && !type.isSuperOf(init)) {
+                    	ctxt.report(new LocalVarDeclTypeError(vs, type,
+                    			vs.getInitExpr(), vs.getInitExpr().typeOf(ctxt, env)));
 //                    	ctxt.report(new TypeError(, vs.getInitExpr(), vs));
-                    	ctxt.report(new TypeError(vs.getId(), new DummyVariableDeclaration(), vs.getInitExpr()));
+//                    	ctxt.report(new TypeError(vs.getId(), new DummyVariableDeclaration(), vs.getInitExpr()));
                     } else {
                         frameOffset -= size;
                         VarEnv prev_env = env;

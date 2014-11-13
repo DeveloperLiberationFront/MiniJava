@@ -89,7 +89,7 @@ public class Name {
     /** Lookup name as a value.
      * @throws UnknownNameDiagnostic 
      */
-    public FieldAccess asValue(Context ctxt, VarEnv env) throws UnknownNameDiagnostic {
+    public FieldAccess asValue(Context ctxt, VarEnv env) {
         if (prefix == null) {
             VarEnv ve = VarEnv.find(id.getName(), env);
             if (ve != null) {
@@ -110,7 +110,8 @@ public class Name {
             if (cls != null && (fe = cls.findField(id.getName())) != null) {
                 return new ClassAccess(fe);
             }
-            throw new UnknownNameDiagnostic(new Name(this.id), cls.getFields());
+            
+            ctxt.report(new UnknownNameDiagnostic(new Name(this.id), cls.getFields()));
         }
         return null;
     }

@@ -43,11 +43,9 @@ public final class NotExpr extends UnaryOp {
      *  type (or throw an exception if an unrecoverable error occurs).
      */
     public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
-        try {
-            required(ctxt, "operand", expr.typeOf(ctxt, env), Type.BOOLEAN);
-        } catch (Diagnostic d) {
-            ctxt.report(d);
-        }
+    	if (expr.typeOf(ctxt, env) != Type.BOOLEAN) {
+    		ctxt.report(new NotExprError(expr, expr.typeOf(ctxt, env), this));
+    	}
         return Type.BOOLEAN;
     }
 

@@ -41,12 +41,12 @@ public abstract class NumericOpExpr extends BinaryOp {
      */
     public Type typeOf(Context ctxt, VarEnv env)
     throws Diagnostic {
-        try {
-            required(ctxt, "Left operand",  left.typeOf(ctxt, env),  Type.INT);
-            required(ctxt, "Right operand", right.typeOf(ctxt, env), Type.INT);
-        } catch (Diagnostic d) {
-            ctxt.report(d);
-        }
+    	if (!left.typeOf(ctxt, env).equal(Type.INT)) {
+    		ctxt.report(new NumericOpTypeError(left, left.typeOf(ctxt, env), this));
+    	}
+    	if (!right.typeOf(ctxt, env).equal(Type.INT)) {
+    		ctxt.report(new NumericOpTypeError(right, right.typeOf(ctxt, env), this));
+    	}
         return Type.INT;
     }
     public org.llvm.Value llvmGen(LLVM l) {

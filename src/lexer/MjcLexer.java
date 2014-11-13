@@ -177,7 +177,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
                 }
                 nextChar();
                 if (c != '\'') {
-                    report(new UnterminatedSyntaxDiagnostic(new RichToken(0, 0, "\'"), new RichToken(0, 0, "\'")));
+                    report(new UnterminatedSyntaxDiagnostic(new RichTokens(0, 0, "\'"), new RichTokens(0, 0, "\'")));
                 }
                 nextChar();
                 return token = CHARLIT;
@@ -229,8 +229,8 @@ public class MjcLexer extends SourceLexer implements Tokens {
                 }
             }
             if (c == EOF) {
-            	report(new UnterminatedSyntaxDiagnostic(getPos(), "*/"));
-//                report(new Failure(getPos(), "Unterminated comment"));
+            	report(new UnterminatedSyntaxDiagnostic(new RichTokens(0, 0, "/*"),
+            			new RichTokens(getPos().getRow(), getPos().getColumn(), "*/")));
                 return;
             }
             if (c == EOL) {
@@ -281,7 +281,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
             }
         } while (c != EOF && !endOfString);
         if (c == EOF) {
-            report(new UnterminatedSyntaxDiagnostic(new RichToken(0, 0, "\""), new RichToken(0, 0, "\"")));
+            report(new UnterminatedSyntaxDiagnostic(new RichTokens(0, 0, "\""), new RichTokens(0, 0, "\"")));
         }
         nextChar(); // consume closing "
         semantic = new StringLiteral(getPos(), b.toString());
