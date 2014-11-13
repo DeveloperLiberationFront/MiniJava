@@ -1,4 +1,4 @@
-package compiler;
+package notifications;
 
 public interface ClashDiagnostic {
 
