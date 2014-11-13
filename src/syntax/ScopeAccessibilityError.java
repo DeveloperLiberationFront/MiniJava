@@ -1,12 +1,10 @@
 package syntax;
 
-import java.util.AbstractCollection;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import checker.Context;
 import checker.Env;
-import checker.MethEnv;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

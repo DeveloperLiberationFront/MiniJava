@@ -20,9 +20,10 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
+import notifications.ImplicitTypeContract;
+import codegen.Assembly;
+
+import compiler.Position;
 
 /** Provides a representation for expressions using binary operators.
  */

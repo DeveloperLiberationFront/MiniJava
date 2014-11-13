@@ -18,34 +18,22 @@
  */
 
 package codegen;
-import syntax.*;
-import org.llvm.Value;
-import org.llvm.BasicBlock;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Hashtable;
+import java.util.Stack;
+
 import org.llvm.Builder;
-import org.llvm.ExecutionEngine;
-import org.llvm.GenericValue;
+import org.llvm.Context;
 import org.llvm.LLVMException;
 import org.llvm.Module;
-import org.llvm.Context;
-import org.llvm.PassManager;
-import org.llvm.Target;
 import org.llvm.TypeRef;
 import org.llvm.Value;
 
-import org.llvm.binding.LLVMLibrary.LLVMCallConv;
-import org.llvm.binding.LLVMLibrary.LLVMIntPredicate;
-import org.llvm.binding.LLVMLibrary.LLVMAttribute;
-
-import java.util.Collections;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Stack;
-
-import compiler.*;
-import checker.*;
-import syntax.*;
+import syntax.ClassType;
+import syntax.StringLiteral;
+import syntax.Type;
+import checker.FieldEnv;
 
 public class LLVM {
     static public enum GlobalFn {

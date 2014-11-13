@@ -20,12 +20,20 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import notifications.IfThenElseTestTypeContractError;
+
 import org.llvm.BasicBlock;
 import org.llvm.Builder;
+
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for if-then-else (and if-then) statements.
  */

@@ -20,11 +20,10 @@
 
 package checker;
 
-import compiler.*;
-import syntax.*;
-import codegen.*;
+import syntax.Id;
+import syntax.Type;
 
-import org.llvm.TypeRef;
+import compiler.Position;
 
 /** Provides a base representation for environments.
  */

@@ -1,6 +1,5 @@
 package syntax;
 
-import checker.Context;
 import compiler.Position;
 import compiler.RichDiagnostic;
 

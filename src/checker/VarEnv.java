@@ -20,10 +20,18 @@
 
 package checker;
 
-import compiler.*;
-import syntax.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import notifications.ArgumentTypeError;
+import syntax.Args;
+import syntax.CastExpr;
+import syntax.Id;
+import syntax.Type;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for variable environments (parameters &
  *  local vars).

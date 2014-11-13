@@ -20,29 +20,38 @@
 
 package checker;
 
-import compiler.*;
-import syntax.*;
-import codegen.*;
-import interp.*;
-import util.*;
-import java.lang.Iterable;
-import java.util.Iterator;
-
-
-import org.llvm.BasicBlock;
-import org.llvm.Builder;
-import org.llvm.ExecutionEngine;
-import org.llvm.GenericValue;
-import org.llvm.LLVMException;
-import org.llvm.Module;
-import org.llvm.PassManager;
-import org.llvm.Target;
-import org.llvm.TypeRef;
-
-import org.llvm.binding.LLVMLibrary.LLVMCallConv;
-import org.llvm.binding.LLVMLibrary.LLVMIntPredicate;
+import interp.Interp;
+import interp.ObjValue;
+import interp.State;
+import interp.Value;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.llvm.BasicBlock;
+import org.llvm.TypeRef;
+
+import syntax.Args;
+import syntax.Block;
+import syntax.ClassType;
+import syntax.DieInvocation;
+import syntax.Empty;
+import syntax.ExprStmt;
+import syntax.Expression;
+import syntax.Id;
+import syntax.InterfaceType;
+import syntax.Modifiers;
+import syntax.Return;
+import syntax.Statement;
+import syntax.StatementExpr;
+import syntax.SuperInvocation;
+import syntax.Type;
+import util.ListIterator;
+import util.ListIteratorIF;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Position;
 
 /** Provides a representation for method environments.
  */

@@ -20,8 +20,8 @@
 
 package compiler;
 
-import java.io.Reader;
 import java.io.IOException;
+import java.io.Reader;
 
 /** An implementation of the Source interface that follows the low
  *  level lexical conventions of Java for Unicode escapes, etc..

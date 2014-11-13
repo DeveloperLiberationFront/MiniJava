@@ -20,7 +20,6 @@
 
 package interp;
 
-import interp.Value.COMPARE_OP;
 
 /** Provides a representation for Boolean values.
  */

@@ -1,8 +1,8 @@
 package checker;
 
 import syntax.Expression;
-import syntax.Return;
 import syntax.Statement;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

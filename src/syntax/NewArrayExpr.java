@@ -20,12 +20,12 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
-import org.llvm.Builder;
-import org.llvm.TypeRef;
+import notifications.NewArraySizeTypeError;
+import checker.Context;
+import checker.VarEnv;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for "new" expressions that allocate an
  *  instance of a class.

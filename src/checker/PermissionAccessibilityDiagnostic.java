@@ -2,6 +2,7 @@ package checker;
 
 import syntax.AccessibilityDiagnostic;
 import syntax.ClassType;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

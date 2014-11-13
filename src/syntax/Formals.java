@@ -19,7 +19,6 @@
 
 
 package syntax;
-import checker.*;
 
 /** Provides a representation for formal parameter declarations.
  */

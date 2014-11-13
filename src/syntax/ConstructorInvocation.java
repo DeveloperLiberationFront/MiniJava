@@ -20,12 +20,6 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
-
-import org.llvm.Builder;
 
 /** Represents an instance method invocation.
  */

@@ -20,9 +20,14 @@
 
 package syntax;
 
-import compiler.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import notifications.TypeContract;
+import notifications.TypeContractProvider;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Position;
 
 /** Provides a representation for left hand sides of assignments.
  */

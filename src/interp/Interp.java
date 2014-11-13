@@ -20,14 +20,23 @@
 
 package interp;
 
-import compiler.*;
-import lexer.*;
-import syntax.*;
-import checker.*;
-
-import java.io.Reader;
-import java.io.FileReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+
+import lexer.MjcLexer;
+import syntax.ClassType;
+import syntax.Parser;
+import checker.Context;
+import checker.MethEnv;
+
+import compiler.Failure;
+import compiler.Handler;
+import compiler.JavaSource;
+import compiler.Position;
+import compiler.SimpleHandler;
+import compiler.Source;
+import compiler.SourcePosition;
 
 /** A top-level driver for the mini Java interpreter.
  */

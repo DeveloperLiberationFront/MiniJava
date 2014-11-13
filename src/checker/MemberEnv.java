@@ -20,8 +20,12 @@
 
 package checker;
 
-import compiler.*;
-import syntax.*;
+import syntax.ClassType;
+import syntax.Id;
+import syntax.Modifiers;
+import syntax.Type;
+
+import compiler.Position;
 
 /** Provides a base representation for environments.
  */

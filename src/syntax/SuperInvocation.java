@@ -20,12 +20,20 @@
 
 package syntax;
 
+import interp.State;
+import interp.Value;
+
 import java.util.ArrayList;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import checker.Context;
+import checker.MethEnv;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Failure;
+import compiler.Position;
 
 /** Represents a method invocation through the superclass.
  */

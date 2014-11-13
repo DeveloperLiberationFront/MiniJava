@@ -1,6 +1,7 @@
 package compiler;
 
-import lexer.RichToken;
+import lexer.RichTokens;
+import syntax.Tokens;
 import checker.UnterminatedProgramElementDiagnostic;
 
 public class UnterminatedSyntaxDiagnostic extends RichDiagnostic implements

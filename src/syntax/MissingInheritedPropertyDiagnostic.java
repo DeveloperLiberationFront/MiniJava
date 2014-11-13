@@ -1,7 +1,7 @@
 package syntax;
 
 import checker.MemberEnv;
-import checker.MethEnv;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

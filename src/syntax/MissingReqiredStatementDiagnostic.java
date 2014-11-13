@@ -1,7 +1,7 @@
 package syntax;
 
 import checker.Env;
-import checker.VarEnv;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

@@ -5,10 +5,10 @@ import compiler.RichDiagnostic;
 
 public class DeadCodeDiagnostic extends RichDiagnostic {
 
-	private Expression deadExpr;
+	private Statement deadStatement;
 
-	public DeadCodeDiagnostic(Expression deadExpr) {
-		this.deadExpr = deadExpr;
+	public DeadCodeDiagnostic(Statement deadStatement) {
+		this.deadStatement = deadStatement;
 	}
 
 	@Override

@@ -20,19 +20,13 @@
 
 package syntax;
 
-import checker.*;
-import compiler.*;
-import codegen.*;
-import interp.*;
-import syntax.*;
-
 import java.util.Arrays;
-import org.llvm.TypeRef;
-import java.util.ArrayList;
-import org.llvm.Builder;
 import java.util.Hashtable;
 
-import org.llvm.binding.LLVMLibrary.LLVMLinkage;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Position;
 
 /** Provides a representation for class types.
  */

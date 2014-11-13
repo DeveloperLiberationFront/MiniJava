@@ -20,8 +20,12 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
+import checker.Context;
+import checker.FieldEnv;
+import checker.MethEnv;
+import checker.VarEnv;
+
+import compiler.Position;
 
 /** Provides a representation for names, both simple and qualified.
  */

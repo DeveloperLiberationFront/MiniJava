@@ -20,13 +20,21 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
 
-import org.llvm.Builder;
+import notifications.WhileTestTypeError;
+
 import org.llvm.BasicBlock;
+import org.llvm.Builder;
+
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for while statements.
  */

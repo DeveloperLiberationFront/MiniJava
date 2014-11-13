@@ -1,6 +1,7 @@
 package checker;
 
 import syntax.ClassType;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

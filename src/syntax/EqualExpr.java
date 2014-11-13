@@ -20,13 +20,13 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.Value;
 
 import org.llvm.binding.LLVMLibrary.LLVMIntPredicate;
-import org.llvm.binding.LLVMLibrary.LLVMRealPredicate;
+
+import codegen.Assembly;
+
+import compiler.Position;
 
 /** Provides a representation for the equality test (==).
  */

@@ -20,11 +20,13 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-
 import org.llvm.TypeRef;
+
+import checker.Context;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Position;
 
 /** Provides a representation for types that have been mentioned by
  *  name but not yet verified.

@@ -20,8 +20,7 @@
 
 package interp;
 
-import checker.*;
-import syntax.*;
+import syntax.ClassType;
 
 /** Provides a representation for array values.
  */

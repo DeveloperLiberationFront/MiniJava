@@ -2,9 +2,8 @@
 
 package compiler;
 
-import checker.Env;
-import checker.MethEnv;
 import syntax.Id;
+import checker.Env;
 
 public class NameClashDiagnostic extends RichDiagnostic implements ClashDiagnostic {
 

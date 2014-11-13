@@ -20,14 +20,22 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
-import java.util.Iterator;
-import java.util.Collections;
-import org.llvm.TypeRef;
+import interp.State;
+import interp.Value;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+
+import notifications.LocalVarDeclTypeError;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.NameClashDiagnostic;
+import compiler.Position;
 
 /** Provides a representation for local variable declarations in a block.
  */

@@ -20,13 +20,30 @@
 
 package checker;
 
-import compiler.*;
-import syntax.*;
-import codegen.*;
-import interp.*;
-import util.*;
-import java.lang.Iterable;
+import interp.Interp;
+import interp.ObjValue;
+import interp.Value;
+
 import java.util.Iterator;
+
+import notifications.FieldTypeError;
+import syntax.AssignExpr;
+import syntax.ClassAccess;
+import syntax.ClassType;
+import syntax.ExprStmt;
+import syntax.Expression;
+import syntax.Id;
+import syntax.Modifiers;
+import syntax.NullLiteral;
+import syntax.Statement;
+import syntax.Type;
+import util.ListIterator;
+import util.ListIteratorIF;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 /** Provides a representation for object field environments.
  */
 public final class FieldEnv extends MemberEnv implements Iterable<FieldEnv>,

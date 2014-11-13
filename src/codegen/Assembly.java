@@ -20,14 +20,14 @@
 
 package codegen;
 
-import syntax.ClassType;
-import checker.FieldEnv;
-import checker.MethEnv;
-
-import syntax.StringLiteral;
-import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import syntax.ClassType;
+import syntax.StringLiteral;
+import checker.FieldEnv;
+import checker.MethEnv;
 
 /** Provides a simple mechanism for assembly language output
  */

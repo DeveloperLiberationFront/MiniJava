@@ -20,10 +20,16 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.ObjValue;
+import interp.State;
+import interp.Value;
+import checker.Context;
+import checker.FieldEnv;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
 
 /** Represents an access to a field through a simple identifier.
  */

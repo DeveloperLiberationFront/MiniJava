@@ -20,9 +20,12 @@
 
 package syntax;
 
-import compiler.*;
 import org.llvm.TypeRef;
-import codegen.*;
+
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Position;
 
 /** Provides a representation for primitive types.
  */

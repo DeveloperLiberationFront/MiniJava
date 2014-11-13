@@ -20,9 +20,12 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
+import notifications.LogicOpTypeError;
+import checker.Context;
+import checker.VarEnv;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for logical binary connectives.
  */

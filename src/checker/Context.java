@@ -20,12 +20,38 @@
 
 package checker;
 
-import compiler.*;
-import syntax.*;
-import checker.*;
-
 import java.util.ArrayList;
 import java.util.Hashtable;
+
+import notifications.MainMethodVoidError;
+import syntax.Args;
+import syntax.ArrayLiteral;
+import syntax.Block;
+import syntax.ClassType;
+import syntax.ConstructorInvocation;
+import syntax.Decls;
+import syntax.ExprStmt;
+import syntax.Id;
+import syntax.IntLiteral;
+import syntax.InterfaceType;
+import syntax.LocalVarDecl;
+import syntax.MethDecl;
+import syntax.Modifiers;
+import syntax.Name;
+import syntax.NameInvocation;
+import syntax.NameType;
+import syntax.Return;
+import syntax.Statement;
+import syntax.StringLiteral;
+import syntax.Type;
+import syntax.VarDecls;
+
+import compiler.Diagnostic;
+import compiler.Failure;
+import compiler.Handler;
+import compiler.NameClashDiagnostic;
+import compiler.Phase;
+import compiler.Position;
 
 /** Provides a representation for contexts used during type checking.
  */

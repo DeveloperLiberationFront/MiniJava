@@ -20,14 +20,10 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
-import syntax.*;
+import interp.State;
+import interp.Value;
 
-import java.util.ArrayList;
-import org.llvm.TypeRef;
+import compiler.Position;
 
 /** Provides a representation for method invocations.
  */

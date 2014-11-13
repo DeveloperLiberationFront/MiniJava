@@ -1,7 +1,7 @@
 package syntax;
 
 import compiler.Position;
-import compiler.RichDiagnostic; 
+import compiler.RichDiagnostic;
 
 public class InvalidUseOfModifiedClassDiagnostic extends RichDiagnostic {
 

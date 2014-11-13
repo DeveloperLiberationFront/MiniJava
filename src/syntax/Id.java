@@ -20,7 +20,7 @@
 
 package syntax;
 
-import compiler.*;
+import compiler.Position;
 
 /** Provides a representation for identifiers annotated with positions.
  */

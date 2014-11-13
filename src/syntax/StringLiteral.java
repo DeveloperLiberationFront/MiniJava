@@ -19,14 +19,21 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
-
-import org.llvm.TypeRef;
+import interp.ArrayValue;
+import interp.CharValue;
+import interp.ObjValue;
+import interp.State;
+import interp.Value;
 
 import java.util.Hashtable;
+
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 /** Provides a representation for String literals.
  */
 public final class StringLiteral extends Literal {

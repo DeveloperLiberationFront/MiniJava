@@ -20,19 +20,27 @@
 
 package syntax;
 
-import checker.*;
-import compiler.*;
-import codegen.*;
-import interp.*;
-import syntax.*;
+import interp.ObjValue;
+import interp.State;
+import interp.Value;
 
-import java.util.Arrays;
-import org.llvm.TypeRef;
 import java.util.ArrayList;
-import org.llvm.Builder;
 import java.util.Hashtable;
 
-import org.llvm.binding.LLVMLibrary.LLVMLinkage;
+import org.llvm.TypeRef;
+
+import checker.Context;
+import checker.FieldEnv;
+import checker.MethEnv;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Declaration;
+import compiler.Diagnostic;
+import compiler.Failure;
+import compiler.NameClashDiagnostic;
+import compiler.Position;
 
 /** Provides a representation for class types.
  */

@@ -3,6 +3,7 @@ package syntax;
 import java.util.ArrayList;
 
 import checker.MethEnv;
+
 import compiler.Diagnostic;
 import compiler.Position;
 

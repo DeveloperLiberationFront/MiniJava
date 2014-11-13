@@ -18,9 +18,8 @@
  */
 
 package syntax;
-import java.util.ArrayList;
 import java.lang.reflect.Array;
-import syntax.*;
+import java.util.ArrayList;
 
 abstract public class MjcList<T> extends ArrayList<T> {
     public static class TypeList extends MjcList<Type> {
