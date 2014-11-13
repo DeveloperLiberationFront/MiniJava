@@ -20,13 +20,21 @@
 
 package syntax;
 
-import checker.*;
-import compiler.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import notifications.DoWhileTestTypeError;
+import notifications.ImplicitTypeContract;
 
-import org.llvm.Builder;
 import org.llvm.BasicBlock;
+import org.llvm.Builder;
+
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for while statements.
  */
@@ -38,15 +46,20 @@ public final class DoWhile extends Statement {
         this.test = test;
         this.body = body;
     }
+    
+    public static ImplicitTypeContract getTypeContract() {
+    	return new ImplicitTypeContract(); 
+    }
 
     /** Check whether this statement is valid and return a boolean
      *  indicating whether execution can continue at the next statement.
      */
     public boolean check(Context ctxt, VarEnv env, int frameOffset) {
         try {
-            if (!test.typeOf(ctxt, env).equal(Type.BOOLEAN)) {
-                ctxt.report(new Failure(pos,
-                                        "Boolean valued expression required for test"));
+            Type testType = test.typeOf(ctxt, env);
+			if (!testType.equal(Type.BOOLEAN)) {
+            	ctxt.report(new DoWhileTestTypeError(test, testType, this));
+//                ctxt.report(new TypeError(this.test, Type.BOOLEAN));
             }
         } catch (Diagnostic d) {
             ctxt.report(d);

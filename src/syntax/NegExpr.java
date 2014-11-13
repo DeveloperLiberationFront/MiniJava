@@ -20,10 +20,17 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.IntValue;
+import interp.State;
+import interp.Value;
+import notifications.NegExprError;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for unary negation.
  */
@@ -36,11 +43,9 @@ public final class NegExpr extends UnaryOp {
      *  type (or throw an exception if an unrecoverable error occurs).
      */
     public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
-        try {
-            required(ctxt, "operand", expr.typeOf(ctxt, env), Type.INT);
-        } catch (Diagnostic d) {
-            ctxt.report(d);
-        }
+    	if (expr.typeOf(ctxt, env) != Type.INT) {
+    		ctxt.report(new NegExprError(expr, expr.typeOf(ctxt, env), this));
+    	}
         return Type.INT;
     }
 

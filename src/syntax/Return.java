@@ -20,12 +20,21 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import notifications.ReturnExpressionFromVoidMethodTypeError;
+import notifications.ReturnNothingFromTypedMethodTypeError;
+import notifications.ReturnTypeNotSubclassTypeError;
 
 import org.llvm.BasicBlock;
+
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for return statements.
  */
@@ -41,7 +50,7 @@ public final class Return extends Statement {
         this(pos, null);
     }
 
-    /** Check whether this statement is valid and return a boolean
+	/** Check whether this statement is valid and return a boolean
      *  indicating whether execution can continue at the next statement.
      */
     public boolean check(Context ctxt, VarEnv env, int frameOffset) {
@@ -51,10 +60,7 @@ public final class Return extends Statement {
                 try {
                     Type it = result.typeOf(ctxt, env);
                     if (!rt.isSuperOf(it)) {
-                        ctxt.report(new Failure(pos,
-                                                "Cannot return a value of type " + it +
-                                                " where a value of type " + rt +
-                                                " is required"));
+                    	ctxt.report(new ReturnTypeNotSubclassTypeError(this, rt, ctxt.getCurrMethod())); // needs to point to return type of method declaration
                     } else if (rt != it) {
                         result = new CastExpr(pos, rt, result);
                     }
@@ -62,11 +68,11 @@ public final class Return extends Statement {
                     ctxt.report(d);
                 }
             } else {
-                ctxt.report(new Failure(pos,
-                                        "Method should not return value"));
+            	ctxt.report(new ReturnExpressionFromVoidMethodTypeError(result, rt, ctxt.getCurrMethod()));
             }
         } else if (rt != Type.VOID) {
-            ctxt.report(new Failure(pos, "A return value is required"));
+        	// returning nothing in a non-`void` method
+        	ctxt.report(new ReturnNothingFromTypedMethodTypeError(result, rt, ctxt.getCurrMethod()));
         }
 
 

@@ -20,14 +20,22 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
-import java.util.Iterator;
-import java.util.Collections;
-import org.llvm.TypeRef;
+import interp.State;
+import interp.Value;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+
+import notifications.LocalVarDeclTypeError;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.NameClashDiagnostic;
+import compiler.Position;
 
 /** Provides a representation for local variable declarations in a block.
  */
@@ -62,11 +70,12 @@ public class LocalVarDecl extends Statement {
                         init = vs.getInitExpr().typeOf(ctxt, env);
                     }
                     if (VarEnv.find(vs.getId().getName(), env) != null) {
-                        ctxt.report(new Failure(pos,
-                                                "Repeated definition for variable " + vs.getId()));
+                    	ctxt.report(new NameClashDiagnostic(vs.getId(), env));
                     } else if (init != null && !type.isSuperOf(init)) {
-                        ctxt.report(new Failure(pos, "Cannot initialize value of type " + type +
-                                                " to variable of type " + init));
+                    	ctxt.report(new LocalVarDeclTypeError(vs, type,
+                    			vs.getInitExpr(), vs.getInitExpr().typeOf(ctxt, env)));
+//                    	ctxt.report(new TypeError(, vs.getInitExpr(), vs));
+//                    	ctxt.report(new TypeError(vs.getId(), new DummyVariableDeclaration(), vs.getInitExpr()));
                     } else {
                         frameOffset -= size;
                         VarEnv prev_env = env;
@@ -87,6 +96,7 @@ public class LocalVarDecl extends Statement {
                         s.check(ctxt, prev_env, frameOffset);
                     }
                 } catch (Diagnostic d) {
+                	// catching, not generating code
                     ctxt.report(d);
                 }
             }
@@ -94,7 +104,7 @@ public class LocalVarDecl extends Statement {
         }
         block = new Block(pos, assigns.toArray(new Statement[0]));
         if (!iter.hasNext()) {
-            ctxt.report(new Failure(pos, "Declarations have no use"));
+        	ctxt.report(new DeadCodeDiagnostic(this));
             return true;
         } else {
             Statement s = iter.next();

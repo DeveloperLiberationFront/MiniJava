@@ -385,6 +385,7 @@ args1   : args1 ',' expr        { $$ = new Args($3, $1); }
 
     void checkMethodModifiers(Modifiers mods, Block body) {
       if (mods.includes(Modifiers.ABSTRACT) && body!=null) {
+      // not sure what I have access to here
         report(new Failure(mods.getPos(),
                "An abstract method cannot have a body"));
       }

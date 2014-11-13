@@ -20,13 +20,29 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import notifications.AssignmentTypeError;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for assignment expressions.
  */
+
+interface VariableDeclaration {
+	// TODO: unifies FieldDecl, Decls?, MethDecl, LocalVarDecl...
+}
+
+class DummyVariableDeclaration implements VariableDeclaration {
+	public DummyVariableDeclaration() {
+	}
+}
+
 public final class AssignExpr extends StatementExpr {
     private LeftHandSide lhs;
     private Expression rhs;
@@ -49,8 +65,7 @@ public final class AssignExpr extends StatementExpr {
         Type rt = rhs.typeOf(ctxt, env);
 
         if (!lt.isSuperOf(rt)) {
-            throw new Failure(pos, "Cannot assign value of type " + rt +
-            " to variable of type " + lt);
+        	throw new AssignmentTypeError(rhs, rt, lhs, lt);
         } else if (!lt.equal(rt)) {
             rhs = new CastExpr(pos, lt, rhs);
         }

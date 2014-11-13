@@ -18,20 +18,40 @@
  */
 
 
-import compiler.*;
-import lexer.*;
-import syntax.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
 
-import java.io.Reader;
-import java.io.FileReader;
 import java.io.FileNotFoundException;
-
-import org.apache.commons.cli.*;
+import java.io.FileReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import lexer.MjcLexer;
+
+import org.apache.commons.cli.BasicParser;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
+
+import syntax.ArrayType;
+import syntax.ClassType;
+import syntax.Id;
+import syntax.Modifiers;
+import syntax.Type;
+import checker.Context;
+import checker.MethEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Failure;
+import compiler.Handler;
+import compiler.JavaSource;
+import compiler.Position;
+import compiler.SimpleHandler;
+import compiler.Source;
+import compiler.SourcePosition;
 
 /** A top-level driver for the mini Java compiler.
  */
@@ -110,6 +130,7 @@ public class Compiler {
                     class_list.addAll(Arrays.asList(parser.getClasses()));
                 }
             } catch (FileNotFoundException e) {
+            	// this one's out of scope
                 handler.report(new Failure("Cannot open input file " +
                                            i));
             }
@@ -124,6 +145,7 @@ public class Compiler {
                 String assemblyFile = cmd.getOptionValue("x");
                 Assembly assembly = Assembly.assembleToFile(assemblyFile);
                 if (assembly == null) {
+                	// out of scope
                     handler.report(new Failure("Cannot open file " +
                                                assemblyFile + " for output"));
                 } else {

@@ -20,10 +20,16 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Failure;
+import compiler.Position;
 
 /** Provides a representation for the "this" pointer to the current object.
  */
@@ -40,6 +46,11 @@ public final class This extends Expression {
     public Type typeOf(Context ctxt, VarEnv env)
     throws Diagnostic {
         if (ctxt.isStatic()) {
+            // conceptually, is `this` an unbound variable? or something else?
+            // challenge: you want to point out that you're trying to use it
+            // in a static context -- but then how does pointing out context
+            // generalize?
+            // throw new UnboundNameError(pos)
             throw new Failure(pos, "Cannot access this in a static context");
         }
         size = ctxt.getCurrMethod().getSize();

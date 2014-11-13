@@ -20,13 +20,21 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import notifications.NullCheckTypeError;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for expressions.
  */
+
+// used when accessing or invoking objects
 public class NullCheck extends Expression {
     private Expression nullCheck;
     private Expression object;
@@ -56,8 +64,7 @@ public class NullCheck extends Expression {
             Type f = nullCheck.typeOf(ctxt, env);
             Type t = object.typeOf(ctxt, env);
             if (!f.equals(ctxt.findClass("Object"))) {
-                throw new Failure(pos, "Object.nullCheck must return type Object (returns " + f
-                + ")");
+            	throw new NullCheckTypeError(object, t, this);
             } else {
                 /* this is a very safe upcast */
                 nullCheck = new CastExpr(pos, t, nullCheck);

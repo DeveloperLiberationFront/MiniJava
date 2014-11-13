@@ -20,10 +20,18 @@
 
 package checker;
 
-import compiler.*;
-import syntax.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import notifications.ArgumentTypeError;
+import syntax.Args;
+import syntax.CastExpr;
+import syntax.Id;
+import syntax.Type;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for variable environments (parameters &
  *  local vars).
@@ -64,10 +72,11 @@ public final class VarEnv extends Env {
                 Type argt = args.getArg().typeOf(ctxt, env);
                 Type fort = formals.getType();
                 if (!fort.isSuperOf(args.getArg().typeOf(ctxt, env))) {
-                    ctxt.report(new Failure(args.getArg().getPos(),
-                                            "Cannot use argument of type " + argt +
-                                            " where a value of type " + fort +
-                                            " is expected"));
+                	ctxt.report(new ArgumentTypeError(args.getArg(), argt, formals)); // compound typeerror and argumentmismatchdiagnostic?
+//                    ctxt.report(new Failure(args.getArg().getPos(),
+//                                            "Cannot use argument of type " + argt +
+//                                            " where a value of type " + fort +
+//                                            " is expected"));
                 } else if (argt != fort) {
                     args.setArg(new CastExpr(pos, fort, args.getArg()));
                 }
@@ -78,10 +87,9 @@ public final class VarEnv extends Env {
             formals = formals.next;
         }
         if (formals != null) {
-            ctxt.report(new Failure(pos, "Too few arguments"));
+        	ctxt.report(new ArgumentMismatchDiagnostic(env, formals));
         } else if (args != null) {
-            ctxt.report(new Failure(args.getArg().getPos(),
-                                    "Too many arguments"));
+        	ctxt.report(new ArgumentMismatchDiagnostic(env, formals));
         }
     }
 

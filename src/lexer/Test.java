@@ -20,11 +20,17 @@
 
 package lexer;
 
-import java.io.Reader;
-import java.io.FileReader;
 import java.io.FileNotFoundException;
-import compiler.*;
+import java.io.FileReader;
+import java.io.Reader;
+
 import syntax.Tokens;
+
+import compiler.Failure;
+import compiler.Handler;
+import compiler.JavaSource;
+import compiler.SimpleHandler;
+import compiler.Source;
 
 /** A program to test the mini Java lexer.
  */
@@ -54,6 +60,7 @@ public class Test implements Tokens {
             System.out.println("ENDINPUT");
 
         } catch (FileNotFoundException e) {
+        	// out of scope
             handler.report(new Failure("Cannot open input file " +
                                        inputFile));
         }

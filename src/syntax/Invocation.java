@@ -20,12 +20,16 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-
 import java.util.ArrayList;
-import org.llvm.TypeRef;
+
+import checker.Context;
+import checker.MethEnv;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for method invocations.
  */
@@ -42,7 +46,7 @@ public abstract class Invocation extends StatementExpr {
      *  return void.
      */
     void checkExpr(Context ctxt, VarEnv env)
-    throws Diagnostic {
+    throws Diagnostic { // abstract method, can't implement here
         typeInvocation(ctxt, env);
     }
 
@@ -65,7 +69,7 @@ public abstract class Invocation extends StatementExpr {
     public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
         Type result = typeInvocation(ctxt, env);
         if (result == null) {
-            throw new Failure(pos, "Method does not return a value");
+        	throw new MissingReqiredStatementDiagnostic(new Return(null, null), env);
         }
         return result;
     }

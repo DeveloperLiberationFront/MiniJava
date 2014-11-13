@@ -20,7 +20,7 @@
 
 package syntax;
 
-import checker.*;
+import checker.Context;
 
 /** Provides a representation for a field declaration in a class.
  */

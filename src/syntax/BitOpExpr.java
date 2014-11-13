@@ -20,9 +20,13 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for bitwise binary connectives.
  */
@@ -42,7 +46,8 @@ public abstract class BitOpExpr extends BinaryOp {
         } else if (lt.equal(Type.INT) && rt.equal(Type.INT)) {
             return Type.INT;
         } else {
-            ctxt.report(new Failure(pos, "Incompatible operand types"));
+        	ctxt.report(new BitOpExprTypeError(left, lt, right, rt, this));
+//            ctxt.report(new TypeError(left, new DummyVariableDeclaration(), right, new DummyVariableDeclaration(), this));
             return Type.BOOLEAN; // a guess, trying to minimize further errors
         }
     }

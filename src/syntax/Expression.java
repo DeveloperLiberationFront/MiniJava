@@ -20,10 +20,15 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for expressions.
  */
@@ -40,16 +45,6 @@ public abstract class Expression extends Syntax {
     public abstract Type typeOf(Context ctxt, VarEnv env)
     throws Diagnostic;
 
-    /** A simple utility function to check that a type has the required value
-     *  and report an error if that test fails.
-     */
-    protected void required(Context ctxt, String where, Type got, Type wanted) {
-        if (!got.equal(wanted)) {
-            ctxt.report(new Failure(pos, where  + " has type " +
-                                    got    + "; a value of type " +
-                                    wanted + " is required"));
-        }
-    }
 
     /** This value is used as the depth for an expression that can have
      *  side effects, and for which a change of evaluation order might
@@ -114,4 +109,9 @@ public abstract class Expression extends Syntax {
     /** Evaluate this expression.
      */
     public abstract Value eval(State st);
+
+	public Syntax getDeclaration() {
+		// dummy method for future error generation
+		return null;
+	}
 }

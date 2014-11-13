@@ -20,10 +20,15 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import checker.Context;
+import checker.FieldEnv;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
 
 /** Represents an access to a field through the superclass.
  */
@@ -44,13 +49,11 @@ public final class SuperAccess extends FieldAccess {
     throws Diagnostic {
         ClassType sup = ctxt.getCurrClass().getSuper();
         if (sup == null) {
-            throw new Failure(pos, "Current class has no super class");
+        	throw new UndeclaredSuperclassDiagnostic(this, ctxt.getCurrClass().getDeclaration()); // needs representation of 'extends' modifier
         } else if (ctxt.isStatic()) {
-            throw new Failure(pos,
-            "Cannot access a super class in a static context");
+        	throw new ScopeAccessibilityError(this, ctxt.getCurrMethod(), null);
         } else if ((this.env = sup.findField(name)) == null) {
-            throw new Failure(pos,
-            "Cannot find field " + name + " in superclass");
+        	throw new MissingFieldDiagnostic(this, sup);
         }
         this.env.accessCheck(ctxt, pos);
         size = ctxt.getCurrMethod().getSize();

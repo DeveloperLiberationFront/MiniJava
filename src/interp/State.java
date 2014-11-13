@@ -20,7 +20,7 @@
 
 package interp;
 
-import checker.*;
+import checker.MethEnv;
 
 /** Represents the interpreter stack.
  */

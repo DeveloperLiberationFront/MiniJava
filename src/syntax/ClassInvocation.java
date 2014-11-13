@@ -20,10 +20,15 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import checker.Context;
+import checker.MethEnv;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
 
 /** Represents a class method invocation.
  */
@@ -44,12 +49,9 @@ public final class ClassInvocation extends Invocation {
     throws Diagnostic {
         this.menv = cls.findMethod(name);
         if (this.menv == null) {
-            throw new Failure(pos,
-            "Cannot find method " + name + " in class " + cls);
+        	throw new MissingFieldDiagnostic(this, cls);
         } else if (!this.menv.isStatic()) {
-            throw new Failure(pos,
-            "Cannot access method " + name +
-            " without an object of class " + cls);
+        	throw new MissingFieldDiagnostic(this, cls); // missing information: what to call to get an instance
         }
         return checkInvocation(ctxt, env, this.menv);
     }

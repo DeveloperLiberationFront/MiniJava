@@ -25,30 +25,9 @@ package compiler;
  *  warnings are normally implemented as as subclasses of Warning.
  */
 public abstract class Diagnostic extends Exception {
-    /** Used to hold a simple description of the problem that
-     *  occurred.  This field is used only by the default
-     *  implementation of getDescription() that is provided in
-     *  this class.  More complex diagnostics are likely to
-     *  override this method, and hence will not use this field.
-     *
-     *  The format and interpretation of the description field
-     *  have not yet been determined.  It would, however, make
-     *  sense to allow the use of some kind of XML/HTML tags to
-     *  allow embedding of structure/formatting hints.
-     */
-    private String text;
-    public String getText() {
-        return text;
-    }
+    public abstract String getText();
 
-    /** A pointer to the place where the error was detected.
-     *  A null value can be used for diagnostics that are not
-     *  associated with any particular point in the source.
-     */
-    private Position position;
-    public Position getPos() {
-        return position;
-    }
+    public abstract Position getPos();
 
     /** Return a cross reference string for this diagnostic.  The
      *  format and interpretation of this string has not yet
@@ -61,23 +40,4 @@ public abstract class Diagnostic extends Exception {
         return null;
     }
 
-    /** Construct a simple diagnostic with a fixed description.
-     */
-    public Diagnostic(String text) {
-        this.text = text;
-    }
-
-    /** Construct a diagnostic object for a particular source position.
-     */
-    public Diagnostic(Position position) {
-        this.position = position;
-    }
-
-    /** Construct a simple diagnostic with a fixed description
-     *  and a source position.
-     */
-    public Diagnostic(Position position, String text) {
-        this.position = position;
-        this.text     = text;
-    }
 }

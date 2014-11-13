@@ -20,8 +20,12 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
+import checker.Context;
+import checker.FieldEnv;
+import checker.MethEnv;
+import checker.VarEnv;
+
+import compiler.Position;
 
 /** Provides a representation for names, both simple and qualified.
  */
@@ -83,6 +87,7 @@ public class Name {
         return null;
     }
     /** Lookup name as a value.
+     * @throws UnknownNameDiagnostic 
      */
     public FieldAccess asValue(Context ctxt, VarEnv env) {
         if (prefix == null) {
@@ -105,8 +110,8 @@ public class Name {
             if (cls != null && (fe = cls.findField(id.getName())) != null) {
                 return new ClassAccess(fe);
             }
-            //         throw new Failure(pos,
-            //                    "Cannot find field " + name + " in class " + cls);
+            
+            ctxt.report(new UnknownNameDiagnostic(new Name(this.id), cls.getFields()));
         }
         return null;
     }

@@ -20,10 +20,14 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
 
 /** Represents an access to a field by an as yet unresolved name.
  */
@@ -44,7 +48,7 @@ public final class NameAccess extends FieldAccess {
     throws Diagnostic {
         resolved = name.asValue(ctxt, env);
         if (resolved == null) {
-            throw new Failure(pos, "Undefined name " + name);
+        	throw new UnknownNameDiagnostic(name, env);
         }
         return resolved.typeOf(ctxt, env);
     }

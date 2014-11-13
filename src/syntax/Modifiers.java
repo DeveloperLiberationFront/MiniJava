@@ -40,6 +40,37 @@ public final class Modifiers extends Syntax {
     public boolean includes(int mask) {
         return (flags & mask) != 0;
     }
+    
+    public String describe() {
+    	String rv = "";
+    	if (includes(PUBLIC)) {
+    		rv += " public";
+    	}
+    	if (includes(PRIVATE)) {
+    		rv += " private";
+    	}
+    	if (includes(PROTECTED)) {
+    		rv += " protected";
+    	}
+    	if (includes(ABSTRACT)) {
+    		rv += " abstract";
+    	}
+    	if (includes(STATIC)) {
+    		rv += " static";
+    	}
+    	return rv.trim();
+    }
+    
+    public String describeAccessibilityModifiers() {
+    	String rv = "";
+    	if (includes(PUBLIC)) {
+    		rv += " public";
+    	}
+    	if (includes(PRIVATE)) {
+    		rv += " private";
+    	}
+    	return rv.trim();
+    }
 
     public void set(int mask) {
         flags |= mask;

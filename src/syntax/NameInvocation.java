@@ -20,10 +20,14 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
 
 /** Represents an access to a method by an as yet unresolved name.
  */
@@ -43,7 +47,7 @@ public class NameInvocation extends Invocation {
     throws Diagnostic {
         resolved = name.asMethod(ctxt, env, args);
         if (resolved == null) {
-            throw new Failure(pos, "Undefined name " + name);
+        	throw new UnknownNameDiagnostic(name, env);
         }
         return resolved.typeInvocation(ctxt, env);
     }

@@ -20,9 +20,12 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
+import notifications.LogicOpTypeError;
+import checker.Context;
+import checker.VarEnv;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for logical binary connectives.
  */
@@ -36,13 +39,11 @@ public abstract class LogicOpExpr extends BinaryOp {
      */
     public Type typeOf(Context ctxt, VarEnv env)
     throws Diagnostic {
-        try {
-            required(ctxt, "Left operand",
-            left.typeOf(ctxt, env),  Type.BOOLEAN);
-            required(ctxt, "Right operand",
-            right.typeOf(ctxt, env), Type.BOOLEAN);
-        } catch (Diagnostic d) {
-            ctxt.report(d);
+    	if (left.typeOf(ctxt, env) != Type.BOOLEAN) {
+    		ctxt.report(new LogicOpTypeError(left, left.typeOf(ctxt, env), this));    		
+    	}
+    	if (right.typeOf(ctxt, env) != Type.BOOLEAN) {
+    		ctxt.report(new LogicOpTypeError(right, right.typeOf(ctxt, env), this));
         }
         return Type.BOOLEAN;
     }

@@ -19,10 +19,16 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.CharValue;
+import interp.State;
+import interp.Value;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for String literals.
  */
@@ -38,6 +44,7 @@ public final class CharLiteral extends Literal {
      */
     public Type typeOf(Context ctxt, VarEnv env)
     throws Diagnostic {
+        // don't see how this throws a Diagnostic
         return Type.CHAR;
     }
 

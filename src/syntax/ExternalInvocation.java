@@ -20,12 +20,6 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-
-import java.util.ArrayList;
-import org.llvm.TypeRef;
 
 /** Provides a representation for method invocations.
  */

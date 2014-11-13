@@ -20,13 +20,21 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
 
-import org.llvm.Builder;
+import notifications.WhileTestTypeError;
+
 import org.llvm.BasicBlock;
+import org.llvm.Builder;
+
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for while statements.
  */
@@ -46,8 +54,10 @@ public final class While extends Statement {
     public boolean check(Context ctxt, VarEnv env, int frameOffset) {
         try {
             if (!test.typeOf(ctxt, env).equal(Type.BOOLEAN)) {
-                ctxt.report(new Failure(pos,
-                                        "Boolean valued expression required for test"));
+            	ctxt.report(new WhileTestTypeError(test, test.typeOf(ctxt, env), this)); 
+//            	ctxt.report(new TypeError(this.test, Type.BOOLEAN, this));
+//                ctxt.report(new Failure(pos,
+//                                        "Boolean valued expression required for test"));
             }
         } catch (Diagnostic d) {
             ctxt.report(d);

@@ -20,10 +20,20 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+
+import java.util.ArrayList;
+
+import checker.Context;
+import checker.MethEnv;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Failure;
+import compiler.Position;
 
 /** Represents a method invocation through the superclass.
  */
@@ -55,20 +65,20 @@ public final class SuperInvocation extends Invocation {
             this.name = sup.getId().getName();
         }
         if (sup == null) {
-            throw new Failure(pos, "Current class has no super class");
+        	throw new ScopeAccessibilityError(this, ctxt.getCurrMethod(), null); // missing: ExtendsExpression 
         } else if (name == null) {
+        	// really not sure about what this one does
             throw new Failure(pos, "No super constructor determined for super()");
         } else if (!isFirst && unnamed) {
             throw new Failure(pos,
             "Super constructor must be first instruction in constructor.");
         } else if (unnamed && ctxt.getCurrMethod() != null && !ctxt.getCurrMethod().isConstructor()) {
-            throw new Failure(pos, "Super constructor can only be in a constructor.");
+        	throw new ScopeAccessibilityError(this, ctxt.getCurrMethod(), new ArrayList<MethDecl>());
+//            throw new Failure(pos, "Super constructor can only be in a constructor.");
         } else if (ctxt.isStatic()) {
-            throw new Failure(pos,
-            "Cannot access a super class in a static context");
+        	throw new ScopeAccessibilityError(pos, ctxt); // missing: reason it won't work
         } else if ((this.menv = sup.findMethod(name)) == null) {
-            throw new Failure(pos,
-            "Cannot find method " + name + " in superclass");
+        	throw new MissingMethodDiagnostic(this, sup);
         }
         size = ctxt.getCurrMethod().getSize();
         return checkInvocation(ctxt, env, this.menv);

@@ -20,19 +20,27 @@
 
 package syntax;
 
-import checker.*;
-import compiler.*;
-import codegen.*;
-import interp.*;
-import syntax.*;
+import interp.ObjValue;
+import interp.State;
+import interp.Value;
 
-import java.util.Arrays;
-import org.llvm.TypeRef;
 import java.util.ArrayList;
-import org.llvm.Builder;
 import java.util.Hashtable;
 
-import org.llvm.binding.LLVMLibrary.LLVMLinkage;
+import org.llvm.TypeRef;
+
+import checker.Context;
+import checker.FieldEnv;
+import checker.MethEnv;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Declaration;
+import compiler.Diagnostic;
+import compiler.Failure;
+import compiler.NameClashDiagnostic;
+import compiler.Position;
 
 /** Provides a representation for class types.
  */
@@ -151,8 +159,7 @@ public class ClassType extends Type {
     throws Diagnostic {
         if (level == CHECKING) {
             /* cannot proceed after this since many method searches rely on being able to terminate */
-            throw new Failure(id.getPos(),
-            "Cyclic class hierarchy for class " + id);
+        	throw new CyclicInheritanceDiagnostic(this);
         } else if (level == UNCHECKED) {
             ClassType extendsClass = null;
             if (extendsType != null) {
@@ -161,12 +168,15 @@ public class ClassType extends Type {
             if (extendsType != null) {
                 if (this.equal(extendsType)) {
                     /* cannot proceed after this since many method searches rely on being able to terminate */
+                    // throw new RecursiveReferenceFailure(declaredTypeName, extendedTypeName,
+                    // new ExtendsRelationship())
                     throw new Failure(id.getPos(),
                                       "Class " + id + " extends itself!");
                 }
                 extendsClass = extendsType.isClass();
                 if (extendsClass == null) {
                     extendsType = null;
+                    // ctxt.report(new InheritanceClashFailure(id, extendsClass, "extends"))
                     ctxt.report(new Failure(id.getPos(),
                                             "Illegal superclass"));
                 } else {
@@ -188,17 +198,17 @@ public class ClassType extends Type {
             for (; decls != null; decls = decls.getNext()) {
                 decls.addToClass(ctxt, this);
             }
-            int constructor_count = 0;
+            
+            ArrayList<MethEnv> constructors = new ArrayList<MethEnv>();
             for (MethEnv menv = methods; menv != null; menv = menv.getNext()) {
                 if (menv.isConstructor()) {
-                    constructor_count++;
+                    constructors.add(menv);
                 }
             }
-            if (constructor_count > 1) {
-                ctxt.report(new Failure(id.getPos(),
-                                        "Only one constructor is allowed per class."));
+            if (constructors.size() > 1) {
+            	ctxt.report(new DeclarationClashDiagnostic(constructors));
             }
-            boolean has_constructor = constructor_count != 0;
+            boolean has_constructor = !constructors.isEmpty();
 
             if (!has_constructor && this.isInterface() == null) {
                 /* if no constructor, add a default with nothing to it */
@@ -247,6 +257,7 @@ public class ClassType extends Type {
                     if (extendsClass != null) {
                         m = extendsClass.findMethod(extendsClass.getId().getName());
                         if (super_cons == null && m != null && m.getParams() != null) {
+                        	ctxt.report(new MissingReqiredStatementDiagnostic(new SuperInvocation(null, null, null), methods.getBody()));
                             ctxt.report(new Failure(menv.getPos(),
                                                     "Constructor needs a super class constructor (maybe it's not the first statement?)."));
                         } else if (super_cons == null && extendsClass != null) {
@@ -285,16 +296,16 @@ public class ClassType extends Type {
             Type checked = t.check(ctxt);
             InterfaceType iface;
             if ((iface = checked.isInterface()) == null) {
-                ctxt.report(new Failure(id.getPos(),
-                "Can only implement interface types. " + checked + " is not an interface."));
+            	ctxt.report(new InheritanceKindError(this, t, new InterfaceType(null, null, null, null)));
             } else {
                 iface.checkClass(ctxt);
                 for (MethEnv iface_meth : iface.getVtable()) {
                     MethEnv this_meth = findMethod(iface_meth.getName());
                     if (this_meth == null) {
-                        ctxt.report(new Failure(id.getPos(),
-                                                id.getName() + " does not implement method " + iface_meth.getName() + " from " +
-                                                iface_meth.getOwner()));
+                    	ctxt.report(new MissingInheritedPropertyDiagnostic(this, iface, iface_meth));
+//                        ctxt.report(new Failure(id.getPos(),
+//                                                id.getName() + " does not implement method " + iface_meth.getName() + " from " +
+//                                                iface_meth.getOwner()));
                     } else if (!this_meth.eqMethSig(iface_meth)) {
                         ctxt.report(new Failure(this_meth.getPos(),
                                                 id.getName() + " does not match signature of " + iface_meth.getName() + " from "
@@ -355,8 +366,7 @@ public class ClassType extends Type {
                          Expression init_expr) {
         FieldEnv field = null;
         if (FieldEnv.find(id.getName(), fields) != null) {
-            ctxt.report(new Failure(id.getPos(),
-                                    "Multiple definitions for field " + id));
+        	ctxt.report(new NameClashDiagnostic(id, fields));
         } else if (mods.isStatic()) {
             field = new FieldEnv(mods, id, type, this, -1,  0, null, init_expr);
         } else {
@@ -381,8 +391,7 @@ public class ClassType extends Type {
                           Id id, Type type,
                           VarEnv params, Statement body) {
         if (MethEnv.find(id.getName(), methods) != null) {
-            ctxt.report(new Failure(id.getPos(),
-                                    "Multiple definitions for method " + id));
+        	ctxt.report(new NameClashDiagnostic(id, MethEnv.find(id.getName(), methods)));
         } else {
             int size = VarEnv.fitToFrame(params);
             int slot = (-1);
@@ -604,4 +613,8 @@ public class ClassType extends Type {
     public Expression defaultExpr(Position pos) {
         return new CastExpr(pos, this, new NullLiteral(pos));
     }
+
+	public Declaration getDeclaration() {
+		return null;
+	}
 }

@@ -20,12 +20,20 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import notifications.IfThenElseTestTypeContractError;
+
 import org.llvm.BasicBlock;
 import org.llvm.Builder;
+
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for if-then-else (and if-then) statements.
  */
@@ -50,8 +58,9 @@ public final class IfThenElse extends Statement {
     public boolean check(Context ctxt, VarEnv env, int frameOffset) {
         try {
             if (!test.typeOf(ctxt, env).equal(Type.BOOLEAN)) {
-                ctxt.report(new Failure(pos,
-                                        "Boolean valued expression required for test"));
+            	ctxt.report(new IfThenElseTestTypeContractError(test, test.typeOf(ctxt, env),
+            			this));
+//                ctxt.report(new TypeError(this.test, Type.BOOLEAN));
             }
         } catch (Diagnostic d) {
             ctxt.report(d);

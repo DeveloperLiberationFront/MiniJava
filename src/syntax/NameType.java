@@ -20,11 +20,13 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-
 import org.llvm.TypeRef;
+
+import checker.Context;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Position;
 
 /** Provides a representation for types that have been mentioned by
  *  name but not yet verified.
@@ -60,7 +62,7 @@ public final class NameType extends Type {
     public Type check(Context ctxt) {
         ClassType cls = name.asClass(ctxt);
         if (cls == null) {
-            ctxt.report(new Failure(name.getPos(), "Unknown type " + name));
+        	ctxt.report(new UnknownNameDiagnostic(this.name, cls));
         }
         return cls;
     }

@@ -22,7 +22,7 @@ package compiler;
 
 /** Represents a warning diagnostic.
  */
-public class Warning extends Diagnostic {
+public class Warning extends SimpleDiagnostic {
     /** Construct a simple warning with a fixed description.
      */
     public Warning(String text) {

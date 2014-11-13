@@ -20,9 +20,10 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
+import notifications.ImplicitTypeContract;
+import codegen.Assembly;
+
+import compiler.Position;
 
 /** Provides a representation for expressions using binary operators.
  */
@@ -30,6 +31,11 @@ public abstract class BinaryOp extends Expression {
     protected Expression left;
     protected Expression right;
     private   int        depth;
+	private ImplicitTypeContract typeContract;
+    
+    public ImplicitTypeContract getTypeContract(){
+    	return this.typeContract;
+    }
 
     public BinaryOp(Position pos, Expression left, Expression right) {
         super(pos);

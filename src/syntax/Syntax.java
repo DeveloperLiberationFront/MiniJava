@@ -20,8 +20,7 @@
 
 package syntax;
 
-import compiler.*;
-import codegen.*;
+import compiler.Position;
 
 /** Provides a representation for syntactic elements, each of which is
  *  annotated with a position in the input file.

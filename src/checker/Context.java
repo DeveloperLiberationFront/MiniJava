@@ -20,12 +20,38 @@
 
 package checker;
 
-import compiler.*;
-import syntax.*;
-import checker.*;
-
 import java.util.ArrayList;
 import java.util.Hashtable;
+
+import notifications.MainMethodVoidError;
+import syntax.Args;
+import syntax.ArrayLiteral;
+import syntax.Block;
+import syntax.ClassType;
+import syntax.ConstructorInvocation;
+import syntax.Decls;
+import syntax.ExprStmt;
+import syntax.Id;
+import syntax.IntLiteral;
+import syntax.InterfaceType;
+import syntax.LocalVarDecl;
+import syntax.MethDecl;
+import syntax.Modifiers;
+import syntax.Name;
+import syntax.NameInvocation;
+import syntax.NameType;
+import syntax.Return;
+import syntax.Statement;
+import syntax.StringLiteral;
+import syntax.Type;
+import syntax.VarDecls;
+
+import compiler.Diagnostic;
+import compiler.Failure;
+import compiler.Handler;
+import compiler.NameClashDiagnostic;
+import compiler.Phase;
+import compiler.Position;
 
 /** Provides a representation for contexts used during type checking.
  */
@@ -110,6 +136,7 @@ public final class Context extends Phase {
     /** Indicate whether any failures have been reported to this context.
      */
     public boolean noFailures() {
+        // failure processor, not thrower
         return getHandler().getNumFailures() == 0;
     }
 
@@ -130,9 +157,7 @@ public final class Context extends Phase {
         for (int i = classes.length - 1; i >= 0; i--) {
             for (int j = 0; j < i; j++) {
                 if (classes[i].getId().sameId(classes[j].getId())) {
-                    report(new Failure(classes[i].getPos(),
-                                       "Multiple definitions for class " +
-                                       classes[i].getId()));
+                    report(new NameClashDiagnostic(classes[i].getId(), classes[j].getId()));
                     break;
                 }
             }
@@ -242,18 +267,20 @@ public final class Context extends Phase {
     private MethEnv checkMain() {
         ClassType mainClass = findClass("Main");
         if (mainClass == null) {
-            report(new Failure(
-                       "Program does not contain a definition for class Main"));
+        	report(new MissingRequiredNameDiagnostic(new ClassType(null, new Id(null, "Main"), null, null, null), null)); // needs representation of scope
+//            report(new Failure(
+//                       "Program does not contain a definition for class Main"));
         } else {
             MethEnv mainMeth = mainClass.findMethod("main");
             if (mainMeth == null) {
                 report(new Failure("No method main in class Main"));
             } else if (!mainMeth.isStatic()) {
+            	report(new MissingPermissionModifierDiagnostic(mainMeth, Modifiers.STATIC));
                 report(new Failure(mainMeth.getPos(),
                                    "Main.main is not static"));
             } else if (!mainMeth.eqSig(Type.VOID, null)) {
-                report(new Failure(mainMeth.getPos(),
-                                   "Main.main does not have the right type"));
+            	report(new MainMethodVoidError(mainMeth, mainMeth.getType()));
+//            	report(new TypeError(mainMeth.getDeclaration(), Type.VOID));
             } else {
                 return mainMeth;
             }

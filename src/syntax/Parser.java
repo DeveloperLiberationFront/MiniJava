@@ -20,8 +20,9 @@
 
 package syntax;
 
-import compiler.Handler;
 import lexer.MjcLexer;
+
+import compiler.Handler;
 
 /** Provides public access to the MjcParser.
  */

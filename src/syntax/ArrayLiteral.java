@@ -20,10 +20,16 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import notifications.ArrayLiteralMemberTypeError;
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for integer literals.
  */
@@ -54,14 +60,14 @@ public final class ArrayLiteral extends Literal {
     throws Diagnostic {
         ArrayType a_type = type.check(ctxt).isArray();
         if (a_type == null) {
-            throw new Failure(pos, "ArrayLiteral Type must be array type not " + type);
+        	// it's not clear to me what kind of source would throw this
+        	throw new ArrayLiteralTypeError(this, this.type);
         } else {
             Type element = a_type.getElementType();
             for (Expression e : literals) {
                 Type expr_type = e.typeOf(ctxt, env);
                 if (!element.isSuperOf(expr_type)) {
-                    throw new Failure(pos,
-                    "One or more elements of array literal does not match array type");
+                	throw new ArrayLiteralMemberTypeError(e, expr_type, this, a_type);
                 }
             }
         }

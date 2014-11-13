@@ -20,13 +20,30 @@
 
 package checker;
 
-import compiler.*;
-import syntax.*;
-import codegen.*;
-import interp.*;
-import util.*;
-import java.lang.Iterable;
+import interp.Interp;
+import interp.ObjValue;
+import interp.Value;
+
 import java.util.Iterator;
+
+import notifications.FieldTypeError;
+import syntax.AssignExpr;
+import syntax.ClassAccess;
+import syntax.ClassType;
+import syntax.ExprStmt;
+import syntax.Expression;
+import syntax.Id;
+import syntax.Modifiers;
+import syntax.NullLiteral;
+import syntax.Statement;
+import syntax.Type;
+import util.ListIterator;
+import util.ListIteratorIF;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 /** Provides a representation for object field environments.
  */
 public final class FieldEnv extends MemberEnv implements Iterable<FieldEnv>,
@@ -95,8 +112,10 @@ public final class FieldEnv extends MemberEnv implements Iterable<FieldEnv>,
                 try {
                     if (f.getInitExpr() != null
                         && !f.getType().isSuperOf(f.getInitExpr().typeOf(ctxt, null))) {
-                        ctxt.report(new Failure("Type of member initialization does not match." +
-                                                f.getName()));
+                    	ctxt.report(new FieldTypeError(f, f.getType(),
+                    			f.getInitExpr(), f.getInitExpr().typeOf(ctxt, null)));
+//                        ctxt.report(new Failure("Type of member initialization does not match." +
+//                                                f.getName()));
                     }
                 } catch (Diagnostic d) {
                     ctxt.report(d);

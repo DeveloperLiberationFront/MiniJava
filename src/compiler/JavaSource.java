@@ -20,8 +20,8 @@
 
 package compiler;
 
-import java.io.Reader;
 import java.io.IOException;
+import java.io.Reader;
 
 /** An implementation of the Source interface that follows the low
  *  level lexical conventions of Java for Unicode escapes, etc..
@@ -127,6 +127,7 @@ public class JavaSource extends Source {
                             skip();
                         }
                         if (i != 4) {
+                        	// out of scope
                             report(new Warning(
                                        "Error in Unicode escape sequence"));
                         } else {

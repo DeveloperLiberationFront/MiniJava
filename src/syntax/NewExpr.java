@@ -20,11 +20,18 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+
 import org.llvm.Builder;
+
+import checker.Context;
+import checker.VarEnv;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for "new" expressions that allocate an
  *  instance of a class.
@@ -43,10 +50,11 @@ public class NewExpr extends StatementExpr {
     public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
         cls = name.asClass(ctxt);
         if (cls == null) {
-            throw new Failure(pos, "Undefined name " + name);
+        	throw new UnknownNameDiagnostic(name, ctxt, this);
         } else if (cls.getMods().includes(Modifiers.ABSTRACT)) {
-            throw new Failure(pos, "Unable to instantiate abstract class or interface " +
-            name);
+        	throw new InvalidUseOfModifiedClassDiagnostic(this, cls);
+//            throw new Failure(pos, "Unable to instantiate abstract class or interface " +
+//            name);
         }
         return cls;
     }

@@ -20,8 +20,12 @@
 
 package checker;
 
-import compiler.*;
-import syntax.*;
+import syntax.ClassType;
+import syntax.Id;
+import syntax.Modifiers;
+import syntax.Type;
+
+import compiler.Position;
 
 /** Provides a base representation for environments.
  */
@@ -64,8 +68,7 @@ public abstract class MemberEnv extends Env {
     public void accessCheck(Context ctxt, Position pos) {
         ClassType cls = ctxt.getCurrClass();
         if (!mods.accessible(owner, cls)) {
-            ctxt.report(new Failure(pos, "Cannot access " + describe()
-                                    + " from the class " + cls));
+        	ctxt.report(new PermissionAccessibilityDiagnostic(this, cls));
         }
     }
 }

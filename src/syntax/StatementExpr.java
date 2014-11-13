@@ -20,8 +20,11 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
+import checker.Context;
+import checker.VarEnv;
+
+import compiler.Diagnostic;
+import compiler.Position;
 
 /** Provides a representation for expressions that can appear
  *  in a statement.

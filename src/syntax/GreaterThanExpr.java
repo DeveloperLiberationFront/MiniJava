@@ -20,12 +20,13 @@
 
 package syntax;
 
-import compiler.Position;
-import codegen.*;
-import interp.*;
+import interp.Value;
 
 import org.llvm.binding.LLVMLibrary.LLVMIntPredicate;
-import org.llvm.binding.LLVMLibrary.LLVMRealPredicate;
+
+import codegen.Assembly;
+
+import compiler.Position;
 
 /** Provides a representation for greater than comparsions.
  */

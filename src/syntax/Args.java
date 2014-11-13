@@ -20,10 +20,12 @@
 
 package syntax;
 
-import interp.*;
-import util.*;
-import java.lang.Iterable;
+import interp.State;
+
 import java.util.Iterator;
+
+import util.ListIterator;
+import util.ListIteratorIF;
 
 /** Provides a representation for formal parameter declarations.
  */

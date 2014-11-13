@@ -21,16 +21,19 @@
 package lexer;
 
 import java.util.Hashtable;
-import compiler.Source;
-import compiler.SourceLexer;
-import compiler.Handler;
-import compiler.Warning;
-import compiler.Failure;
+
+import syntax.CharLiteral;
 import syntax.Id;
 import syntax.IntLiteral;
 import syntax.StringLiteral;
-import syntax.CharLiteral;
 import syntax.Tokens;
+
+import compiler.Failure;
+import compiler.Handler;
+import compiler.Source;
+import compiler.SourceLexer;
+import compiler.UnterminatedSyntaxDiagnostic;
+import compiler.Warning;
 
 /** A lexical analyzer for the mini Java compiler.
  */
@@ -174,7 +177,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
                 }
                 nextChar();
                 if (c != '\'') {
-                    report(new Failure("Incorrectly terminated char literal"));
+                    report(new UnterminatedSyntaxDiagnostic(new RichTokens(0, 0, "\'"), new RichTokens(0, 0, "\'")));
                 }
                 nextChar();
                 return token = CHARLIT;
@@ -226,7 +229,8 @@ public class MjcLexer extends SourceLexer implements Tokens {
                 }
             }
             if (c == EOF) {
-                report(new Failure(getPos(), "Unterminated comment"));
+            	report(new UnterminatedSyntaxDiagnostic(new RichTokens(0, 0, "/*"),
+            			new RichTokens(getPos().getRow(), getPos().getColumn(), "*/")));
                 return;
             }
             if (c == EOL) {
@@ -251,6 +255,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
         case '\'':
             return '\'';
         default:
+        	// how can we represent this as something other than "illegal char seq"
             report(new Failure(getPos(),
                                "Unknown string escape sequence: \\" + (char)c));
             break;
@@ -276,8 +281,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
             }
         } while (c != EOF && !endOfString);
         if (c == EOF) {
-            report(new Failure(getPos(),
-                               "Unterminated string literal"));
+            report(new UnterminatedSyntaxDiagnostic(new RichTokens(0, 0, "\""), new RichTokens(0, 0, "\"")));
         }
         nextChar(); // consume closing "
         semantic = new StringLiteral(getPos(), b.toString());
@@ -367,6 +371,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
     }
 
     private void illegalCharacter() {
+    	// don't think I can get more descriptive than this
         report(new Warning(getPos(), "Ignoring illegal character '" + c + "'"));
     }
 }

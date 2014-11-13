@@ -20,17 +20,22 @@
 
 package syntax;
 
-import compiler.*;
-import codegen.*;
-import interp.*;
+import interp.State;
+import interp.Value;
+import notifications.TypeContract;
+import notifications.TypeContractProvider;
+import codegen.Assembly;
+import codegen.LLVM;
+
+import compiler.Position;
 
 /** Provides a representation for left hand sides of assignments.
  */
-public abstract class LeftHandSide extends Expression {
+public abstract class LeftHandSide extends Expression implements TypeContractProvider {
     public LeftHandSide(Position pos) {
         super(pos);
     }
-
+    
     /** Save the value in the free register in the variable specified by
      *  this expression.
      */
@@ -41,4 +46,10 @@ public abstract class LeftHandSide extends Expression {
     public abstract void save(State st, Value val);
 
     public abstract void llvmSave(LLVM l, org.llvm.Value v);
+    
+    public TypeContract getTypeContract() {
+		return typeContract;
+	}
+	private TypeContract typeContract;
+    
 }

@@ -20,8 +20,10 @@
 
 package syntax;
 
-import compiler.*;
-import checker.*;
+import checker.Context;
+import checker.VarEnv;
+
+import compiler.NameClashDiagnostic;
 
 /** Provides a representation for a method declaration in a class.
  */
@@ -61,10 +63,9 @@ public class MethDecl extends Decls {
         for (; formals != null; formals = formals.getNext()) {
             Id   paramId   = formals.getId();
             Type paramType = formals.getType().check(ctxt);
-            if (VarEnv.find(paramId.getName(), params) != null) {
-                ctxt.report(new Failure(paramId.getPos(),
-                                        "Multiple uses of parameter " +
-                                        paramId));
+            VarEnv otherEnv = VarEnv.find(paramId.getName(), params);
+			if (otherEnv != null) {
+            	ctxt.report(new NameClashDiagnostic(paramId, otherEnv.getId()));
             }
             params = new VarEnv(paramId, paramType, params);
         }
