@@ -20,10 +20,10 @@
 
 package syntax;
 
+import notifications.NameClashDiagnostic;
 import checker.Context;
 import checker.VarEnv;
 
-import compiler.NameClashDiagnostic;
 
 /** Provides a representation for a method declaration in a class.
  */

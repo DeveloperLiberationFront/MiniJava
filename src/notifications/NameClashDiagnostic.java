@@ -1,11 +1,14 @@
 
 
-package compiler;
+package notifications;
+
+import compiler.Position;
+import compiler.RichDiagnostic;
 
 import syntax.Id;
 import checker.Env;
 
-public class NameClashDiagnostic extends RichDiagnostic {
+public class NameClashDiagnostic extends RichDiagnostic implements ClashDiagnostic {
 
 	private Id firstDeclaration;
 	private Id secondDeclaration;
@@ -30,9 +33,4 @@ public class NameClashDiagnostic extends RichDiagnostic {
 		this.secondDeclaration = secondDeclaration;
 	}
 
-	// should take list of clashing declarations
-	public NameClashDiagnostic(Id id, Env clashingDeclarations) {
-		this.clashingDeclaration = id;
-		this.otherDeclarations = clashingDeclarations;
-	}
 }

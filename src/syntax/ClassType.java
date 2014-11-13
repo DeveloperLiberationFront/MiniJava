@@ -27,6 +27,10 @@ import interp.Value;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import notifications.FieldAlreadyExistsError;
+import notifications.MethodAlreadyExistsError;
+import notifications.NameClashDiagnostic;
+
 import org.llvm.TypeRef;
 
 import checker.Context;
@@ -39,7 +43,6 @@ import codegen.LLVM;
 import compiler.Declaration;
 import compiler.Diagnostic;
 import compiler.Failure;
-import compiler.NameClashDiagnostic;
 import compiler.Position;
 
 /** Provides a representation for class types.
@@ -366,7 +369,7 @@ public class ClassType extends Type {
                          Expression init_expr) {
         FieldEnv field = null;
         if (FieldEnv.find(id.getName(), fields) != null) {
-        	ctxt.report(new NameClashDiagnostic(id, fields));
+        	ctxt.report(new FieldAlreadyExistsError(id, fields));
         } else if (mods.isStatic()) {
             field = new FieldEnv(mods, id, type, this, -1,  0, null, init_expr);
         } else {
@@ -391,7 +394,7 @@ public class ClassType extends Type {
                           Id id, Type type,
                           VarEnv params, Statement body) {
         if (MethEnv.find(id.getName(), methods) != null) {
-        	ctxt.report(new NameClashDiagnostic(id, MethEnv.find(id.getName(), methods)));
+        	ctxt.report(new MethodAlreadyExistsError(id, MethEnv.find(id.getName(), methods)));
         } else {
             int size = VarEnv.fitToFrame(params);
             int slot = (-1);

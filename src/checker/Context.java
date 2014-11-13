@@ -25,6 +25,7 @@ import java.util.Hashtable;
 
 import notifications.MainMethodVoidError;
 import notifications.MainMethodAccessibilityModifierError;
+import notifications.NameClashDiagnostic;
 import notifications.UnboundMainClassNameError;
 import syntax.Args;
 import syntax.ArrayLiteral;
@@ -51,7 +52,6 @@ import syntax.VarDecls;
 import compiler.Diagnostic;
 import compiler.Failure;
 import compiler.Handler;
-import compiler.NameClashDiagnostic;
 import compiler.Phase;
 import compiler.Position;
 

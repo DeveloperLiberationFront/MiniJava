@@ -27,15 +27,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
+import notifications.FieldAlreadyExistsError;
 import notifications.IsDeclaration;
+import notifications.LocalVarAlreadyExistsError;
 import notifications.LocalVarDeclTypeError;
+import notifications.NameClashDiagnostic;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;
 import codegen.LLVM;
 
 import compiler.Diagnostic;
-import compiler.NameClashDiagnostic;
 import compiler.Position;
 
 /** Provides a representation for local variable declarations in a block.
@@ -71,7 +73,7 @@ public class LocalVarDecl extends Statement implements IsDeclaration {
                         init = vs.getInitExpr().typeOf(ctxt, env);
                     }
                     if (VarEnv.find(vs.getId().getName(), env) != null) {
-                    	ctxt.report(new NameClashDiagnostic(vs.getId(), env));
+                    	ctxt.report(new LocalVarAlreadyExistsError(vs.getId(), env));
                     } else if (init != null && !type.isSuperOf(init)) {
                     	ctxt.report(new LocalVarDeclTypeError(vs, type,
                     			vs.getInitExpr(), vs.getInitExpr().typeOf(ctxt, env)));
