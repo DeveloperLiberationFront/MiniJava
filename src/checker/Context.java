@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import notifications.MainMethodVoidError;
+import notifications.MainMethodAccessibilityModifierError;
 import syntax.Args;
 import syntax.ArrayLiteral;
 import syntax.Block;
@@ -275,9 +276,9 @@ public final class Context extends Phase {
             if (mainMeth == null) {
                 report(new Failure("No method main in class Main"));
             } else if (!mainMeth.isStatic()) {
-            	report(new MissingPermissionModifierDiagnostic(mainMeth, Modifiers.STATIC));
-                report(new Failure(mainMeth.getPos(),
-                                   "Main.main is not static"));
+            	report(new MainMethodAccessibilityModifierError(mainMeth, Modifiers.STATIC));
+//                report(new Failure(mainMeth.getPos(),
+//                                   "Main.main is not static"));
             } else if (!mainMeth.eqSig(Type.VOID, null)) {
             	report(new MainMethodVoidError(mainMeth, mainMeth.getType()));
 //            	report(new TypeError(mainMeth.getDeclaration(), Type.VOID));
