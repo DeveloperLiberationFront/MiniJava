@@ -9,9 +9,9 @@ public class InaccessableMemberError extends CompilerDiagnosticBuilder {
 
 	private ExplicitAccessibilityContractError accessibilityContractDiagnostic;
 
-	public InaccessableMemberError(MemberEnv memberEnv, Modifiers mods,
+	public InaccessableMemberError(MemberEnv memberEnv, ClassType cls, Modifiers mods,
 			ClassType owner) {
-		this.accessibilityContractDiagnostic = new ExplicitAccessibilityContractError(memberEnv, owner);
+		this.accessibilityContractDiagnostic = new ExplicitAccessibilityContractError(memberEnv, cls, mods, owner);
 	}
 	
 	public String getText() {
