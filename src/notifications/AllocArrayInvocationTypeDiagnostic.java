@@ -1,7 +1,8 @@
-package syntax;
+package notifications;
 
-import notifications.CompilerDiagnosticBuilder;
-import notifications.ImplicitTypeContractDiagnostic;
+import syntax.AllocArrayInvocation;
+import syntax.Expression;
+import syntax.Type;
 
 public class AllocArrayInvocationTypeDiagnostic extends
 		CompilerDiagnosticBuilder {

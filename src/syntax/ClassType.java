@@ -27,8 +27,13 @@ import interp.Value;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import notifications.CyclicInheritanceDiagnostic;
+import notifications.DeclarationClashDiagnostic;
 import notifications.FieldAlreadyExistsError;
+import notifications.InheritanceKindError;
 import notifications.MethodAlreadyExistsError;
+import notifications.MissingInheritedPropertyDiagnostic;
+import notifications.MissingReqiredStatementDiagnostic;
 import notifications.NameClashDiagnostic;
 
 import org.llvm.TypeRef;

@@ -20,6 +20,8 @@
 
 package syntax;
 
+import notifications.UnknownNameDiagnostic;
+
 import org.llvm.TypeRef;
 
 import checker.Context;

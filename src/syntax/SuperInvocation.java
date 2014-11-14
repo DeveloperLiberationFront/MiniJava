@@ -25,6 +25,9 @@ import interp.Value;
 
 import java.util.ArrayList;
 
+import notifications.MissingMethodDiagnostic;
+import notifications.ScopeAccessibilityError;
+
 import checker.Context;
 import checker.MethEnv;
 import checker.VarEnv;

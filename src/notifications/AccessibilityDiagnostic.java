@@ -1,4 +1,4 @@
-package syntax;
+package notifications;
 
 public interface AccessibilityDiagnostic {
 

@@ -1,6 +1,10 @@
-package syntax;
+package notifications;
 
 import java.util.Collection;
+
+import syntax.Expression;
+import syntax.MethDecl;
+
 
 import checker.Context;
 import checker.Env;

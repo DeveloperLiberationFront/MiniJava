@@ -1,5 +1,7 @@
-package syntax;
+package notifications;
 
+import syntax.Statement;
+import syntax.SuperInvocation;
 import checker.Env;
 
 import compiler.Position;

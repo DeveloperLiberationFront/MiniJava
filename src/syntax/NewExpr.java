@@ -23,6 +23,9 @@ package syntax;
 import interp.State;
 import interp.Value;
 
+import notifications.InvalidUseOfModifiedClassDiagnostic;
+import notifications.UnknownNameDiagnostic;
+
 import org.llvm.Builder;
 
 import checker.Context;

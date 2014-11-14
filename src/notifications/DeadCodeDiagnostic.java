@@ -1,14 +1,15 @@
-package syntax;
+package notifications;
 
+import syntax.Statement;
 import compiler.Position;
 import compiler.RichDiagnostic;
 
-public class CyclicInheritanceDiagnostic extends RichDiagnostic {
+public class DeadCodeDiagnostic extends RichDiagnostic {
 
-	private ClassType classType;
+	private Statement deadStatement;
 
-	public CyclicInheritanceDiagnostic(ClassType classType) {
-		this.classType = classType;
+	public DeadCodeDiagnostic(Statement deadStatement) {
+		this.deadStatement = deadStatement;
 	}
 
 	@Override

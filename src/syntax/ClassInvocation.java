@@ -20,6 +20,7 @@
 
 package syntax;
 
+import notifications.MissingFieldDiagnostic;
 import interp.State;
 import interp.Value;
 import checker.Context;

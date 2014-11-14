@@ -20,6 +20,7 @@
 
 package syntax;
 
+import notifications.SyntaxRequiresTypeDiagnostic;
 import interp.State;
 import interp.Value;
 import checker.Context;

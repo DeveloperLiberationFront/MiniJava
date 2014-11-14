@@ -1,5 +1,8 @@
-package syntax;
+package notifications;
 
+import syntax.ClassType;
+import syntax.Name;
+import syntax.NewExpr;
 import checker.Context;
 import checker.Env;
 

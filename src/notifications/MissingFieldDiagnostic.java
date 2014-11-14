@@ -1,5 +1,7 @@
-package syntax;
+package notifications;
 
+import syntax.Expression;
+import syntax.Type;
 import compiler.Position;
 import compiler.RichDiagnostic;
 

@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
+import notifications.DeadCodeDiagnostic;
 import notifications.FieldAlreadyExistsError;
 import notifications.IsDeclaration;
 import notifications.LocalVarAlreadyExistsError;

@@ -22,6 +22,12 @@ package lexer;
 
 import java.util.Hashtable;
 
+import notifications.EscapeSequenceContractError;
+import notifications.RichTokens;
+import notifications.UnterminatedBracketSyntaxContractError;
+import notifications.UnterminatedCharacterSyntaxContractError;
+import notifications.UnterminatedStringSyntaxContractDiagnostic;
+
 import syntax.CharLiteral;
 import syntax.Id;
 import syntax.IntLiteral;
@@ -32,7 +38,6 @@ import compiler.Failure;
 import compiler.Handler;
 import compiler.Source;
 import compiler.SourceLexer;
-import compiler.UnterminatedSyntaxDiagnostic;
 import compiler.Warning;
 
 /** A lexical analyzer for the mini Java compiler.
@@ -47,7 +52,9 @@ public class MjcLexer extends SourceLexer implements Tokens {
     /** Read the next token and return the corresponding integer code.
      */
     public int nextToken() {
+    	RichTokens currStartToken;
         for (;;) {
+        	currStartToken = null;
             skipWhitespace();
             markPosition();
             lexemeText = null;
@@ -157,27 +164,29 @@ public class MjcLexer extends SourceLexer implements Tokens {
                 nextChar();
                 return token = '%';
             case '/'  :
+            	currStartToken = new RichTokens(getPos(), "/*");
                 nextChar();
                 if (c == '/') {
                     skipOneLineComment();
                 } else if (c == '*') {
-                    skipBracketComment();
+                    skipBracketComment(currStartToken);
                 } else {
                     return token = '/';
                 }
                 break;
             case '"':
-                return string();
+                return string(new RichTokens(getPos(), "\""));
             case '\'':
+            	currStartToken = new RichTokens(getPos(), "'");
                 nextChar();
                 if (c == '\\') {
-                    semantic = new CharLiteral(getPos(), escapeSeq());
+                    semantic = new CharLiteral(getPos(), escapeSeq(new RichTokens(getPos(), "\\")));
                 } else {
                     semantic = new CharLiteral(getPos(), (char)c);
                 }
                 nextChar();
                 if (c != '\'') {
-                    report(new UnterminatedSyntaxDiagnostic(new RichTokens(0, 0, "\'"), new RichTokens(0, 0, "\'")));
+                    report(new UnterminatedCharacterSyntaxContractError(currStartToken));
                 }
                 nextChar();
                 return token = CHARLIT;
@@ -216,7 +225,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
         nextLine();
     }
 
-    private void skipBracketComment() { // Assumes c=='*'
+    private void skipBracketComment(RichTokens currStartToken) { // Assumes c=='*'
         nextChar();
         for (;;) {
             if (c == '*') {
@@ -229,8 +238,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
                 }
             }
             if (c == EOF) {
-            	report(new UnterminatedSyntaxDiagnostic(new RichTokens(0, 0, "/*"),
-            			new RichTokens(getPos().getRow(), getPos().getColumn(), "*/")));
+            	report(new UnterminatedBracketSyntaxContractError(currStartToken));
                 return;
             }
             if (c == EOL) {
@@ -241,7 +249,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
         }
     }
 
-    private char escapeSeq() {
+    private char escapeSeq(RichTokens startToken) {
         nextChar();
         switch (c) {
         case 'n':
@@ -256,13 +264,12 @@ public class MjcLexer extends SourceLexer implements Tokens {
             return '\'';
         default:
         	// how can we represent this as something other than "illegal char seq"
-            report(new Failure(getPos(),
-                               "Unknown string escape sequence: \\" + (char)c));
+        	report(new EscapeSequenceContractError(startToken));
             break;
         }
         return '\0';
     }
-    private int string() {
+    private int string(RichTokens startToken) {
         int start = col;
         StringBuilder b = new StringBuilder();
         boolean endOfString = false;
@@ -273,7 +280,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
                 endOfString = true;
                 break;
             case '\\':
-                b.append(escapeSeq());
+                b.append(escapeSeq(new RichTokens(getPos(), "\\")));
                 break;
             default:
                 b.append((char)c);
@@ -281,7 +288,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
             }
         } while (c != EOF && !endOfString);
         if (c == EOF) {
-            report(new UnterminatedSyntaxDiagnostic(new RichTokens(0, 0, "\""), new RichTokens(0, 0, "\"")));
+        	report(new UnterminatedStringSyntaxContractDiagnostic(startToken));
         }
         nextChar(); // consume closing "
         semantic = new StringLiteral(getPos(), b.toString());

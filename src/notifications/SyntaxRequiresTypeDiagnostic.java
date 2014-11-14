@@ -1,5 +1,7 @@
-package syntax;
+package notifications;
 
+import syntax.Syntax;
+import syntax.Type;
 import compiler.Diagnostic;
 import compiler.Position;
 

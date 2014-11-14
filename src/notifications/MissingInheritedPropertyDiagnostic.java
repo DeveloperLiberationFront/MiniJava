@@ -1,5 +1,6 @@
-package syntax;
+package notifications;
 
+import syntax.ClassType;
 import checker.MemberEnv;
 
 import compiler.Position;

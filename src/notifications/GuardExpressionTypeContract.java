@@ -1,6 +1,5 @@
-package syntax;
+package notifications;
 
-import notifications.ImplicitTypeContract;
 
 public class GuardExpressionTypeContract extends ImplicitTypeContract {
 
