@@ -66,7 +66,7 @@ public class MethDecl extends Decls {
             Type paramType = formals.getType().check(ctxt);
             VarEnv otherEnv = VarEnv.find(paramId.getName(), params);
 			if (otherEnv != null) {
-				ctxt.report(new MethodNameClashError(paramId, otherEnv));
+				ctxt.report(new MethodNameClashError(paramId, otherEnv.getId()));
             }
             params = new VarEnv(paramId, paramType, params, this);
         }

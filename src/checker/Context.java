@@ -23,6 +23,7 @@ package checker;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import notifications.ClassNameClashDiagnostic;
 import notifications.MainMethodAccessibilityModifierError;
 import notifications.MainMethodVoidError;
 import notifications.NameClashDiagnostic;
@@ -159,7 +160,7 @@ public final class Context extends Phase {
         for (int i = classes.length - 1; i >= 0; i--) {
             for (int j = 0; j < i; j++) {
                 if (classes[i].getId().sameId(classes[j].getId())) {
-                    report(new NameClashDiagnostic(classes[i].getId(), classes[j].getId()));
+                    report(new ClassNameClashDiagnostic(classes[i].getId(), classes[j].getId()));
                     break;
                 }
             }
