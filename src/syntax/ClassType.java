@@ -34,7 +34,6 @@ import notifications.InheritanceKindError;
 import notifications.MethodAlreadyExistsError;
 import notifications.MissingInheritedPropertyDiagnostic;
 import notifications.MissingReqiredStatementDiagnostic;
-import notifications.NameClashDiagnostic;
 
 import org.llvm.TypeRef;
 

@@ -3,6 +3,7 @@ package notifications;
 import syntax.ClassType;
 import syntax.Modifiers;
 import checker.MemberEnv;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

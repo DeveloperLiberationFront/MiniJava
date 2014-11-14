@@ -3,7 +3,6 @@ package notifications;
 import syntax.Tokens;
 
 import compiler.Position;
-import compiler.SourcePosition;
 
 public class RichTokens implements Tokens {
 

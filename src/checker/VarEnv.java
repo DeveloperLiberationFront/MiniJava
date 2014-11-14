@@ -29,7 +29,6 @@ import notifications.TooManyParametersError;
 import syntax.Args;
 import syntax.CastExpr;
 import syntax.Id;
-import syntax.LocalVarDecl;
 import syntax.Type;
 import codegen.Assembly;
 import codegen.LLVM;

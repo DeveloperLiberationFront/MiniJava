@@ -43,7 +43,6 @@ import syntax.Expression;
 import syntax.Id;
 import syntax.InterfaceType;
 import syntax.Modifiers;
-import syntax.Return;
 import syntax.Statement;
 import syntax.StatementExpr;
 import syntax.SuperInvocation;

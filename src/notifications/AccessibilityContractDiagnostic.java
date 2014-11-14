@@ -1,7 +1,6 @@
 package notifications;
 
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class AccessibilityContractDiagnostic extends CompilerDiagnosticBuilder {
 

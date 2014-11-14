@@ -1,6 +1,7 @@
 package notifications;
 
 import checker.MethEnv;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

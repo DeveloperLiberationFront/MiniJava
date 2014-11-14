@@ -20,10 +20,10 @@
 
 package syntax;
 
-import notifications.AllocArrayInvocationTypeDiagnostic;
 import interp.ArrayValue;
 import interp.State;
 import interp.Value;
+import notifications.AllocArrayInvocationTypeError;
 import checker.Context;
 import checker.VarEnv;
 

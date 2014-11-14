@@ -27,14 +27,12 @@ import notifications.RichTokens;
 import notifications.UnterminatedBracketSyntaxContractError;
 import notifications.UnterminatedCharacterSyntaxContractError;
 import notifications.UnterminatedStringSyntaxContractDiagnostic;
-
 import syntax.CharLiteral;
 import syntax.Id;
 import syntax.IntLiteral;
 import syntax.StringLiteral;
 import syntax.Tokens;
 
-import compiler.Failure;
 import compiler.Handler;
 import compiler.Source;
 import compiler.SourceLexer;

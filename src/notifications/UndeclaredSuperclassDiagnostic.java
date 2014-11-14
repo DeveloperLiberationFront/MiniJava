@@ -1,6 +1,7 @@
 package notifications;
 
 import syntax.SuperAccess;
+
 import compiler.Declaration;
 import compiler.Position;
 import compiler.RichDiagnostic;

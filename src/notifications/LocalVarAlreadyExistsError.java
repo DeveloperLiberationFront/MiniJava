@@ -1,7 +1,6 @@
 package notifications;
 
 import syntax.Id;
-import checker.MethEnv;
 import checker.VarEnv;
 
 public class LocalVarAlreadyExistsError extends CompilerDiagnosticBuilder {

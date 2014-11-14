@@ -22,7 +22,6 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-
 import notifications.WhileTestTypeError;
 
 import org.llvm.BasicBlock;

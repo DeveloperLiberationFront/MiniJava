@@ -20,6 +20,7 @@
 
 package syntax;
 
+import notifications.MethodNameClashError;
 import notifications.NameClashDiagnostic;
 import checker.Context;
 import checker.VarEnv;

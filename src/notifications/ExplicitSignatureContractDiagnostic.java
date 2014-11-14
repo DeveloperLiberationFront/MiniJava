@@ -1,6 +1,7 @@
 package notifications;
 
 import checker.VarEnv;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

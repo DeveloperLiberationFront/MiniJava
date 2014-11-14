@@ -23,8 +23,8 @@ package checker;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import notifications.MainMethodVoidError;
 import notifications.MainMethodAccessibilityModifierError;
+import notifications.MainMethodVoidError;
 import notifications.NameClashDiagnostic;
 import notifications.UnboundMainClassNameError;
 import syntax.Args;

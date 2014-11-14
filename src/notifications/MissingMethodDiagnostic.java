@@ -2,6 +2,7 @@ package notifications;
 
 import syntax.ClassType;
 import syntax.Invocation;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

@@ -20,9 +20,9 @@
 
 package syntax;
 
-import notifications.MissingFieldDiagnostic;
 import interp.State;
 import interp.Value;
+import notifications.MissingFieldDiagnostic;
 import checker.Context;
 import checker.MethEnv;
 import checker.VarEnv;

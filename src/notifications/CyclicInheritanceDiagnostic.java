@@ -1,6 +1,7 @@
 package notifications;
 
 import syntax.ClassType;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

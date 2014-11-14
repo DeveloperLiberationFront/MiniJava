@@ -1,7 +1,6 @@
 package notifications;
 
 import syntax.Id;
-import checker.Env;
 import checker.MethEnv;
 
 public class MethodAlreadyExistsError extends CompilerDiagnosticBuilder {

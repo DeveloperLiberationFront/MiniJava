@@ -20,11 +20,11 @@
 
 package syntax;
 
+import interp.State;
+import interp.Value;
 import notifications.MissingFieldDiagnostic;
 import notifications.ScopeAccessibilityError;
 import notifications.UndeclaredSuperclassDiagnostic;
-import interp.State;
-import interp.Value;
 import checker.Context;
 import checker.FieldEnv;
 import checker.VarEnv;

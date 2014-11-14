@@ -2,7 +2,6 @@ package notifications;
 
 import syntax.Id;
 import syntax.Name;
-import checker.Context;
 
 public class UnboundMainClassNameError extends CompilerDiagnosticBuilder {
 

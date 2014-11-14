@@ -28,11 +28,9 @@ import java.util.Collections;
 import java.util.Iterator;
 
 import notifications.DeadCodeDiagnostic;
-import notifications.FieldAlreadyExistsError;
 import notifications.IsDeclaration;
 import notifications.LocalVarAlreadyExistsError;
 import notifications.LocalVarDeclTypeError;
-import notifications.NameClashDiagnostic;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;

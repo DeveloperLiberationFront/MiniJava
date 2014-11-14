@@ -1,9 +1,8 @@
 package notifications;
 
-import checker.MemberEnv;
 import syntax.ClassType;
 import syntax.Modifiers;
-import syntax.Type;
+import checker.MemberEnv;
 
 public class InaccessableMemberError extends CompilerDiagnosticBuilder {
 

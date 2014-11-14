@@ -2,6 +2,7 @@ package notifications;
 
 import syntax.Id;
 import checker.Env;
+
 import compiler.Position;
 import compiler.RichDiagnostic;
 

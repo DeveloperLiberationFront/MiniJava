@@ -20,9 +20,9 @@
 
 package syntax;
 
-import notifications.UnknownNameDiagnostic;
 import interp.State;
 import interp.Value;
+import notifications.UnknownNameDiagnostic;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;
