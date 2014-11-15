@@ -22,6 +22,7 @@ package syntax;
 
 import interp.State;
 import interp.Value;
+import notifications.SyntaxRequiresTypeDiagnostic;
 import checker.Context;
 import checker.FieldEnv;
 import checker.VarEnv;

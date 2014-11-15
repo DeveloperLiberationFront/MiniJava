@@ -23,7 +23,11 @@ package checker;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import notifications.ClassNameClashError;
+import notifications.MainMethodAccessibilityModifierError;
 import notifications.MainMethodVoidError;
+import notifications.NameClashDiagnostic;
+import notifications.UnboundMainClassNameError;
 import syntax.Args;
 import syntax.ArrayLiteral;
 import syntax.Block;
@@ -49,7 +53,6 @@ import syntax.VarDecls;
 import compiler.Diagnostic;
 import compiler.Failure;
 import compiler.Handler;
-import compiler.NameClashDiagnostic;
 import compiler.Phase;
 import compiler.Position;
 
@@ -157,7 +160,7 @@ public final class Context extends Phase {
         for (int i = classes.length - 1; i >= 0; i--) {
             for (int j = 0; j < i; j++) {
                 if (classes[i].getId().sameId(classes[j].getId())) {
-                    report(new NameClashDiagnostic(classes[i].getId(), classes[j].getId()));
+                    report(new ClassNameClashError(classes[i].getId(), classes[j].getId()));
                     break;
                 }
             }
@@ -267,7 +270,7 @@ public final class Context extends Phase {
     private MethEnv checkMain() {
         ClassType mainClass = findClass("Main");
         if (mainClass == null) {
-        	report(new MissingRequiredNameDiagnostic(new ClassType(null, new Id(null, "Main"), null, null, null), null)); // needs representation of scope
+        	report(new UnboundMainClassNameError());
 //            report(new Failure(
 //                       "Program does not contain a definition for class Main"));
         } else {
@@ -275,9 +278,9 @@ public final class Context extends Phase {
             if (mainMeth == null) {
                 report(new Failure("No method main in class Main"));
             } else if (!mainMeth.isStatic()) {
-            	report(new MissingPermissionModifierDiagnostic(mainMeth, Modifiers.STATIC));
-                report(new Failure(mainMeth.getPos(),
-                                   "Main.main is not static"));
+            	report(new MainMethodAccessibilityModifierError(mainMeth, Modifiers.STATIC));
+//                report(new Failure(mainMeth.getPos(),
+//                                   "Main.main is not static"));
             } else if (!mainMeth.eqSig(Type.VOID, null)) {
             	report(new MainMethodVoidError(mainMeth, mainMeth.getType()));
 //            	report(new TypeError(mainMeth.getDeclaration(), Type.VOID));

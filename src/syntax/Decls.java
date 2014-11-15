@@ -20,11 +20,12 @@
 
 package syntax;
 
+import notifications.IsDeclaration;
 import checker.Context;
 
 /** Provides a representation for lists of declarations.
  */
-public abstract class Decls {
+public abstract class Decls implements IsDeclaration {
     protected Modifiers mods;
     private   Decls     next;
 

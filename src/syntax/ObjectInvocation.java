@@ -22,6 +22,8 @@ package syntax;
 
 import interp.State;
 import interp.Value;
+import notifications.MissingFieldDiagnostic;
+import notifications.MissingMethodDiagnostic;
 
 import org.llvm.Builder;
 

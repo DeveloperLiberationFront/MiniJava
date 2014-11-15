@@ -20,6 +20,7 @@
 
 package checker;
 
+import notifications.InaccessableMemberError;
 import syntax.ClassType;
 import syntax.Id;
 import syntax.Modifiers;
@@ -68,7 +69,7 @@ public abstract class MemberEnv extends Env {
     public void accessCheck(Context ctxt, Position pos) {
         ClassType cls = ctxt.getCurrClass();
         if (!mods.accessible(owner, cls)) {
-        	ctxt.report(new PermissionAccessibilityDiagnostic(this, cls));
+        	ctxt.report(new InaccessableMemberError(this, cls, mods, owner));
         }
     }
 }

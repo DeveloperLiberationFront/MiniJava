@@ -28,6 +28,8 @@ import interp.Value;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import notifications.MissingReturnStatementError;
+
 import org.llvm.BasicBlock;
 import org.llvm.TypeRef;
 
@@ -41,7 +43,6 @@ import syntax.Expression;
 import syntax.Id;
 import syntax.InterfaceType;
 import syntax.Modifiers;
-import syntax.Return;
 import syntax.Statement;
 import syntax.StatementExpr;
 import syntax.SuperInvocation;
@@ -187,7 +188,8 @@ public final class MethEnv extends MemberEnv implements Iterable<MethEnv>,
         if (body != null) {
             ctxt.setCurrMethod(this);
             if (body.check(ctxt, params, 0) && !type.equal(Type.VOID)) {
-            	ctxt.report(new MissingTerminatingExpressionDiagnostic(new Return(body.getPos())));
+            	ctxt.report(new MissingReturnStatementError(this));
+//            	ctxt.report(new MissingTerminatingExpressionDiagnostic(new Return(body.getPos())));
             }
             localBytes = ctxt.getLocalBytes();
             ctxt.setCurrMethod(null);

@@ -20,10 +20,11 @@
 
 package syntax;
 
+import notifications.MethodNameClashError;
+import notifications.NameClashDiagnostic;
 import checker.Context;
 import checker.VarEnv;
 
-import compiler.NameClashDiagnostic;
 
 /** Provides a representation for a method declaration in a class.
  */
@@ -65,9 +66,9 @@ public class MethDecl extends Decls {
             Type paramType = formals.getType().check(ctxt);
             VarEnv otherEnv = VarEnv.find(paramId.getName(), params);
 			if (otherEnv != null) {
-            	ctxt.report(new NameClashDiagnostic(paramId, otherEnv.getId()));
+				ctxt.report(new MethodNameClashError(paramId, otherEnv.getId()));
             }
-            params = new VarEnv(paramId, paramType, params);
+            params = new VarEnv(paramId, paramType, params, this);
         }
         if (is_constructor) {
             type = cls;

@@ -27,6 +27,14 @@ import interp.Value;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import notifications.CyclicInheritanceError;
+import notifications.DeclarationClashError;
+import notifications.FieldAlreadyExistsError;
+import notifications.InheritanceKindError;
+import notifications.MethodAlreadyExistsError;
+import notifications.MissingInheritedPropertyDiagnostic;
+import notifications.MissingReqiredStatementDiagnostic;
+
 import org.llvm.TypeRef;
 
 import checker.Context;
@@ -39,7 +47,6 @@ import codegen.LLVM;
 import compiler.Declaration;
 import compiler.Diagnostic;
 import compiler.Failure;
-import compiler.NameClashDiagnostic;
 import compiler.Position;
 
 /** Provides a representation for class types.
@@ -159,7 +166,7 @@ public class ClassType extends Type {
     throws Diagnostic {
         if (level == CHECKING) {
             /* cannot proceed after this since many method searches rely on being able to terminate */
-        	throw new CyclicInheritanceDiagnostic(this);
+        	throw new CyclicInheritanceError(this);
         } else if (level == UNCHECKED) {
             ClassType extendsClass = null;
             if (extendsType != null) {
@@ -206,7 +213,7 @@ public class ClassType extends Type {
                 }
             }
             if (constructors.size() > 1) {
-            	ctxt.report(new DeclarationClashDiagnostic(constructors));
+            	ctxt.report(new DeclarationClashError(constructors));
             }
             boolean has_constructor = !constructors.isEmpty();
 
@@ -366,7 +373,7 @@ public class ClassType extends Type {
                          Expression init_expr) {
         FieldEnv field = null;
         if (FieldEnv.find(id.getName(), fields) != null) {
-        	ctxt.report(new NameClashDiagnostic(id, fields));
+        	ctxt.report(new FieldAlreadyExistsError(id, fields));
         } else if (mods.isStatic()) {
             field = new FieldEnv(mods, id, type, this, -1,  0, null, init_expr);
         } else {
@@ -391,7 +398,7 @@ public class ClassType extends Type {
                           Id id, Type type,
                           VarEnv params, Statement body) {
         if (MethEnv.find(id.getName(), methods) != null) {
-        	ctxt.report(new NameClashDiagnostic(id, MethEnv.find(id.getName(), methods)));
+        	ctxt.report(new MethodAlreadyExistsError(id, MethEnv.find(id.getName(), methods)));
         } else {
             int size = VarEnv.fitToFrame(params);
             int slot = (-1);
@@ -616,5 +623,9 @@ public class ClassType extends Type {
 
 	public Declaration getDeclaration() {
 		return null;
+	}
+	
+	public Decls getDecls() {
+		return decls;
 	}
 }

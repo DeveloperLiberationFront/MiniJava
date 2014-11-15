@@ -20,7 +20,7 @@ public class ImplicitTypeContractDiagnostic extends TypeMismatchDiagnostic {
 		this.expressions = new LinkedHashMap();
 		this.expressions.put(incorrectExpression, actualType);
 		this.contractProvider = contractProvider;
-		this.languageContract = languageContract;
+//		this.languageContract = languageContract;
 	}
 
 	public ImplicitTypeContractDiagnostic(Expression leftArgument, Type leftArgumentType,
@@ -30,7 +30,7 @@ public class ImplicitTypeContractDiagnostic extends TypeMismatchDiagnostic {
 		this.expressions.put(leftArgument, leftArgumentType);
 		this.expressions.put(leftArgument, leftArgumentType);
 		this.contractProvider = contractProvider;
-		this.languageContract = languageContract;
+//		this.languageContract = languageContract;
 	}
 
 	public ImplicitTypeContractDiagnostic(Env incorrectEnv, Type methEnvActualType,

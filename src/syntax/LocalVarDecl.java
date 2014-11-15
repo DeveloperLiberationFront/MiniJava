@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
+import notifications.DeadCodeError;
+import notifications.IsDeclaration;
+import notifications.LocalVarAlreadyExistsError;
 import notifications.LocalVarDeclTypeError;
 import checker.Context;
 import checker.VarEnv;
@@ -34,12 +37,11 @@ import codegen.Assembly;
 import codegen.LLVM;
 
 import compiler.Diagnostic;
-import compiler.NameClashDiagnostic;
 import compiler.Position;
 
 /** Provides a representation for local variable declarations in a block.
  */
-public class LocalVarDecl extends Statement {
+public class LocalVarDecl extends Statement implements IsDeclaration {
     private Type type;
     private VarDecls varDecls;
     private Block block;
@@ -70,7 +72,7 @@ public class LocalVarDecl extends Statement {
                         init = vs.getInitExpr().typeOf(ctxt, env);
                     }
                     if (VarEnv.find(vs.getId().getName(), env) != null) {
-                    	ctxt.report(new NameClashDiagnostic(vs.getId(), env));
+                    	ctxt.report(new LocalVarAlreadyExistsError(vs.getId(), env));
                     } else if (init != null && !type.isSuperOf(init)) {
                     	ctxt.report(new LocalVarDeclTypeError(vs, type,
                     			vs.getInitExpr(), vs.getInitExpr().typeOf(ctxt, env)));
@@ -79,7 +81,7 @@ public class LocalVarDecl extends Statement {
                     } else {
                         frameOffset -= size;
                         VarEnv prev_env = env;
-                        env = new VarEnv(vs.getId(), type, frameOffset, env);
+                        env = new VarEnv(vs.getId(), type, frameOffset, env, this);
                         Expression e;
                         if (vs.getInitExpr() != null) {
                             e = vs.getInitExpr();
@@ -104,7 +106,7 @@ public class LocalVarDecl extends Statement {
         }
         block = new Block(pos, assigns.toArray(new Statement[0]));
         if (!iter.hasNext()) {
-        	ctxt.report(new DeadCodeDiagnostic(this));
+        	ctxt.report(new DeadCodeError(this));
             return true;
         } else {
             Statement s = iter.next();

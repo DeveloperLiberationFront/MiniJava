@@ -23,6 +23,9 @@ package checker;
 import interp.State;
 import interp.Value;
 import notifications.ArgumentTypeError;
+import notifications.IsDeclaration;
+import notifications.TooManyArgumentsError;
+import notifications.TooManyParametersError;
 import syntax.Args;
 import syntax.CastExpr;
 import syntax.Id;
@@ -39,15 +42,21 @@ import compiler.Position;
 public final class VarEnv extends Env {
     private int    offset;
     private VarEnv next;
+	private IsDeclaration declaration;
+    
+    public IsDeclaration getDeclaration() {
+    	return declaration;
+    }
 
-    public VarEnv(Id id, Type type, int offset, VarEnv next) {
+    public VarEnv(Id id, Type type, int offset, VarEnv next, IsDeclaration decl) {
         super(id, type);
         this.offset = offset;
         this.next   = next;
+        this.declaration = decl;
     }
 
-    public VarEnv(Id id, Type type, VarEnv next) {
-        this(id, type, 0, next);
+    public VarEnv(Id id, Type type, VarEnv next, IsDeclaration decl) {
+        this(id, type, 0, next, decl);
     }
 
     public VarEnv getNext() {
@@ -67,6 +76,10 @@ public final class VarEnv extends Env {
      */
     static void checkArgs(Position pos, Context ctxt, VarEnv env,
                           Args args, VarEnv formals) {
+    	IsDeclaration formalsDeclaration = null;
+    	if (formals != null) {
+    		formalsDeclaration = formals.getDeclaration();
+    	}
         while (args != null && formals != null) {
             try {
                 Type argt = args.getArg().typeOf(ctxt, env);
@@ -87,9 +100,9 @@ public final class VarEnv extends Env {
             formals = formals.next;
         }
         if (formals != null) {
-        	ctxt.report(new ArgumentMismatchDiagnostic(env, formals));
+        	ctxt.report(new TooManyParametersError(env, formals.getDeclaration()));
         } else if (args != null) {
-        	ctxt.report(new ArgumentMismatchDiagnostic(env, formals));
+        	ctxt.report(new TooManyArgumentsError(env, formalsDeclaration));
         }
     }
 
