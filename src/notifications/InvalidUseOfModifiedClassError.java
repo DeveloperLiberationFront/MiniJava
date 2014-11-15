@@ -1,16 +1,19 @@
 package notifications;
 
 import syntax.ClassType;
+import syntax.NewExpr;
 
 import compiler.Position;
 import compiler.RichDiagnostic;
 
-public class CyclicInheritanceDiagnostic extends RichDiagnostic {
+public class InvalidUseOfModifiedClassError extends RichDiagnostic {
 
-	private ClassType classType;
+	private NewExpr useSite;
+	private ClassType declaration;
 
-	public CyclicInheritanceDiagnostic(ClassType classType) {
-		this.classType = classType;
+	public InvalidUseOfModifiedClassError(NewExpr useSite, ClassType declaration) {
+		this.useSite = useSite;
+		this.declaration = declaration;
 	}
 
 	@Override

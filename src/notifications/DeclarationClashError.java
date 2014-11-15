@@ -7,9 +7,9 @@ import checker.MethEnv;
 import compiler.Diagnostic;
 import compiler.Position;
 
-public class DeclarationClashDiagnostic extends Diagnostic {
+public class DeclarationClashError extends Diagnostic {
 
-	public DeclarationClashDiagnostic(ArrayList<MethEnv> declarations) {
+	public DeclarationClashError(ArrayList<MethEnv> declarations) {
 		// TODO Auto-generated constructor stub
 	}
 

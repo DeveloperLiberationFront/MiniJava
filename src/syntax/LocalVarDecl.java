@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
-import notifications.DeadCodeDiagnostic;
+import notifications.DeadCodeError;
 import notifications.IsDeclaration;
 import notifications.LocalVarAlreadyExistsError;
 import notifications.LocalVarDeclTypeError;
@@ -106,7 +106,7 @@ public class LocalVarDecl extends Statement implements IsDeclaration {
         }
         block = new Block(pos, assigns.toArray(new Statement[0]));
         if (!iter.hasNext()) {
-        	ctxt.report(new DeadCodeDiagnostic(this));
+        	ctxt.report(new DeadCodeError(this));
             return true;
         } else {
             Statement s = iter.next();

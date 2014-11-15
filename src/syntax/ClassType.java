@@ -27,8 +27,8 @@ import interp.Value;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import notifications.CyclicInheritanceDiagnostic;
-import notifications.DeclarationClashDiagnostic;
+import notifications.CyclicInheritanceError;
+import notifications.DeclarationClashError;
 import notifications.FieldAlreadyExistsError;
 import notifications.InheritanceKindError;
 import notifications.MethodAlreadyExistsError;
@@ -166,7 +166,7 @@ public class ClassType extends Type {
     throws Diagnostic {
         if (level == CHECKING) {
             /* cannot proceed after this since many method searches rely on being able to terminate */
-        	throw new CyclicInheritanceDiagnostic(this);
+        	throw new CyclicInheritanceError(this);
         } else if (level == UNCHECKED) {
             ClassType extendsClass = null;
             if (extendsType != null) {
@@ -213,7 +213,7 @@ public class ClassType extends Type {
                 }
             }
             if (constructors.size() > 1) {
-            	ctxt.report(new DeclarationClashDiagnostic(constructors));
+            	ctxt.report(new DeclarationClashError(constructors));
             }
             boolean has_constructor = !constructors.isEmpty();
 

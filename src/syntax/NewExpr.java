@@ -22,7 +22,7 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.InvalidUseOfModifiedClassDiagnostic;
+import notifications.InvalidUseOfModifiedClassError;
 import notifications.UnknownNameDiagnostic;
 
 import org.llvm.Builder;
@@ -54,7 +54,7 @@ public class NewExpr extends StatementExpr {
         if (cls == null) {
         	throw new UnknownNameDiagnostic(name, ctxt, this);
         } else if (cls.getMods().includes(Modifiers.ABSTRACT)) {
-        	throw new InvalidUseOfModifiedClassDiagnostic(this, cls);
+        	throw new InvalidUseOfModifiedClassError(this, cls);
 //            throw new Failure(pos, "Unable to instantiate abstract class or interface " +
 //            name);
         }

@@ -23,6 +23,8 @@ package syntax;
 import interp.State;
 import interp.Value;
 import notifications.MissingFieldDiagnostic;
+import notifications.NoStaticFieldOnInstanceError;
+import notifications.UnboundFieldNameError;
 import checker.Context;
 import checker.MethEnv;
 import checker.VarEnv;
@@ -50,9 +52,9 @@ public final class ClassInvocation extends Invocation {
     throws Diagnostic {
         this.menv = cls.findMethod(name);
         if (this.menv == null) {
-        	throw new MissingFieldDiagnostic(this, cls);
+        	throw new UnboundFieldNameError(this, cls);
         } else if (!this.menv.isStatic()) {
-        	throw new MissingFieldDiagnostic(this, cls); // missing information: what to call to get an instance
+        	throw new NoStaticFieldOnInstanceError(this, cls); // missing information: what to call to get an instance
         }
         return checkInvocation(ctxt, env, this.menv);
     }

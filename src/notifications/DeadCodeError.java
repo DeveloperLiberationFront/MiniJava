@@ -5,11 +5,11 @@ import syntax.Statement;
 import compiler.Position;
 import compiler.RichDiagnostic;
 
-public class DeadCodeDiagnostic extends RichDiagnostic {
+public class DeadCodeError extends RichDiagnostic {
 
 	private Statement deadStatement;
 
-	public DeadCodeDiagnostic(Statement deadStatement) {
+	public DeadCodeError(Statement deadStatement) {
 		this.deadStatement = deadStatement;
 	}
 
