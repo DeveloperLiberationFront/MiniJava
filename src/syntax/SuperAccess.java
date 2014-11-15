@@ -22,9 +22,9 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.MissingFieldDiagnostic;
-import notifications.ScopeAccessibilityError;
-import notifications.UndeclaredSuperclassDiagnostic;
+import notifications.diagnostics.MissingFieldDiagnostic;
+import notifications.diagnostics.UndeclaredSuperclassDiagnostic;
+import notifications.thrownerrors.ScopeAccessibilityError;
 import checker.Context;
 import checker.FieldEnv;
 import checker.VarEnv;

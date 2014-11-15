@@ -26,7 +26,7 @@ import interp.Value;
 
 import java.util.Iterator;
 
-import notifications.FieldTypeError;
+import notifications.thrownerrors.FieldTypeError;
 import syntax.AssignExpr;
 import syntax.ClassAccess;
 import syntax.ClassType;

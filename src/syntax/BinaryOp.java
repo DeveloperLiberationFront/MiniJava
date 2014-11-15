@@ -20,7 +20,7 @@
 
 package syntax;
 
-import notifications.ImplicitTypeContract;
+import notifications.contracts.ImplicitTypeContract;
 import codegen.Assembly;
 
 import compiler.Position;

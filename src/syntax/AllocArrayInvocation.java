@@ -23,7 +23,7 @@ package syntax;
 import interp.ArrayValue;
 import interp.State;
 import interp.Value;
-import notifications.AllocArrayInvocationTypeError;
+import notifications.thrownerrors.AllocArrayInvocationTypeError;
 import checker.Context;
 import checker.VarEnv;
 

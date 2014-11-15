@@ -20,8 +20,8 @@
 
 package syntax;
 
-import notifications.MethodNameClashError;
-import notifications.NameClashDiagnostic;
+import notifications.diagnostics.NameClashDiagnostic;
+import notifications.thrownerrors.MethodNameClashError;
 import checker.Context;
 import checker.VarEnv;
 

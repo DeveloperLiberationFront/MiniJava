@@ -22,8 +22,8 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.InvalidUseOfModifiedClassError;
-import notifications.UnknownNameDiagnostic;
+import notifications.diagnostics.UnknownNameDiagnostic;
+import notifications.thrownerrors.InvalidUseOfModifiedClassError;
 
 import org.llvm.Builder;
 

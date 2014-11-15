@@ -23,11 +23,11 @@ package checker;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import notifications.ClassNameClashError;
-import notifications.MainMethodAccessibilityModifierError;
-import notifications.MainMethodVoidError;
-import notifications.NameClashDiagnostic;
-import notifications.UnboundMainClassNameError;
+import notifications.diagnostics.NameClashDiagnostic;
+import notifications.thrownerrors.ClassNameClashError;
+import notifications.thrownerrors.MainMethodAccessibilityModifierError;
+import notifications.thrownerrors.MainMethodVoidError;
+import notifications.thrownerrors.UnboundMainClassNameError;
 import syntax.Args;
 import syntax.ArrayLiteral;
 import syntax.Block;

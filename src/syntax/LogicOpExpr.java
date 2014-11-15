@@ -20,7 +20,7 @@
 
 package syntax;
 
-import notifications.LogicOpTypeError;
+import notifications.thrownerrors.LogicOpTypeError;
 import checker.Context;
 import checker.VarEnv;
 

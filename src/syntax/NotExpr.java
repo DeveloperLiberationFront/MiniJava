@@ -23,7 +23,7 @@ package syntax;
 import interp.BoolValue;
 import interp.State;
 import interp.Value;
-import notifications.NotExprError;
+import notifications.thrownerrors.NotExprError;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;

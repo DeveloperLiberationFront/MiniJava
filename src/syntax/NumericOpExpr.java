@@ -20,7 +20,7 @@
 
 package syntax;
 
-import notifications.NumericOpTypeError;
+import notifications.thrownerrors.NumericOpTypeError;
 import checker.Context;
 import checker.VarEnv;
 import codegen.LLVM;

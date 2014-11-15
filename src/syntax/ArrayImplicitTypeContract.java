@@ -1,6 +1,6 @@
 package syntax;
 
-import notifications.ImplicitTypeContract;
+import notifications.contracts.ImplicitTypeContract;
 
 public class ArrayImplicitTypeContract extends ImplicitTypeContract {
 

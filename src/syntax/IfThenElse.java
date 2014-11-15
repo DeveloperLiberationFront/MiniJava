@@ -22,7 +22,7 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.IfThenElseTestTypeContractError;
+import notifications.contracts.IfThenElseTestTypeContractError;
 
 import org.llvm.BasicBlock;
 import org.llvm.Builder;

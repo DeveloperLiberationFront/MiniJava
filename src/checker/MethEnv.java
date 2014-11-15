@@ -28,7 +28,7 @@ import interp.Value;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import notifications.MissingReturnStatementError;
+import notifications.thrownerrors.MissingReturnStatementError;
 
 import org.llvm.BasicBlock;
 import org.llvm.TypeRef;

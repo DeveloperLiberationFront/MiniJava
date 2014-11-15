@@ -22,7 +22,7 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.UnknownNameDiagnostic;
+import notifications.diagnostics.UnknownNameDiagnostic;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;

@@ -22,9 +22,9 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.MissingFieldDiagnostic;
-import notifications.NoStaticFieldOnInstanceError;
-import notifications.UnboundFieldNameError;
+import notifications.diagnostics.MissingFieldDiagnostic;
+import notifications.thrownerrors.NoStaticFieldOnInstanceError;
+import notifications.thrownerrors.UnboundFieldNameError;
 import checker.Context;
 import checker.MethEnv;
 import checker.VarEnv;

@@ -22,8 +22,8 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.DoWhileTestTypeError;
-import notifications.ImplicitTypeContract;
+import notifications.contracts.ImplicitTypeContract;
+import notifications.thrownerrors.DoWhileTestTypeError;
 
 import org.llvm.BasicBlock;
 import org.llvm.Builder;

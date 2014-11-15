@@ -20,7 +20,7 @@
 
 package syntax;
 
-import notifications.NewArraySizeTypeError;
+import notifications.thrownerrors.NewArraySizeTypeError;
 import checker.Context;
 import checker.VarEnv;
 

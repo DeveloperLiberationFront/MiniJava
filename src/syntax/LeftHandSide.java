@@ -22,8 +22,8 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.TypeContract;
-import notifications.TypeContractProvider;
+import notifications.contracts.TypeContract;
+import notifications.contracts.TypeContractProvider;
 import codegen.Assembly;
 import codegen.LLVM;
 

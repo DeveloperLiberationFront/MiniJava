@@ -27,10 +27,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
-import notifications.DeadCodeError;
 import notifications.IsDeclaration;
-import notifications.LocalVarAlreadyExistsError;
-import notifications.LocalVarDeclTypeError;
+import notifications.thrownerrors.DeadCodeError;
+import notifications.thrownerrors.LocalVarAlreadyExistsError;
+import notifications.thrownerrors.LocalVarDeclTypeError;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;

@@ -20,7 +20,7 @@
 
 package syntax;
 
-import notifications.UnknownNameDiagnostic;
+import notifications.diagnostics.UnknownNameDiagnostic;
 import checker.Context;
 import checker.FieldEnv;
 import checker.MethEnv;

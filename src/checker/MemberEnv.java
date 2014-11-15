@@ -20,7 +20,7 @@
 
 package checker;
 
-import notifications.InaccessableMemberError;
+import notifications.thrownerrors.InaccessableMemberError;
 import syntax.ClassType;
 import syntax.Id;
 import syntax.Modifiers;

@@ -20,7 +20,7 @@
 
 package syntax;
 
-import notifications.UnknownNameDiagnostic;
+import notifications.diagnostics.UnknownNameDiagnostic;
 
 import org.llvm.TypeRef;
 

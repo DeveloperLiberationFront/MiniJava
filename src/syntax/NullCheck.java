@@ -22,7 +22,7 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.NullCheckTypeError;
+import notifications.thrownerrors.NullCheckTypeError;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;

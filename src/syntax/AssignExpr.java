@@ -22,7 +22,7 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.AssignmentTypeError;
+import notifications.thrownerrors.AssignmentTypeError;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;

@@ -22,7 +22,7 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.WhileTestTypeError;
+import notifications.thrownerrors.WhileTestTypeError;
 
 import org.llvm.BasicBlock;
 import org.llvm.Builder;

@@ -22,9 +22,9 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.ReturnExpressionFromVoidMethodTypeError;
-import notifications.ReturnNothingFromTypedMethodTypeError;
-import notifications.ReturnTypeNotSubclassTypeError;
+import notifications.thrownerrors.ReturnExpressionFromVoidMethodTypeError;
+import notifications.thrownerrors.ReturnNothingFromTypedMethodTypeError;
+import notifications.thrownerrors.ReturnTypeNotSubclassTypeError;
 
 import org.llvm.BasicBlock;
 

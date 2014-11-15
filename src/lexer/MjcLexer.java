@@ -22,11 +22,11 @@ package lexer;
 
 import java.util.Hashtable;
 
-import notifications.EscapeSequenceContractError;
 import notifications.RichTokens;
-import notifications.UnterminatedBracketSyntaxContractError;
-import notifications.UnterminatedCharacterSyntaxContractError;
-import notifications.UnterminatedStringSyntaxContractDiagnostic;
+import notifications.diagnostics.UnterminatedStringSyntaxContractDiagnostic;
+import notifications.thrownerrors.EscapeSequenceContractError;
+import notifications.thrownerrors.UnterminatedBracketSyntaxContractError;
+import notifications.thrownerrors.UnterminatedCharacterSyntaxContractError;
 import syntax.CharLiteral;
 import syntax.Id;
 import syntax.IntLiteral;

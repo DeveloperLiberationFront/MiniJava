@@ -23,7 +23,7 @@ package syntax;
 import interp.BoolValue;
 import interp.State;
 import interp.Value;
-import notifications.RelOpTypeError;
+import notifications.thrownerrors.RelOpTypeError;
 
 import org.llvm.binding.LLVMLibrary.LLVMIntPredicate;
 

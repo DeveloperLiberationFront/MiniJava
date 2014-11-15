@@ -22,10 +22,10 @@ package checker;
 
 import interp.State;
 import interp.Value;
-import notifications.ArgumentTypeError;
 import notifications.IsDeclaration;
-import notifications.TooManyArgumentsError;
-import notifications.TooManyParametersError;
+import notifications.thrownerrors.ArgumentTypeError;
+import notifications.thrownerrors.TooManyArgumentsError;
+import notifications.thrownerrors.TooManyParametersError;
 import syntax.Args;
 import syntax.CastExpr;
 import syntax.Id;
