@@ -5,8 +5,7 @@ import notifications.RichDiagnostic;
 import compiler.Position;
 
 public class AccessibilityContractDiagnostic
-	extends RichDiagnostic
-	implements AccessibilityDiagnosticInterface {
+	extends RichDiagnostic {
 
 	@Override
 	public String getText() {

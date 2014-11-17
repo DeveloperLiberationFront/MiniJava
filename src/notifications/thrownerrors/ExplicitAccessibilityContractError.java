@@ -1,37 +1,37 @@
 package notifications.thrownerrors;
 
-import notifications.RichDiagnostic;
+import notifications.diagnostics.AccessibilityDiagnostic;
 import syntax.ClassType;
 import syntax.Modifiers;
 import checker.MemberEnv;
+
 import compiler.Position;
 
-public class ExplicitAccessibilityContractError extends RichDiagnostic {
+public class ExplicitAccessibilityContractError extends CompilerDiagnosticBuilder 
+implements AccessibilityErrorInterface {
 
-	private MemberEnv brokenReference;
-	private ClassType contractProvider;
-	private Modifiers mods;
-	private ClassType cls;
+	private AccessibilityDiagnostic accessibilityDiagnostic;
 
 	public ExplicitAccessibilityContractError(MemberEnv memberEnv,
 			ClassType cls, Modifiers mods, ClassType owner) {
-		this.contractProvider = owner;
-		this.brokenReference = memberEnv;
-		this.mods = mods;
-		this.cls = cls;
+		this.accessibilityDiagnostic = new AccessibilityDiagnostic(owner, memberEnv, mods, cls);
 	}
 
 	@Override
 	public String getText() {
-		return brokenReference.describe() + " (declared in " + contractProvider + ")" +
-//				" is inaccessible because it is " + contractProvider.getMethods().find(brokenReference.getName(), contractProvider.getMethods()).getMods().describe();
-				" is inaccessible from " + " because it is " + mods.describe();
+		return this.accessibilityDiagnostic.getText();
 	}
 
 	@Override
 	public Position getPos() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public AccessibilityDiagnostic getAccessibiltyDiagnostic() {
+		// TODO Auto-generated method stub
+		return this.accessibilityDiagnostic;
 	}
 
 }

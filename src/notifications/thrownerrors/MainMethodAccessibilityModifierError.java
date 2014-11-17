@@ -2,15 +2,16 @@ package notifications.thrownerrors;
 
 import notifications.RichDiagnostic;
 import notifications.diagnostics.AccessibilityContractDiagnostic;
+import notifications.diagnostics.AccessibilityDiagnostic;
 import checker.MethEnv;
 import compiler.Position;
 
 public class MainMethodAccessibilityModifierError extends CompilerDiagnosticBuilder {
 	
-	private AccessibilityContractDiagnostic accessibilityContractDiagnostic;
+	private AccessibilityDiagnostic accessibilityContractDiagnostic;
 	
 	public MainMethodAccessibilityModifierError(MethEnv method, int missingModifierMask) {
-		accessibilityContractDiagnostic = new AccessibilityContractDiagnostic();  
+		accessibilityContractDiagnostic = new AccessibilityDiagnostic(null, method, null, null);  
 	}
 
 	@Override

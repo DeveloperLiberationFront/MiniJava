@@ -3,7 +3,6 @@ package notifications.thrownerrors;
 import java.util.Collection;
 
 import notifications.RichDiagnostic;
-import notifications.diagnostics.AccessibilityDiagnosticInterface;
 import syntax.Expression;
 import syntax.MethDecl;
 import checker.Context;
@@ -11,7 +10,7 @@ import checker.Env;
 import compiler.Position;
 
 public class ScopeAccessibilityError extends RichDiagnostic implements
-		AccessibilityDiagnosticInterface {
+		AccessibilityErrorInterface {
 
 	private Object valid;
 	private Env currEnv;
