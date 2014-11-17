@@ -1,9 +1,8 @@
 package notifications.thrownerrors;
 
+import notifications.RichDiagnostic;
 import syntax.ClassType;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class CyclicInheritanceError extends RichDiagnostic {
 

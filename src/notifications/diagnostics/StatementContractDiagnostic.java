@@ -1,10 +1,9 @@
 package notifications.diagnostics;
 
+import notifications.RichDiagnostic;
 import notifications.contracts.NonVoidMethodReturnContract;
 import checker.Env;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class StatementContractDiagnostic extends RichDiagnostic {
 

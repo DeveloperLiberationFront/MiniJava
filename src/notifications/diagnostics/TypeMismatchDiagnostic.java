@@ -1,7 +1,7 @@
 package notifications.diagnostics;
 
+import notifications.RichDiagnostic;
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class TypeMismatchDiagnostic extends RichDiagnostic {
 

@@ -22,13 +22,14 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.diagnostics.UnknownNameDiagnostic;
+import notifications.diagnostics.UnboundNameDiagnostic;
+import notifications.thrownerrors.UnboundClassNameInObjectAccessError;
+import notifications.thrownerrors.UnboundFieldNameErrorInObjectAccess;
 import checker.Context;
 import checker.FieldEnv;
 import checker.VarEnv;
 import codegen.Assembly;
 import codegen.LLVM;
-
 import compiler.Diagnostic;
 
 /** Represents an access to an instance field.
@@ -53,9 +54,9 @@ public final class ObjectAccess extends FieldAccess {
         Type receiver = object.typeOf(ctxt, env);
         ClassType cls = receiver.isClass();
         if (cls == null) {
-        	throw new UnknownNameDiagnostic(new Name(this.id), env);
+        	throw new UnboundClassNameInObjectAccessError(new Name(this.id), env);
         } else if ((this.env = cls.findField(name)) == null) {
-        	throw new UnknownNameDiagnostic(new Name(ctxt.getCurrClass().getId()), env);
+        	throw new UnboundFieldNameErrorInObjectAccess(new Name(ctxt.getCurrClass().getId()), env);
         }
         this.env.accessCheck(ctxt, pos);
         return this.env.getType();

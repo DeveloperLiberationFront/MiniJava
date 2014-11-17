@@ -1,7 +1,7 @@
 package syntax;
 
+import notifications.RichDiagnostic;
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class TypeError extends RichDiagnostic {
 

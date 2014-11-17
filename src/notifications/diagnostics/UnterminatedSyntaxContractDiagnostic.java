@@ -1,8 +1,8 @@
 package notifications.diagnostics;
 
+import notifications.RichDiagnostic;
 import notifications.RichTokens;
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class UnterminatedSyntaxContractDiagnostic extends RichDiagnostic {
 

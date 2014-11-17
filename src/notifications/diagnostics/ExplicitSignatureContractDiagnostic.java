@@ -1,10 +1,9 @@
 package notifications.diagnostics;
 
 import notifications.IsDeclaration;
+import notifications.RichDiagnostic;
 import checker.VarEnv;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class ExplicitSignatureContractDiagnostic extends RichDiagnostic {
 

@@ -1,10 +1,9 @@
 package notifications.thrownerrors;
 
+import notifications.RichDiagnostic;
 import syntax.Id;
 import checker.Env;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class NameClashError extends RichDiagnostic {
 

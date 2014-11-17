@@ -1,9 +1,8 @@
 package notifications.thrownerrors;
 
+import notifications.RichDiagnostic;
 import syntax.Statement;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class DeadCodeError extends RichDiagnostic {
 

@@ -1,11 +1,10 @@
 package notifications.thrownerrors;
 
+import notifications.RichDiagnostic;
 import syntax.ClassType;
 import syntax.Modifiers;
 import checker.MemberEnv;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class ExplicitAccessibilityContractError extends RichDiagnostic {
 

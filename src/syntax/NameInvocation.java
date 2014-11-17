@@ -22,12 +22,12 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.diagnostics.UnknownNameDiagnostic;
+import notifications.diagnostics.UnboundNameDiagnostic;
+import notifications.thrownerrors.UnboundMethodNameError;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;
 import codegen.LLVM;
-
 import compiler.Diagnostic;
 
 /** Represents an access to a method by an as yet unresolved name.
@@ -48,7 +48,7 @@ public class NameInvocation extends Invocation {
     throws Diagnostic {
         resolved = name.asMethod(ctxt, env, args);
         if (resolved == null) {
-        	throw new UnknownNameDiagnostic(name, env);
+        	throw new UnboundMethodNameError(name, env);
         }
         return resolved.typeInvocation(ctxt, env);
     }

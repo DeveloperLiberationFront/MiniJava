@@ -20,11 +20,11 @@
 
 package syntax;
 
+import notifications.BitOpExprTypeError;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;
 import codegen.LLVM;
-
 import compiler.Diagnostic;
 import compiler.Position;
 

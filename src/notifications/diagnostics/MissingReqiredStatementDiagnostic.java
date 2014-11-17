@@ -1,11 +1,10 @@
 package notifications.diagnostics;
 
+import notifications.RichDiagnostic;
 import syntax.Statement;
 import syntax.SuperInvocation;
 import checker.Env;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class MissingReqiredStatementDiagnostic extends RichDiagnostic {
 

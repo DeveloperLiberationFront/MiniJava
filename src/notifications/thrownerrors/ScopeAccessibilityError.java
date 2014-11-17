@@ -2,18 +2,16 @@ package notifications.thrownerrors;
 
 import java.util.Collection;
 
-import notifications.diagnostics.AccessibilityDiagnostic;
-
+import notifications.RichDiagnostic;
+import notifications.diagnostics.AccessibilityDiagnosticInterface;
 import syntax.Expression;
 import syntax.MethDecl;
 import checker.Context;
 import checker.Env;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class ScopeAccessibilityError extends RichDiagnostic implements
-		AccessibilityDiagnostic {
+		AccessibilityDiagnosticInterface {
 
 	private Object valid;
 	private Env currEnv;

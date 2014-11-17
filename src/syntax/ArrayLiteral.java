@@ -23,6 +23,7 @@ package syntax;
 import interp.State;
 import interp.Value;
 import notifications.thrownerrors.ArrayLiteralMemberTypeError;
+import notifications.thrownerrors.ArrayLiteralTypeError;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;

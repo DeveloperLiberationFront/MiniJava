@@ -22,15 +22,15 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.diagnostics.MissingFieldDiagnostic;
 import notifications.diagnostics.UndeclaredSuperclassDiagnostic;
 import notifications.thrownerrors.ScopeAccessibilityError;
+import notifications.thrownerrors.UnboundFieldNameOnSuperclassError;
+import notifications.thrownerrors.UndeclaredSuperclassError;
 import checker.Context;
 import checker.FieldEnv;
 import checker.VarEnv;
 import codegen.Assembly;
 import codegen.LLVM;
-
 import compiler.Diagnostic;
 
 /** Represents an access to a field through the superclass.
@@ -52,11 +52,11 @@ public final class SuperAccess extends FieldAccess {
     throws Diagnostic {
         ClassType sup = ctxt.getCurrClass().getSuper();
         if (sup == null) {
-        	throw new UndeclaredSuperclassDiagnostic(this, ctxt.getCurrClass().getDeclaration()); // needs representation of 'extends' modifier
+        	throw new UndeclaredSuperclassError(this, ctxt.getCurrClass().getDeclaration());
         } else if (ctxt.isStatic()) {
         	throw new ScopeAccessibilityError(this, ctxt.getCurrMethod(), null);
         } else if ((this.env = sup.findField(name)) == null) {
-        	throw new MissingFieldDiagnostic(this, sup);
+        	throw new UnboundFieldNameOnSuperclassError(this, sup);
         }
         this.env.accessCheck(ctxt, pos);
         size = ctxt.getCurrMethod().getSize();

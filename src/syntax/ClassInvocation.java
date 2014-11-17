@@ -22,7 +22,6 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.diagnostics.MissingFieldDiagnostic;
 import notifications.thrownerrors.NoStaticFieldOnInstanceError;
 import notifications.thrownerrors.UnboundFieldNameError;
 import checker.Context;

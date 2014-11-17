@@ -1,10 +1,9 @@
 package notifications.diagnostics;
 
+import notifications.RichDiagnostic;
 import syntax.ClassType;
 import checker.MemberEnv;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class MissingInheritedPropertyDiagnostic extends RichDiagnostic {
 

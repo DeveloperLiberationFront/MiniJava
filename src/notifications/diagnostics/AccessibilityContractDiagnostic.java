@@ -1,9 +1,12 @@
 package notifications.diagnostics;
 
-import notifications.thrownerrors.CompilerDiagnosticBuilder;
+import notifications.RichDiagnostic;
+
 import compiler.Position;
 
-public class AccessibilityContractDiagnostic extends CompilerDiagnosticBuilder {
+public class AccessibilityContractDiagnostic
+	extends RichDiagnostic
+	implements AccessibilityDiagnosticInterface {
 
 	@Override
 	public String getText() {

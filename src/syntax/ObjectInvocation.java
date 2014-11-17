@@ -22,8 +22,8 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.diagnostics.MissingFieldDiagnostic;
-import notifications.diagnostics.MissingMethodDiagnostic;
+import notifications.thrownerrors.MissingObjectMethodError;
+import notifications.thrownerrors.NonClassHasNoMethodsError;
 
 import org.llvm.Builder;
 
@@ -55,9 +55,9 @@ public class ObjectInvocation extends Invocation {
         Type receiver = object.typeOf(ctxt, env);
         ClassType cls = receiver.isClass();
         if (cls == null) {
-        	throw new MissingFieldDiagnostic(this, ctxt.getCurrClass());
+        	throw new NonClassHasNoMethodsError(this, ctxt.getCurrClass());
         } else if ((this.menv = cls.findMethod(name)) == null) {
-        	throw new MissingMethodDiagnostic(this, ctxt.getCurrClass());
+        	throw new MissingObjectMethodError(this, ctxt.getCurrClass());
         }
         return checkInvocation(ctxt, env, this.menv);
     }

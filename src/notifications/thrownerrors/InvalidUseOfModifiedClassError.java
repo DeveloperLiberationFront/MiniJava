@@ -1,10 +1,9 @@
 package notifications.thrownerrors;
 
+import notifications.RichDiagnostic;
 import syntax.ClassType;
 import syntax.NewExpr;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class InvalidUseOfModifiedClassError extends RichDiagnostic {
 

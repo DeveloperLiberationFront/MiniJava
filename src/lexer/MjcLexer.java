@@ -23,16 +23,15 @@ package lexer;
 import java.util.Hashtable;
 
 import notifications.RichTokens;
-import notifications.diagnostics.UnterminatedStringSyntaxContractDiagnostic;
 import notifications.thrownerrors.EscapeSequenceContractError;
 import notifications.thrownerrors.UnterminatedBracketSyntaxContractError;
 import notifications.thrownerrors.UnterminatedCharacterSyntaxContractError;
+import notifications.thrownerrors.UnterminatedStringSyntaxContractError;
 import syntax.CharLiteral;
 import syntax.Id;
 import syntax.IntLiteral;
 import syntax.StringLiteral;
 import syntax.Tokens;
-
 import compiler.Handler;
 import compiler.Source;
 import compiler.SourceLexer;
@@ -286,7 +285,7 @@ public class MjcLexer extends SourceLexer implements Tokens {
             }
         } while (c != EOF && !endOfString);
         if (c == EOF) {
-        	report(new UnterminatedStringSyntaxContractDiagnostic(startToken));
+        	report(new UnterminatedStringSyntaxContractError(startToken));
         }
         nextChar(); // consume closing "
         semantic = new StringLiteral(getPos(), b.toString());

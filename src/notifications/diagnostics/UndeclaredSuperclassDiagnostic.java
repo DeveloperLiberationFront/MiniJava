@@ -1,10 +1,9 @@
 package notifications.diagnostics;
 
+import notifications.RichDiagnostic;
 import syntax.SuperAccess;
-
 import compiler.Declaration;
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class UndeclaredSuperclassDiagnostic extends RichDiagnostic {
 

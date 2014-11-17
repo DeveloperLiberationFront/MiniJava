@@ -29,6 +29,7 @@ import java.util.Hashtable;
 
 import notifications.diagnostics.MissingInheritedPropertyDiagnostic;
 import notifications.diagnostics.MissingReqiredStatementDiagnostic;
+import notifications.thrownerrors.ConstructorMustCallSuperError;
 import notifications.thrownerrors.CyclicInheritanceError;
 import notifications.thrownerrors.DeclarationClashError;
 import notifications.thrownerrors.FieldAlreadyExistsError;
@@ -43,7 +44,6 @@ import checker.MethEnv;
 import checker.VarEnv;
 import codegen.Assembly;
 import codegen.LLVM;
-
 import compiler.Declaration;
 import compiler.Diagnostic;
 import compiler.Failure;
@@ -264,9 +264,9 @@ public class ClassType extends Type {
                     if (extendsClass != null) {
                         m = extendsClass.findMethod(extendsClass.getId().getName());
                         if (super_cons == null && m != null && m.getParams() != null) {
-                        	ctxt.report(new MissingReqiredStatementDiagnostic(new SuperInvocation(null, null, null), methods.getBody()));
-                            ctxt.report(new Failure(menv.getPos(),
-                                                    "Constructor needs a super class constructor (maybe it's not the first statement?)."));
+                        	ctxt.report(new ConstructorMustCallSuperError(new SuperInvocation(null, null, null), methods.getBody()));
+//                            ctxt.report(new Failure(menv.getPos(),
+//                                                    "Constructor needs a super class constructor (maybe it's not the first statement?)."));
                         } else if (super_cons == null && extendsClass != null) {
                             SuperInvocation super_invoke = new SuperInvocation(menv.getPos(), null, null);
                             super_invoke.setFirst();

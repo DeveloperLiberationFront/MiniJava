@@ -22,13 +22,13 @@ package syntax;
 
 import java.util.ArrayList;
 
+import notification.thrownerrors.MethodMustReturnValueError;
 import notifications.diagnostics.MissingReqiredStatementDiagnostic;
 import checker.Context;
 import checker.MethEnv;
 import checker.VarEnv;
 import codegen.Assembly;
 import codegen.LLVM;
-
 import compiler.Diagnostic;
 import compiler.Position;
 
@@ -70,7 +70,7 @@ public abstract class Invocation extends StatementExpr {
     public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
         Type result = typeInvocation(ctxt, env);
         if (result == null) {
-        	throw new MissingReqiredStatementDiagnostic(new Return(null, null), env);
+        	throw new MethodMustReturnValueError(new Return(null, null), env);
         }
         return result;
     }

@@ -18,7 +18,9 @@
  */
 
 
-package compiler;
+package notifications;
+
+import compiler.Diagnostic;
 
 public abstract class RichDiagnostic extends Diagnostic {
 }

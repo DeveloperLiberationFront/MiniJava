@@ -2,13 +2,12 @@
 
 package notifications.diagnostics;
 
+import notifications.RichDiagnostic;
 import syntax.Id;
 import checker.Env;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
-public class NameClashDiagnostic extends RichDiagnostic implements ClashDiagnostic {
+public class NameClashDiagnostic extends RichDiagnostic implements ClashDiagnosticInterface {
 
 	private Id firstDeclaration;
 	private Id secondDeclaration;

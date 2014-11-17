@@ -20,7 +20,7 @@
 
 package syntax;
 
-import notifications.diagnostics.UnknownNameDiagnostic;
+import notifications.diagnostics.UnboundNameDiagnostic;
 import checker.Context;
 import checker.FieldEnv;
 import checker.MethEnv;
@@ -88,7 +88,7 @@ public class Name {
         return null;
     }
     /** Lookup name as a value.
-     * @throws UnknownNameDiagnostic 
+     * @throws UnboundNameDiagnostic 
      */
     public FieldAccess asValue(Context ctxt, VarEnv env) {
         if (prefix == null) {
@@ -111,8 +111,6 @@ public class Name {
             if (cls != null && (fe = cls.findField(id.getName())) != null) {
                 return new ClassAccess(fe);
             }
-            
-            ctxt.report(new UnknownNameDiagnostic(new Name(this.id), cls.getFields()));
         }
         return null;
     }

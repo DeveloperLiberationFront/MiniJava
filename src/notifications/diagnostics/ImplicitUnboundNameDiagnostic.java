@@ -1,10 +1,9 @@
 package notifications.diagnostics;
 
+import notifications.RichDiagnostic;
 import notifications.contracts.ImplicitNameContract;
 import syntax.Name;
-
 import compiler.Position;
-import compiler.RichDiagnostic;
 
 public class ImplicitUnboundNameDiagnostic extends RichDiagnostic {
 

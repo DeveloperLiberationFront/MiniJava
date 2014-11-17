@@ -25,7 +25,7 @@ import interp.Value;
 
 import java.util.ArrayList;
 
-import notifications.diagnostics.MissingMethodDiagnostic;
+import notifications.thrownerrors.UnboundSuperMethodNameError;
 import notifications.thrownerrors.ScopeAccessibilityError;
 import checker.Context;
 import checker.MethEnv;
@@ -80,7 +80,7 @@ public final class SuperInvocation extends Invocation {
         } else if (ctxt.isStatic()) {
         	throw new ScopeAccessibilityError(pos, ctxt); // missing: reason it won't work
         } else if ((this.menv = sup.findMethod(name)) == null) {
-        	throw new MissingMethodDiagnostic(this, sup);
+        	throw new UnboundSuperMethodNameError(this, sup);
         }
         size = ctxt.getCurrMethod().getSize();
         return checkInvocation(ctxt, env, this.menv);

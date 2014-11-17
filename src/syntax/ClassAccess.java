@@ -23,12 +23,12 @@ package syntax;
 import interp.State;
 import interp.Value;
 import notifications.diagnostics.SyntaxRequiresTypeDiagnostic;
+import notifications.thrownerrors.NonStaticClassAccessError;
 import checker.Context;
 import checker.FieldEnv;
 import checker.VarEnv;
 import codegen.Assembly;
 import codegen.LLVM;
-
 import compiler.Diagnostic;
 
 /** Represents an access to a class variable.
@@ -46,7 +46,7 @@ public final class ClassAccess extends FieldAccess {
      */
     public Type typeOf(Context ctxt, VarEnv env) throws Diagnostic {
         if (!this.env.isStatic()) {
-        	throw new SyntaxRequiresTypeDiagnostic(this, this.env.getOwner());
+        	throw new NonStaticClassAccessError(this, this.env.getOwner());
         }
         this.env.accessCheck(ctxt, pos);
         return this.env.getType();
