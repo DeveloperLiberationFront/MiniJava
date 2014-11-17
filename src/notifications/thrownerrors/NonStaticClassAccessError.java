@@ -1,15 +1,15 @@
 package notifications.thrownerrors;
 
-import notifications.diagnostics.AccessibilityContractDiagnostic;
+import notifications.diagnostics.AccessibilityDiagnostic;
 import syntax.ClassAccess;
 import syntax.ClassType;
 
 public class NonStaticClassAccessError extends CompilerDiagnosticBuilder {
 
-	private AccessibilityContractDiagnostic accessibilityContractDiagnostic;
+	private AccessibilityDiagnostic accessibilityContractDiagnostic;
 
 	public NonStaticClassAccessError(ClassAccess classAccess, ClassType owner) {
-		this.accessibilityContractDiagnostic = new AccessibilityContractDiagnostic();
+		this.accessibilityContractDiagnostic = new AccessibilityDiagnostic(null, null, null, owner);
 	}
 
 }
