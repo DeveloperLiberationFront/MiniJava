@@ -62,6 +62,7 @@
 - UnterminatedSyntaxContractDiagnostic.java
     - contract
         - implicit
+        - syntax
 
 ## interfaces
 
