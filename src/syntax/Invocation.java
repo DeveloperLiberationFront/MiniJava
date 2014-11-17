@@ -22,8 +22,8 @@ package syntax;
 
 import java.util.ArrayList;
 
-import notification.thrownerrors.MethodMustReturnValueError;
 import notifications.diagnostics.MissingReqiredStatementDiagnostic;
+import notifications.thrownerrors.MethodMustReturnValueError;
 import checker.Context;
 import checker.MethEnv;
 import checker.VarEnv;

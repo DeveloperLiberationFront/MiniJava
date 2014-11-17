@@ -1,7 +1,6 @@
-package notification.thrownerrors;
+package notifications.thrownerrors;
 
 import notifications.diagnostics.MissingReqiredStatementDiagnostic;
-import notifications.thrownerrors.CompilerDiagnosticBuilder;
 import syntax.Return;
 import checker.VarEnv;
 
