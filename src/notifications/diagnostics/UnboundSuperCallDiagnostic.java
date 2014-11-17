@@ -5,12 +5,12 @@ import syntax.SuperAccess;
 import compiler.Declaration;
 import compiler.Position;
 
-public class UndeclaredSuperclassDiagnostic extends RichDiagnostic {
+public class UnboundSuperCallDiagnostic extends RichDiagnostic implements UnboundDiagnosticInterface {
 
 	private Declaration subclassDeclaration;
 	private SuperAccess superAccess;
 
-	public UndeclaredSuperclassDiagnostic(SuperAccess superAccess,
+	public UnboundSuperCallDiagnostic(SuperAccess superAccess,
 			Declaration subclassDeclaration) {
 		// instantiate "missing expression" and "scope accessibility" diagnostics
 		this.superAccess = superAccess;

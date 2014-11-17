@@ -11,7 +11,7 @@ import checker.Context;
 import checker.Env;
 import compiler.Position;
 
-public class UnboundNameDiagnostic extends RichDiagnostic {
+public class UnboundNameDiagnostic extends RichDiagnostic implements UnboundDiagnosticInterface {
 
 	private Name name;
 	private Env env;
