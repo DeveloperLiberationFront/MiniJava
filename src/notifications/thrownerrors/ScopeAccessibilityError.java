@@ -3,6 +3,7 @@ package notifications.thrownerrors;
 import java.util.Collection;
 
 import notifications.RichDiagnostic;
+import notifications.thrownerrors.interfaces.AccessibilityErrorInterface;
 import syntax.Expression;
 import syntax.MethDecl;
 import checker.Context;

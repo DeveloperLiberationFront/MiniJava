@@ -1,10 +1,10 @@
 package notifications.thrownerrors;
 
 import notifications.diagnostics.AccessibilityDiagnostic;
+import notifications.thrownerrors.interfaces.AccessibilityErrorInterface;
 import syntax.ClassType;
 import syntax.Modifiers;
 import checker.MemberEnv;
-
 import compiler.Position;
 
 public class ExplicitAccessibilityContractError extends CompilerDiagnosticBuilder 

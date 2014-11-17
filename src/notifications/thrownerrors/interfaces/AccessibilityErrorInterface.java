@@ -1,7 +1,7 @@
-package notifications.thrownerrors;
+package notifications.thrownerrors.interfaces;
 
 import notifications.diagnostics.AccessibilityDiagnostic;
 
-interface AccessibilityErrorInterface {
+public interface AccessibilityErrorInterface {
 	public AccessibilityDiagnostic getAccessibiltyDiagnostic();
 }
