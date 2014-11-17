@@ -11,20 +11,21 @@
 ## diagnostics
 
 - AccessibilityContractDiagnostic.java
-    - accessibility
     - contract
+        - accessibility
         - needs implicit/explicit split?
 - ExplicitSignatureContractDiagnostic.java
     - contract
+        - type? length? arity?
         - explicit
 - ExplicitTypeContractDiagnostic.java
     - contract
         - explicit
-    - type
+        - type
 - ImplicitTypeContractDiagnostic.java
     - contract
         - implicit
-    - type
+        - type
 - ImplicitUnboundNameDiagnostic.java
     - unbound name
     - contract
@@ -34,8 +35,8 @@
         - explicit
     - unbound name
 - MissingReqiredStatementDiagnostic.java
-    - missing statement
     - contract
+        - statement
         - implicit
 - NameClashDiagnostic.java
     - clash
