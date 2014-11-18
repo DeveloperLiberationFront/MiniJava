@@ -1,15 +1,15 @@
 package notifications.thrownerrors;
 
 import notifications.IsDeclaration;
-import notifications.diagnostics.ExplicitSignatureContractDiagnostic;
+import notifications.diagnostics.SignatureContractDiagnostic;
 import checker.VarEnv;
 
 public class TooManyArgumentsError extends CompilerDiagnosticBuilder {
 
-	private ExplicitSignatureContractDiagnostic signatureError;
+	private SignatureContractDiagnostic signatureError;
 
 	public TooManyArgumentsError(VarEnv env, IsDeclaration formalsDeclaration) {
-		this.signatureError = new ExplicitSignatureContractDiagnostic(env, formalsDeclaration);
+		this.signatureError = new SignatureContractDiagnostic(env, formalsDeclaration);
 	}
 
 }

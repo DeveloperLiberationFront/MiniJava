@@ -1,12 +1,20 @@
+
+
 ## dimensions
 
-- contract
-    - explicit
-    - implicit
-- accessibility
-- type
-- name binding
-    - unbound name
+kinds of diagnostics:
+- broken accessibility contract
+- name clash
+- broken type contract
+- unbound program element
+    - usually element names, but sometimes things like super()
+- unimplemented inherited property
+- missing required statement
+    - i.e. no return statement in method that returns a value, no super() call in constructor
+- signature contract diagnostic
+    - i.e. too many/too few parameters to method call
+- type mismatch
+- unterminated syntax contract
 
 ## diagnostics
 
@@ -27,8 +35,9 @@
         - implicit
         - type
 - ImplicitUnboundNameDiagnostic.java
-    - unbound name
+    - unbound
     - contract
+        - name
         - implicit
 - MissingInheritedPropertyDiagnostic.java
     - contract

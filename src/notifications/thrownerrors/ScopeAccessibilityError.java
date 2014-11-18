@@ -3,6 +3,7 @@ package notifications.thrownerrors;
 import java.util.Collection;
 
 import notifications.RichDiagnostic;
+import notifications.diagnostics.AccessibilityDiagnostic;
 import notifications.thrownerrors.interfaces.AccessibilityErrorInterface;
 import syntax.Expression;
 import syntax.MethDecl;
@@ -17,8 +18,9 @@ public class ScopeAccessibilityError extends RichDiagnostic implements
 	private Env currEnv;
 	private Expression invocation;
 	private Collection<MethDecl> validEnvironments;
+	private AccessibilityDiagnostic accessibilityDiagnostic;
 	public ScopeAccessibilityError(Position pos, Context ctxt) {
-		// TODO Auto-generated constructor stub
+		this.accessibilityDiagnostic = new AccessibilityDiagnostic(null, null, null, null);
 	}
 
 	public ScopeAccessibilityError(Expression superAccess,
@@ -26,6 +28,7 @@ public class ScopeAccessibilityError extends RichDiagnostic implements
 		this.invocation = superAccess;
 		this.currEnv = currEnv;
 		this.validEnvironments = environments;
+		this.accessibilityDiagnostic = new AccessibilityDiagnostic(null, null, null, null);
 	}
 
 	@Override
@@ -39,7 +42,11 @@ public class ScopeAccessibilityError extends RichDiagnostic implements
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 
+	@Override
+	public AccessibilityDiagnostic getAccessibiltyDiagnostic() {
+		return this.accessibilityDiagnostic;
+	}
+	
+	
 }

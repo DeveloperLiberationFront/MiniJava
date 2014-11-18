@@ -1,9 +1,8 @@
 package notifications.thrownerrors;
 
-import notifications.RichDiagnostic;
-import notifications.diagnostics.AccessibilityContractDiagnostic;
 import notifications.diagnostics.AccessibilityDiagnostic;
 import checker.MethEnv;
+
 import compiler.Position;
 
 public class MainMethodAccessibilityModifierError extends CompilerDiagnosticBuilder {

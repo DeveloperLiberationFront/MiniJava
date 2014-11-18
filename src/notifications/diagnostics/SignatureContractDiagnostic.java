@@ -5,9 +5,9 @@ import notifications.RichDiagnostic;
 import checker.VarEnv;
 import compiler.Position;
 
-public class ExplicitSignatureContractDiagnostic extends RichDiagnostic {
+public class SignatureContractDiagnostic extends RichDiagnostic {
 
-	public ExplicitSignatureContractDiagnostic(VarEnv env,
+	public SignatureContractDiagnostic(VarEnv env,
 			IsDeclaration formalsDeclaration) {
 		
 	}
