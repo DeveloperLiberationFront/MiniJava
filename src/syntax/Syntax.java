@@ -20,6 +20,7 @@
 
 package syntax;
 
+import notifications.contracts.TypeContract;
 import compiler.Position;
 
 /** Provides a representation for syntactic elements, each of which is
@@ -37,4 +38,9 @@ public abstract class Syntax {
     public Position getPos() {
         return pos;
     }
+
+	public TypeContract getContract() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

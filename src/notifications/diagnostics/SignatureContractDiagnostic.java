@@ -9,7 +9,6 @@ public class SignatureContractDiagnostic extends RichDiagnostic {
 
 	public SignatureContractDiagnostic(VarEnv env,
 			IsDeclaration formalsDeclaration) {
-		
 	}
 
 	@Override

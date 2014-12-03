@@ -139,6 +139,10 @@ public final class StringLiteral extends Literal {
         }
         return interp_obj;
     }
+    
+    public String toString() {
+    	return "\"" + this.value + "\" at " + this.pos.describe();
+    }
 
     public org.llvm.Value llvmGen(LLVM l) {
         if (this != master) {

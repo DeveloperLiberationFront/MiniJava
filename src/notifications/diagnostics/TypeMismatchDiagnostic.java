@@ -8,7 +8,7 @@ public class TypeMismatchDiagnostic extends RichDiagnostic {
 	@Override
 	public String getText() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.getClass().toString();
 	}
 
 	@Override

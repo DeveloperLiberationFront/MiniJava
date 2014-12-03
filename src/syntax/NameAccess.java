@@ -35,6 +35,10 @@ import compiler.Diagnostic;
 public final class NameAccess extends FieldAccess {
     private Name        name;
     private FieldAccess resolved;
+    
+    public String toString() {
+    	return this.name.toString() + " at " + this.name.getPos().describe();
+    }
 
     public NameAccess(Name name) {
         super(name.getPos());

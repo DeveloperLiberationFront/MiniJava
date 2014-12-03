@@ -22,6 +22,7 @@ package syntax;
 
 import interp.State;
 import interp.Value;
+import notifications.contracts.TypeContract;
 import notifications.thrownerrors.WhileTestTypeError;
 
 import org.llvm.BasicBlock;
@@ -40,6 +41,14 @@ import compiler.Position;
 public final class While extends Statement {
     private Expression test;
     private Statement body;
+    
+    public String toString() {
+    	return "while statement at " + pos.describe();
+    }
+    
+    public TypeContract getContract() {
+    	return new TypeContract(Type.BOOLEAN);
+    }
 
     public While(Position pos, Expression test, Statement body) {
         super(pos);

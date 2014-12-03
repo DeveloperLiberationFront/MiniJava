@@ -3,12 +3,10 @@ package notifications.diagnostics;
 import java.util.LinkedHashMap;
 
 import notifications.contracts.ImplicitTypeContract;
-
 import syntax.Expression;
 import syntax.Syntax;
 import syntax.Type;
 import checker.Env;
-
 import compiler.Position;
 
 public class ImplicitTypeContractDiagnostic extends TypeMismatchDiagnostic {
@@ -16,9 +14,13 @@ public class ImplicitTypeContractDiagnostic extends TypeMismatchDiagnostic {
 	private LinkedHashMap<Expression, Type> expressions;
 	private Syntax contractProvider;
 	private ImplicitTypeContract languageContract;
+	private String string;
 
 	public ImplicitTypeContractDiagnostic(Expression incorrectExpression, Type actualType,
 			Syntax contractProvider) {
+		this.string = incorrectExpression.toString() + " is of type " + actualType +
+				" but should be of type " + contractProvider.getContract().getRequiredType() + 
+				" for " + contractProvider.toString(); 
 		this.expressions = new LinkedHashMap();
 		this.expressions.put(incorrectExpression, actualType);
 		this.contractProvider = contractProvider;
@@ -43,7 +45,7 @@ public class ImplicitTypeContractDiagnostic extends TypeMismatchDiagnostic {
 	@Override
 	public String getText() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.string;
 	}
 
 	@Override
