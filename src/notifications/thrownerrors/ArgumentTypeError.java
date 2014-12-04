@@ -18,7 +18,7 @@ public class ArgumentTypeError extends CompilerDiagnosticBuilder {
 	private UnsatisfiedImplicationDiagnostic unsatisfiedImplication;
 
 	public ArgumentTypeError(Expression arg, Type argt, VarEnv formal, Type formalType) {
-		ArrayList<Consequent> consequents = new ArrayList();
+		ArrayList<Consequent> consequents = new ArrayList<Consequent>();
 		consequents.add(new MustBeType(arg, formalType));
 		consequents.add(new MustBeSubType(arg, formalType));
 		
