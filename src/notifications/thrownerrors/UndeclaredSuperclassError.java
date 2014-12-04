@@ -1,17 +1,20 @@
 package notifications.thrownerrors;
 
-import notifications.diagnostics.UnboundSuperCallDiagnostic;
+import notifications.implication.Exists;
+import notifications.implication.MustHaveSuperclass;
+import notifications.implication.UnsatisfiedImplicationDiagnostic;
+import syntax.ClassType;
 import syntax.SuperAccess;
-
-import compiler.Declaration;
 
 public class UndeclaredSuperclassError extends CompilerDiagnosticBuilder {
 
-	private UnboundSuperCallDiagnostic undeclaredSuperclassDiagnostic;
+	private UnsatisfiedImplicationDiagnostic unsatisfiedImplication;
 
 	public UndeclaredSuperclassError(SuperAccess superAccess,
-			Declaration declaration) {
-    	this.undeclaredSuperclassDiagnostic = new UnboundSuperCallDiagnostic(superAccess, declaration); // needs representation of 'extends' modifier
+			ClassType classContainingSuperAccess) {
+		this.unsatisfiedImplication = new UnsatisfiedImplicationDiagnostic(
+				new Exists(superAccess),
+				new MustHaveSuperclass(classContainingSuperAccess));
 	}
 
 }
