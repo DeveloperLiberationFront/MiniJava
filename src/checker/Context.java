@@ -160,7 +160,7 @@ public final class Context extends Phase {
         for (int i = classes.length - 1; i >= 0; i--) {
             for (int j = 0; j < i; j++) {
                 if (classes[i].getId().sameId(classes[j].getId())) {
-                    report(new ClassNameClashError(classes[i].getId(), classes[j].getId()));
+                    report(new ClassNameClashError(classes[i], classes[j]));
                     break;
                 }
             }

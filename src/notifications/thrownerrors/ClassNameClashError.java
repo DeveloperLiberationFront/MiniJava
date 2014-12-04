@@ -1,14 +1,19 @@
 package notifications.thrownerrors;
 
-import notifications.diagnostics.NameClashDiagnostic;
+import notifications.implication.Exists;
+import notifications.implication.MustNotExist;
+import notifications.implication.UnsatisfiedImplicationDiagnostic;
+import syntax.ClassType;
 import syntax.Id;
 
 public class ClassNameClashError extends CompilerDiagnosticBuilder {
 
-	private NameClashDiagnostic nameClash;
+	private UnsatisfiedImplicationDiagnostic unsatisfiedImplication;
 
-	public ClassNameClashError(Id clashingClassId, Id existingClassId) {
-		this.nameClash = new NameClashDiagnostic(clashingClassId, existingClassId);
+	public ClassNameClashError(ClassType firstClass, ClassType secondClass) {
+		this.unsatisfiedImplication = new UnsatisfiedImplicationDiagnostic(
+				new Exists(firstClass),
+				new MustNotExist(secondClass));
 	}
 
 }
