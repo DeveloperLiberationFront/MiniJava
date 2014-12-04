@@ -85,7 +85,7 @@ public final class VarEnv extends Env {
                 Type argt = args.getArg().typeOf(ctxt, env);
                 Type fort = formals.getType();
                 if (!fort.isSuperOf(args.getArg().typeOf(ctxt, env))) {
-                	ctxt.report(new ArgumentTypeError(args.getArg(), argt, formals)); // compound typeerror and argumentmismatchdiagnostic?
+                	ctxt.report(new ArgumentTypeError(args.getArg(), argt, formals, fort)); // compound typeerror and argumentmismatchdiagnostic?
 //                    ctxt.report(new Failure(args.getArg().getPos(),
 //                                            "Cannot use argument of type " + argt +
 //                                            " where a value of type " + fort +
