@@ -7,7 +7,7 @@ import syntax.Id;
 import checker.Env;
 import compiler.Position;
 
-public class NameClashDiagnostic extends RichDiagnostic implements ClashDiagnosticInterface {
+public class NameClashDiagnostic extends RichDiagnostic {
 
 	private Id firstDeclaration;
 	private Id secondDeclaration;
