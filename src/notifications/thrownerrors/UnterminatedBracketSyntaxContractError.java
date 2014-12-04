@@ -1,16 +1,21 @@
 package notifications.thrownerrors;
 
+import notifications.Region;
 import notifications.RichTokens;
-import notifications.diagnostics.UnterminatedSyntaxContractDiagnostic;
+import notifications.implication.Exists;
+import notifications.implication.MustExist;
+import notifications.implication.UnsatisfiedImplicationDiagnostic;
 
 
 public class UnterminatedBracketSyntaxContractError extends
 		CompilerDiagnosticBuilder {
 
-	private UnterminatedSyntaxContractDiagnostic syntaxError;
+	private UnsatisfiedImplicationDiagnostic unsatisfiedImplication;
 	
 	public UnterminatedBracketSyntaxContractError(RichTokens startToken) {
-		this.syntaxError = new UnterminatedSyntaxContractDiagnostic(startToken);
+		this.unsatisfiedImplication = new UnsatisfiedImplicationDiagnostic(
+				new Exists(startToken),
+				new MustExist(new RichTokens(null, "*/"), new Region()));
 	}
 
 }
