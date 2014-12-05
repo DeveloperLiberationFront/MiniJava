@@ -1,11 +1,11 @@
 package notifications.implication;
 
-import syntax.Expression;
+import syntax.Syntax;
 import syntax.Type;
 
-public class MustBeSubType extends Consequent {
+public class MustBeSubtype extends Consequent {
 
-	public MustBeSubType(Expression arg, Type formalType) {
+	public MustBeSubtype(Syntax arg, Type formalType) {
 		// TODO Auto-generated constructor stub
 	}
 

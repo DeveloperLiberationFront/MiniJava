@@ -16,7 +16,8 @@ public class MissingReqiredStatementDiagnostic extends RichDiagnostic {
 		this.validStatementLocation = env;
 	}
 
-	public MissingReqiredStatementDiagnostic(SuperInvocation superInvocation,
+	public MissingReqiredStatementDiagnostic(
+			SuperInvocation superInvocation,
 			Statement body) {
 		// TODO Auto-generated constructor stub
 	}
