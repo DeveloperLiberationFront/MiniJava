@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import notifications.diagnostics.MissingInheritedPropertyDiagnostic;
-import notifications.diagnostics.MissingReqiredStatementDiagnostic;
+import notifications.diagnostics.MissingRequiredStatementDiagnostic;
 import notifications.thrownerrors.ConstructorMustCallSuperError;
 import notifications.thrownerrors.CyclicInheritanceError;
 import notifications.thrownerrors.DeclarationClashError;

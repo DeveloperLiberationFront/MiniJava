@@ -1,16 +1,16 @@
 package notifications.thrownerrors;
 
-import notifications.diagnostics.MissingReqiredStatementDiagnostic;
+import notifications.diagnostics.MissingRequiredStatementDiagnostic;
 import syntax.Statement;
 import syntax.SuperInvocation;
 
 public class ConstructorMustCallSuperError extends CompilerDiagnosticBuilder {
 
-	private MissingReqiredStatementDiagnostic missingStatementDiagnostic;
+	private MissingRequiredStatementDiagnostic missingStatementDiagnostic;
 
 	public ConstructorMustCallSuperError(SuperInvocation superInvocation,
 			Statement body) {
-    	this.missingStatementDiagnostic = new MissingReqiredStatementDiagnostic(
+    	this.missingStatementDiagnostic = new MissingRequiredStatementDiagnostic(
     			superInvocation, body);
 	}
 

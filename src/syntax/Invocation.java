@@ -22,7 +22,7 @@ package syntax;
 
 import java.util.ArrayList;
 
-import notifications.diagnostics.MissingReqiredStatementDiagnostic;
+import notifications.diagnostics.MissingRequiredStatementDiagnostic;
 import notifications.thrownerrors.MethodMustReturnValueError;
 import checker.Context;
 import checker.MethEnv;

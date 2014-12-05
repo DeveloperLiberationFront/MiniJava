@@ -65,7 +65,7 @@ public final class ArrayAccess extends FieldAccess {
         ArrayType cls = array_class = receiver.isArray();
         Type index_type = index.typeOf(ctxt, env);
         if (cls == null) {
-        	throw new ArrayAccessOnNonArrayError(this, new ArrayType(null, null, null));
+        	throw new ArrayAccessOnNonArrayError(this, object, receiver);
 //            throw new Failure(pos,
 //            "Cannot do an array access on non-array type");
         } else if (!index_type.equal(Type.INT)) {

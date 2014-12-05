@@ -6,17 +6,17 @@ import syntax.SuperInvocation;
 import checker.Env;
 import compiler.Position;
 
-public class MissingReqiredStatementDiagnostic extends RichDiagnostic {
+public class MissingRequiredStatementDiagnostic extends RichDiagnostic {
 
 	private Statement missingExpression;
 	private Env validStatementLocation;
-	public MissingReqiredStatementDiagnostic(Statement statement,
+	public MissingRequiredStatementDiagnostic(Statement statement,
 			Env env) {
 		this.missingExpression = statement;
 		this.validStatementLocation = env;
 	}
 
-	public MissingReqiredStatementDiagnostic(
+	public MissingRequiredStatementDiagnostic(
 			SuperInvocation superInvocation,
 			Statement body) {
 		// TODO Auto-generated constructor stub
