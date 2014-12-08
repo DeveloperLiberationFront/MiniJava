@@ -2,9 +2,8 @@ package notifications.thrownerrors;
 
 import java.util.ArrayList;
 
-import notifications.diagnostics.ExplicitTypeContractDiagnostic;
 import notifications.implication.Consequent;
-import notifications.implication.IsType;
+import notifications.implication.HasType;
 import notifications.implication.MustBeSubtype;
 import notifications.implication.MustBeType;
 import notifications.implication.OrConsequent;
@@ -23,7 +22,7 @@ public class ArgumentTypeError extends CompilerDiagnosticBuilder {
 		consequents.add(new MustBeSubtype(arg, formalType));
 		
 		this.unsatisfiedImplication = new UnsatisfiedImplicationDiagnostic(
-				new IsType(formal, formalType),
+				new HasType(formal, formalType),
 				new OrConsequent(consequents));
 	}
 

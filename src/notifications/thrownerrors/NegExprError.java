@@ -1,15 +1,19 @@
 package notifications.thrownerrors;
 
-import notifications.diagnostics.ImplicitTypeContractDiagnostic;
+import notifications.implication.Exists;
+import notifications.implication.MustBeType;
+import notifications.implication.UnsatisfiedImplicationDiagnostic;
 import syntax.Expression;
 import syntax.NegExpr;
 import syntax.Type;
 
 public class NegExprError extends CompilerDiagnosticBuilder {
 
-	private ImplicitTypeContractDiagnostic typeError;
+	private UnsatisfiedImplicationDiagnostic unsatisfiedImplication;
 
 	public NegExprError(Expression argument, Type argActualType, NegExpr negExpr) {
-		this.typeError = new ImplicitTypeContractDiagnostic(argument, argActualType, argument);
+		this.unsatisfiedImplication = new UnsatisfiedImplicationDiagnostic(
+				new Exists(negExpr),
+				new MustBeType(argument, Type.INT));
 	}
 }
