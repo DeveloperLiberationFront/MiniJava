@@ -102,7 +102,7 @@ public final class VarEnv extends Env {
         if (formals != null) {
         	ctxt.report(new TooManyParametersError(env, formals.getDeclaration()));
         } else if (args != null) {
-        	ctxt.report(new TooManyArgumentsError(env, formalsDeclaration));
+        	ctxt.report(new TooManyArgumentsError(env, formalsDeclaration, formals.type));
         }
     }
 
