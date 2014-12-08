@@ -1,20 +1,17 @@
 # list of files to ignore for MiniJavaLLVM
-
 #no backup edits
 *.*~
-
 #no java class files
 *.class
 *.jar
-
 #no parser output
 src/syntax/MjcParser.java
 src/syntax/MjcTokens.java
 build
 *.out
 *.bc
-
 #no eclipse projects or metadata
 *.project
 *.metadata
 *.classpath
+*.s
