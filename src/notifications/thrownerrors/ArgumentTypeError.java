@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import notifications.implication.Consequent;
 import notifications.implication.HasType;
-import notifications.implication.MustBeSubtype;
-import notifications.implication.MustBeType;
+import notifications.implication.MustHaveSubtype;
+import notifications.implication.MustHaveType;
 import notifications.implication.OrConsequent;
 import notifications.implication.UnsatisfiedImplicationDiagnostic;
 import syntax.Expression;
@@ -18,8 +18,8 @@ public class ArgumentTypeError extends CompilerDiagnosticBuilder {
 
 	public ArgumentTypeError(Expression arg, Type argt, VarEnv formal, Type formalType) {
 		ArrayList<Consequent> consequents = new ArrayList<Consequent>();
-		consequents.add(new MustBeType(arg, formalType));
-		consequents.add(new MustBeSubtype(arg, formalType));
+		consequents.add(new MustHaveType(arg, formalType));
+		consequents.add(new MustHaveSubtype(arg, formalType));
 		
 		this.unsatisfiedImplication = new UnsatisfiedImplicationDiagnostic(
 				new HasType(formal, formalType),

@@ -1,7 +1,7 @@
 package notifications.thrownerrors;
 
 import notifications.implication.Exists;
-import notifications.implication.MustBeSubtype;
+import notifications.implication.MustHaveSubtype;
 import notifications.implication.UnsatisfiedImplicationDiagnostic;
 import syntax.ArrayAccess;
 import syntax.ArrayType;
@@ -18,7 +18,7 @@ public class ArrayAccessOnNonArrayError extends CompilerDiagnosticBuilder {
 			Type receiverType) {
 		this.unsatisfiedImplication = new UnsatisfiedImplicationDiagnostic(
 				new Exists(arrayAccess),
-				new MustBeSubtype(receiver, new ArrayType(null, null, null)));
+				new MustHaveSubtype(receiver, new ArrayType(null, null, null)));
 	}
 
 }

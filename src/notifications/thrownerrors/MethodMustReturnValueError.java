@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import notifications.implication.Consequent;
 import notifications.implication.HasType;
-import notifications.implication.MustBeSubtype;
-import notifications.implication.MustBeType;
+import notifications.implication.MustHaveSubtype;
+import notifications.implication.MustHaveType;
 import notifications.implication.OrConsequent;
 import notifications.implication.UnsatisfiedImplicationDiagnostic;
 import syntax.Return;
@@ -19,8 +19,8 @@ public class MethodMustReturnValueError extends CompilerDiagnosticBuilder {
 	public MethodMustReturnValueError(Return returnStatement, VarEnv env) {
 		Type envType = env.getType();
 		ArrayList<Consequent> consequents = new ArrayList<Consequent>();
-		consequents.add(new MustBeType(returnStatement, envType));
-		consequents.add(new MustBeSubtype(returnStatement, envType));
+		consequents.add(new MustHaveType(returnStatement, envType));
+		consequents.add(new MustHaveSubtype(returnStatement, envType));
 		this.unsatisfiedImplication = new UnsatisfiedImplicationDiagnostic(
 				new HasType(env, envType),
 				new OrConsequent(consequents));
