@@ -1,6 +1,7 @@
 package notifications.implication;
 
 import checker.Env;
+import checker.MemberEnv;
 import checker.MethEnv;
 import notifications.Region;
 import notifications.RichTokens;
@@ -20,6 +21,10 @@ public class MustExist extends Consequent {
 	}
 
 	public MustExist(Syntax programElement, Syntax region) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public MustExist(Env env) {
 		// TODO Auto-generated constructor stub
 	}
 

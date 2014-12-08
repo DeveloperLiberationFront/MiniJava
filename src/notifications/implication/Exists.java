@@ -1,5 +1,7 @@
 package notifications.implication;
 
+import checker.Env;
+import checker.MemberEnv;
 import syntax.ClassType;
 import syntax.NewExpr;
 import syntax.Syntax;
@@ -17,6 +19,10 @@ public class Exists extends Antecedent {
 	}
 
 	public Exists(Syntax syntaxElement) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Exists(Env env) {
 		// TODO Auto-generated constructor stub
 	}
 

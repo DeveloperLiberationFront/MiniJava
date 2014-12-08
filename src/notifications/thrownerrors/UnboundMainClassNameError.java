@@ -1,16 +1,18 @@
 package notifications.thrownerrors;
 
-import notifications.contracts.RequiredMainClassContract;
-import notifications.diagnostics.ImplicitUnboundNameDiagnostic;
-import syntax.Id;
-import syntax.Name;
+import syntax.ClassType;
+import notifications.implication.Implicit;
+import notifications.implication.MustExist;
+import notifications.implication.UnsatisfiedImplicationDiagnostic;
 
 public class UnboundMainClassNameError extends CompilerDiagnosticBuilder {
 
-	private ImplicitUnboundNameDiagnostic unboundNameDiagnostic;
+	private UnsatisfiedImplicationDiagnostic unsatisfiedImplication;
 
 	public UnboundMainClassNameError() {
-		this.unboundNameDiagnostic = new ImplicitUnboundNameDiagnostic(new Name(new Id(null, "Main")), new RequiredMainClassContract());
+		this.unsatisfiedImplication = new UnsatisfiedImplicationDiagnostic(
+				new Implicit(null), 
+				new MustExist(new ClassType(null, null, null, null, null)));
 	}
 	
 }
