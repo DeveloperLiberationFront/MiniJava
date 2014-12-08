@@ -1,6 +1,8 @@
 package notifications.thrownerrors;
 
-import notifications.diagnostics.ExplicitTypeContractDiagnostic;
+import notifications.implication.MustNotExist;
+import notifications.implication.UnsatisfiedImplicationDiagnostic;
+import notifications.implication.HasType;
 import syntax.Expression;
 import syntax.Type;
 import checker.MethEnv;
@@ -8,11 +10,12 @@ import checker.MethEnv;
 public class ReturnExpressionFromVoidMethodTypeError extends
 		CompilerDiagnosticBuilder {
 
-	private ExplicitTypeContractDiagnostic typeError;
+	private UnsatisfiedImplicationDiagnostic unsatisfiedImplication;
 
 	public ReturnExpressionFromVoidMethodTypeError(Expression result, Type rt,
 			MethEnv methEnv) {
-		this.typeError = new ExplicitTypeContractDiagnostic(result, rt, methEnv);
+		this.unsatisfiedImplication = new UnsatisfiedImplicationDiagnostic(
+				new HasType(methEnv, null), new MustNotExist(result));
 	}
 
 }
