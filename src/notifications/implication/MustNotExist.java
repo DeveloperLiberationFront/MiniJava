@@ -7,8 +7,14 @@ import syntax.Syntax;
 
 public class MustNotExist extends Consequent {
 
+	private Object element;
+
 	public MustNotExist(ClassType disallowedClass) {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public MustNotExist(String message) {
+		this.element = message;
 	}
 
 	public MustNotExist(Syntax programElement) {
@@ -22,7 +28,7 @@ public class MustNotExist extends Consequent {
 	@Override
 	String getText() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.element.toString();
 	}
 
 }
