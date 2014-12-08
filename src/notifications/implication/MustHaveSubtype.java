@@ -7,12 +7,23 @@ import syntax.Type;
 
 public class MustHaveSubtype extends Consequent {
 
-	public MustHaveSubtype(Syntax arg, Type formalType) {
-		// TODO Auto-generated constructor stub
+	private Object programElement;
+	private Type type;
+
+	public MustHaveSubtype(Syntax synt, Type type) {
+		this.programElement = synt;
+		this.type = type;
 	}
 
 	public MustHaveSubtype(Env env, Type type) {
-		// TODO Auto-generated constructor stub
+		this.programElement = env;
+		this.type = type;
+	}
+
+	@Override
+	String getText() {
+		// TODO Auto-generated method stub
+		return this.programElement.toString() + " must have a type that is a subtype of " + this.type.toString();
 	}
 
 }

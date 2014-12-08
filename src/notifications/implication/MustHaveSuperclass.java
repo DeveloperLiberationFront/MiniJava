@@ -8,4 +8,10 @@ public class MustHaveSuperclass extends Consequent {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	String getText() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

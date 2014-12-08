@@ -5,16 +5,17 @@ import notifications.RichDiagnostic;
 
 public class UnsatisfiedImplicationDiagnostic extends RichDiagnostic {
 
-	public UnsatisfiedImplicationDiagnostic(
-			Antecedent concrete,
-			Consequent nonExistent) {
-		// TODO Auto-generated constructor stub
+	private Antecedent antecedent;
+	private Consequent consequent;
+
+	public UnsatisfiedImplicationDiagnostic(Antecedent antecedent, Consequent consequent) {
+		this.antecedent = antecedent;
+		this.consequent = consequent;
 	}
 
 	@Override
 	public String getText() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.antecedent.getText() + ", which requires that \n\t" + this.consequent.getText();
 	}
 
 	@Override

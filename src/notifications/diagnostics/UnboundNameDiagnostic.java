@@ -15,7 +15,6 @@ public class UnboundNameDiagnostic extends RichDiagnostic {
 
 	private Name name;
 	private Env env;
-
 	public UnboundNameDiagnostic(Name name, Env env) {
 		this.name = name;
 		this.env= env;

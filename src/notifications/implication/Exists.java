@@ -26,4 +26,10 @@ public class Exists extends Antecedent {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	String getText() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -22,7 +22,6 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.diagnostics.UnboundSuperCallDiagnostic;
 import notifications.thrownerrors.ScopeAccessibilityError;
 import notifications.thrownerrors.UnboundFieldNameOnSuperclassError;
 import notifications.thrownerrors.UndeclaredSuperclassError;

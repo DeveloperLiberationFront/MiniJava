@@ -9,12 +9,22 @@ import checker.VarEnv;
 
 public class MustHaveType extends Consequent {
 
+	private Object programElement;
+	private Type type;
+
 	public MustHaveType(Syntax synt, Type type) {
-		// TODO Auto-generated constructor stub
+		this.programElement = synt;
+		this.type = type;
 	}
 
 	public MustHaveType(Env env, Type type) {
-		// TODO Auto-generated constructor stub
+		this.programElement = env;
+		this.type = type;
+	}
+
+	@Override
+	String getText() {
+		return this.programElement.toString() + " must be of type " + this.type.toString();
 	}
 
 }
