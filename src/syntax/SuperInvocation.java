@@ -67,7 +67,7 @@ public final class SuperInvocation extends Invocation {
             this.name = sup.getId().getName();
         }
         if (sup == null) {
-        	throw new ScopeAccessibilityError(this, ctxt.getCurrMethod(), null); // missing: ExtendsExpression 
+        	throw new CannotCallMethodOnNonexistentSuperclassError(env, ctxt.getCurrClass()); // missing: ExtendsExpression 
         } else if (name == null) {
         	// really not sure about what this one does
             throw new Failure(pos, "No super constructor determined for super()");

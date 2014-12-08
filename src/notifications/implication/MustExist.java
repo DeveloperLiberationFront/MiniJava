@@ -28,4 +28,8 @@ public class MustExist extends Consequent {
 		// TODO Auto-generated constructor stub
 	}
 
+	public MustExist(Syntax syntax) {
+		// TODO Auto-generated constructor stub
+	}
+
 }
