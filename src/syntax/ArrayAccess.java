@@ -22,7 +22,6 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.diagnostics.SyntaxRequiresTypeDiagnostic;
 import notifications.thrownerrors.ArrayAccessNonIntIndexTypeError;
 import notifications.thrownerrors.ArrayAccessOnNonArrayError;
 import checker.Context;

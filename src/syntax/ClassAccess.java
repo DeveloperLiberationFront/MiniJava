@@ -22,13 +22,13 @@ package syntax;
 
 import interp.State;
 import interp.Value;
-import notifications.diagnostics.SyntaxRequiresTypeDiagnostic;
 import notifications.thrownerrors.NonStaticClassAccessError;
 import checker.Context;
 import checker.FieldEnv;
 import checker.VarEnv;
 import codegen.Assembly;
 import codegen.LLVM;
+
 import compiler.Diagnostic;
 
 /** Represents an access to a class variable.
