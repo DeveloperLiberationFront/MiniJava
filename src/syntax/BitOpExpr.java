@@ -20,7 +20,7 @@
 
 package syntax;
 
-import notifications.BitOpExprTypeError;
+import notifications.thrownerrors.BitOpExprTypeError;
 import checker.Context;
 import checker.VarEnv;
 import codegen.Assembly;

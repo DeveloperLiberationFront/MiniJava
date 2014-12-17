@@ -1,7 +1,6 @@
-package notifications;
+package notifications.thrownerrors;
 
 import notifications.diagnostics.ExplicitTypeContractDiagnostic;
-import notifications.thrownerrors.CompilerDiagnosticBuilder;
 import syntax.BitOpExpr;
 import syntax.Expression;
 import syntax.Type;
