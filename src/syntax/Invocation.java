@@ -22,13 +22,13 @@ package syntax;
 
 import java.util.ArrayList;
 
-import notifications.diagnostics.MissingRequiredStatementDiagnostic;
 import notifications.thrownerrors.MethodMustReturnValueError;
 import checker.Context;
 import checker.MethEnv;
 import checker.VarEnv;
 import codegen.Assembly;
 import codegen.LLVM;
+
 import compiler.Diagnostic;
 import compiler.Position;
 
