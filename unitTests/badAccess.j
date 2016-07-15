@@ -1,9 +1,10 @@
 class A{
-	private static int a(){return 1;}
+	private static void a(){}
 }
 
-class C {
-    int x(){
-    	return A.a();
+class B {
+    void x(){
+    	A.a();
     }
 }
+//ReportAccess.java
