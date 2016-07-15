@@ -7,7 +7,6 @@ import compiler.Handler;
 import compiler.Failure;
 import compiler.Warning;
 import compiler.Position;
-import java.util.Vector;
 import lexer.MjcLexer;
 
 class MjcParser extends Phase implements MjcTokens {

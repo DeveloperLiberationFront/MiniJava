@@ -7,7 +7,6 @@ package checker;
 import compiler.*;
 import lexer.*;
 import syntax.*;
-import checker.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;

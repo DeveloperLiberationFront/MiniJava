@@ -5,7 +5,6 @@
 package interp;
 
 import syntax.*;
-import checker.*;
 
 /** Provides a representation for object values.
  */

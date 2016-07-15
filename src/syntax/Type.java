@@ -4,7 +4,6 @@
 
 package syntax;
 
-import compiler.*;
 import checker.*;
 import codegen.*;
 

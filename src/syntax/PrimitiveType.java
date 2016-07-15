@@ -4,8 +4,6 @@
 
 package syntax;
 
-import compiler.*;
-
 /** Provides a representation for primitive types.
  */
 public final class PrimitiveType extends Type {
