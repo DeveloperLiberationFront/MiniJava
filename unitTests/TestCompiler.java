@@ -27,8 +27,7 @@ import compiler.Failure;
 
 /*
  * A class that runs the compiler, but doesn't run
- * the resulting code. Checks the output against pre-defined
- * oracles.
+ * the resulting code. Checks for errors.
  */
 @RunWith(Parameterized.class)
 public class TestCompiler {
@@ -36,7 +35,7 @@ public class TestCompiler {
 	@Parameter(value = 0)
 	public File inputFile;
 	@Parameter(value = 1)
-	public File outputOracle;
+	public File outputFile;
 	
 	@Parameters(name="{0}")
     public static Collection<Object[]> params() {
@@ -49,7 +48,7 @@ public class TestCompiler {
     	
     	Collection<Object[]> pairs = new ArrayList<Object[]>();
     	for(String jFile : jFiles){
-    		pairs.add(new File[] { new File("unitTests//"+jFile), new File("unitTests//"+jFile.replace(".j", ".mjc.ref"))});
+    		pairs.add(new File[] { new File("unitTests//"+jFile), new File("unitTests//"+jFile.replace(".j", ".out"))});
     	}
  
         return pairs;
@@ -57,14 +56,13 @@ public class TestCompiler {
 
 	@Before
 	public void setUp(){
-		outputOracle = new File("junit_output.s");
-		assertFalse(outputOracle.exists());
+		assertFalse(outputFile.exists());
 	}
 	
 	@After
 	public void tearDown(){
-		if(outputOracle.exists())
-			outputOracle.delete();
+		if(outputFile.exists())
+			outputFile.delete();
 	}
 	
 	@Test
@@ -82,15 +80,15 @@ public class TestCompiler {
 			Compiler.compile(handler, 
 							reader, 
 							inputFile.getAbsolutePath(), 
-							outputOracle.getAbsolutePath());
+							outputFile.getAbsolutePath());
 		} catch (FileNotFoundException e) {
 			handler.report(new Failure("Cannot open input file " + inputFile));
 		}
 		
 		assertEquals(handler.aFailure(),0,handler.getNumFailures());
 		
-		assertTrue(outputOracle.exists());
-		assertThat(sLines(outputOracle),is(sLines(outputOracle)));
+		assertTrue(outputFile.exists());
+		assertThat(sLines(outputFile),is(sLines(outputFile)));
 	}
 	
 	private List<String> sLines(File f) throws IOException{
