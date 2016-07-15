@@ -47,9 +47,15 @@
 	    <version>1.3.1</version>
 	</dependency>
 	<dependency>
-	    <groupId>com.github.rwl</groupId>
+	    <groupId>com.github.tindzk</groupId>
 	    <artifactId>llvm-j</artifactId>
 	    <version>-SNAPSHOT</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.nativelibs4java/bridj -->
+	<dependency>
+	    <groupId>com.nativelibs4java</groupId>
+	    <artifactId>bridj</artifactId>
+	    <version>0.7.0</version>
 	</dependency>
   </dependencies>
 </project>
