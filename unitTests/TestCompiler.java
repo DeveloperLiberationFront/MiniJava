@@ -1,3 +1,5 @@
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -18,6 +20,11 @@ import compiler.Failure;
 import compiler.Handler;
 import compiler.SimpleHandler;
 
+/*
+ * A class that runs the compiler, but doesn't run
+ * the resulting code. Checks the output against pre-defined
+ * oracles.
+ */
 public class TestCompiler {
 
 	private File outputFile;
@@ -59,7 +66,7 @@ public class TestCompiler {
 		assertEquals(0,handler.getNumFailures());
 		
 		assertTrue(outputFile.exists());
-		assertEquals(sLines(oracle),sLines(outputFile));
+		assertThat(sLines(oracle),is(sLines(outputFile)));
 	}
 	
 	private List<String> sLines(File f) throws IOException{
