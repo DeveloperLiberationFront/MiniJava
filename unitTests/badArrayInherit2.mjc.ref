@@ -1,3 +1,0 @@
-ERROR: "unitTests/badArrayInherit2.j", line 10
-Cannot assign value of type A[] to variable of type B[]
-
