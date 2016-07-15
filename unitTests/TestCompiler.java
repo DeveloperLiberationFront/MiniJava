@@ -1,7 +1,7 @@
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -85,10 +85,16 @@ public class TestCompiler {
 			handler.report(new Failure("Cannot open input file " + inputFile));
 		}
 		
-		assertEquals(handler.aFailure(),0,handler.getNumFailures());
+		if(inputFile.getName().startsWith("bad")){
+			//TODO stronger assertion
+			assertNotEquals(handler.aFailure(),0,handler.getNumFailures());
+		}else{
+			
+			
+			assertTrue(outputFile.exists());
+			assertThat(sLines(outputFile),is(sLines(outputFile)));
+		}
 		
-		assertTrue(outputFile.exists());
-		assertThat(sLines(outputFile),is(sLines(outputFile)));
 	}
 	
 	private List<String> sLines(File f) throws IOException{
