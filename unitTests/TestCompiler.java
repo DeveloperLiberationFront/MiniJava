@@ -1,5 +1,5 @@
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -7,66 +7,90 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
 import compiler.Failure;
-import compiler.Handler;
-import compiler.SimpleHandler;
 
 /*
  * A class that runs the compiler, but doesn't run
  * the resulting code. Checks the output against pre-defined
  * oracles.
  */
+@RunWith(Parameterized.class)
 public class TestCompiler {
 
-	private File outputFile;
+	@Parameter(value = 0)
+	public File inputFile;
+	@Parameter(value = 1)
+	public File outputOracle;
 	
+	@Parameters(name="{0}")
+    public static Collection<Object[]> params() {
+    	
+    	String[] jFiles = new File("unitTests//").list(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				return name.endsWith(".j");
+			}
+		});
+    	
+    	Collection<Object[]> pairs = new ArrayList<Object[]>();
+    	for(String jFile : jFiles){
+    		pairs.add(new File[] { new File("unitTests//"+jFile), new File("unitTests//"+jFile.replace(".j", ".mjc.ref"))});
+    	}
+ 
+        return pairs;
+    }
+
 	@Before
 	public void setUp(){
-		outputFile = new File("junit_output.s");
-		assertFalse(outputFile.exists());
+		outputOracle = new File("junit_output.s");
+		assertFalse(outputOracle.exists());
 	}
 	
 	@After
 	public void tearDown(){
-		if(outputFile.exists())
-			outputFile.delete();
+		if(outputOracle.exists())
+			outputOracle.delete();
 	}
 	
 	@Test
-	public void test() throws IOException {
-		
-		File oracle = new File("unitTests//ts.s");
-		compileAndCheck(new File("unitTests//ts.j"),oracle);
+	public void basicTest() throws IOException {
+		compileAndCheck();
 	}
 	
-	private void compileAndCheck(File inputFile, File oracle) throws IOException{
+	private void compileAndCheck() throws IOException{
 		
 		assertTrue(inputFile.exists());
 		
-		Handler handler = new SimpleHandler();
+		StorageHandler handler = new StorageHandler();
 		try {
 			Reader reader = new FileReader(inputFile);
 			Compiler.compile(handler, 
 							reader, 
 							inputFile.getAbsolutePath(), 
-							outputFile.getAbsolutePath());
+							outputOracle.getAbsolutePath());
 		} catch (FileNotFoundException e) {
 			handler.report(new Failure("Cannot open input file " + inputFile));
 		}
 		
-		assertEquals(0,handler.getNumFailures());
+		assertEquals(handler.aFailure(),0,handler.getNumFailures());
 		
-		assertTrue(outputFile.exists());
-		assertThat(sLines(oracle),is(sLines(outputFile)));
+		assertTrue(outputOracle.exists());
+		assertThat(sLines(outputOracle),is(sLines(outputOracle)));
 	}
 	
 	private List<String> sLines(File f) throws IOException{
