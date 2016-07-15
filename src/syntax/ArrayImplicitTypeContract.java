@@ -4,4 +4,8 @@ import notifications.contracts.ImplicitTypeContract;
 
 public class ArrayImplicitTypeContract extends ImplicitTypeContract {
 
+	public ArrayImplicitTypeContract(Type requiredType) {
+		super(requiredType);
+	}
+
 }

@@ -43,7 +43,6 @@ public class ScopeAccessibilityError extends RichDiagnostic implements
 		return null;
 	}
 
-	@Override
 	public AccessibilityDiagnostic getAccessibiltyDiagnostic() {
 		return this.accessibilityDiagnostic;
 	}

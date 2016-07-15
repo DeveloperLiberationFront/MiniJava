@@ -81,7 +81,7 @@ public class NewExpr extends StatementExpr {
 
     public org.llvm.Value llvmGen(LLVM l) {
         Builder b = l.getBuilder();
-        org.llvm.Value size = b.buildTrunc(cls.llvmType().sizeOf(), Type.INT.llvmType(),
+        org.llvm.Value size = b.buildTrunc(cls.llvmType().sizeOf(null), Type.INT.llvmType(),
                                            "trunc_size");
         org.llvm.Value [] args = {size};
         org.llvm.Value mem = b.buildCall(l.getGlobalFn(LLVM.GlobalFn.NEW_OBJECT),

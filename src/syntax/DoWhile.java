@@ -48,7 +48,7 @@ public final class DoWhile extends Statement {
     }
     
     public static ImplicitTypeContract getTypeContract() {
-    	return new ImplicitTypeContract(); 
+    	return new ImplicitTypeContract(null); 
     }
 
     /** Check whether this statement is valid and return a boolean

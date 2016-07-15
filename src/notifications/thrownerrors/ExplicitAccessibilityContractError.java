@@ -28,7 +28,6 @@ implements AccessibilityErrorInterface {
 		return null;
 	}
 
-	@Override
 	public AccessibilityDiagnostic getAccessibiltyDiagnostic() {
 		// TODO Auto-generated method stub
 		return this.accessibilityDiagnostic;

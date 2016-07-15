@@ -20,9 +20,8 @@
 
 package syntax;
 
-import lexer.MjcLexer;
-
 import compiler.Handler;
+import lexer.MjcLexer;
 
 /** Provides public access to the MjcParser.
  */
@@ -30,4 +29,16 @@ public class Parser extends MjcParser {
     public Parser(Handler handler, MjcLexer lexer) {
         super(handler, lexer);
     }
+}
+
+class MjcParser{
+
+	public MjcParser(Handler handler, MjcLexer lexer) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public ClassType[] getClasses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

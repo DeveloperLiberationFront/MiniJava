@@ -18,7 +18,6 @@ implements TypeErrorInterface {
 				test, testExpressionActualType, whileStatement);
 	}
 
-	@Override
 	public TypeMismatchDiagnostic getTypeError() {
 		// TODO Auto-generated method stub
 		return null;
