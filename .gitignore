@@ -5,19 +5,5 @@
 
 #no java class files
 *.class
-*.jar
-
-#no parser output
-src/syntax/MjcParser.java
-src/syntax/MjcTokens.java
-build
-*.out
-*.bc
-
-#no eclipse projects or metadata
-*.project
-*.metadata
-*.classpath
-/bin/
-/docs/
 /target/
+/bin/

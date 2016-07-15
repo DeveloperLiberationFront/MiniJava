@@ -1,3 +1,0 @@
-*.java  filter=java_code
-*.j filter=java_code
-*.c  filter=c_code
