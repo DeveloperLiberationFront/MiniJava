@@ -88,6 +88,7 @@ public class TestCompiler {
 		if(inputFile.getName().startsWith("bad")){
 			//expected failure is first line of adjacent .ref file
 			File f = new File(inputFile.getPath().replace(".j", ".mjc.ref"));
+			assertTrue("Expected failure spec: " + f,f.exists());
 			String expectedFailure = Files.readAllLines(f.toPath()).get(0);
 			assertEquals(expectedFailure,handler.aFailure());
 		}else{
