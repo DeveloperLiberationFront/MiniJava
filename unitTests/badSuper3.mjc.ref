@@ -1,3 +1,0 @@
-ERROR: "unitTests/badSuper3.j", line 13
-Constructor needs a super class constructor (maybe it's not the first statement?).
-

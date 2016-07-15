@@ -1,7 +1,7 @@
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -86,11 +86,11 @@ public class TestCompiler {
 		}
 		
 		if(inputFile.getName().startsWith("bad")){
-			//TODO stronger assertion
-			assertNotEquals(handler.aFailure(),0,handler.getNumFailures());
+			//expected failure is first line of adjacent .ref file
+			File f = new File(inputFile.getPath().replace(".j", ".mjc.ref"));
+			String expectedFailure = Files.readAllLines(f.toPath()).get(0);
+			assertEquals(expectedFailure,handler.aFailure());
 		}else{
-			
-			
 			assertTrue(outputFile.exists());
 			assertThat(sLines(outputFile),is(sLines(outputFile)));
 		}
