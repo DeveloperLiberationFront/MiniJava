@@ -18,7 +18,8 @@ class MjcParser extends Phase implements MjcTokens {
     private Object[] yysv;
     private Object yyrv;
 
-    public boolean parse() {
+    @SuppressWarnings("unused")
+	public boolean parse() {
         int yyn = 0;
         yysp = 0;
         yyst = new int[yyss];

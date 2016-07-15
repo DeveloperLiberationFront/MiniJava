@@ -41,7 +41,7 @@ public final class NewExpr extends StatementExpr {
     public void compileExpr(Assembly a, int free) {
         a.spillAll(free);
         a.emit("pushl", a.vtAddr(cls));
-        a.call(a.name("new_object"), free, a.WORDSIZE);
+        a.call(a.name("new_object"), free, Assembly.WORDSIZE);
         a.unspillAll(free);
     }
 

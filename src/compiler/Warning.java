@@ -7,7 +7,12 @@ package compiler;
 /** Represents a warning diagnostic.
  */
 public class Warning extends Diagnostic {
-    /** Construct a simple warning with a fixed description.
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3895668619308329607L;
+
+	/** Construct a simple warning with a fixed description.
      */
     public Warning(String text) {
         super(text);

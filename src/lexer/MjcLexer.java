@@ -190,9 +190,9 @@ public class MjcLexer extends SourceLexer implements Tokens {
         return token=IDENT;
     }
 
-    private static Hashtable reserved;
+    private static Hashtable<String, Integer> reserved;
     static {
-        reserved = new Hashtable();
+        reserved = new Hashtable<String, Integer>();
         reserved.put("boolean", new Integer(BOOLEAN));
         reserved.put("class",   new Integer(CLASS));
         reserved.put("else",    new Integer(ELSE));

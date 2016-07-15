@@ -12,13 +12,12 @@ import interp.*;
 /** Represents an access to a field through a simple identifier.
  */
 public final class SimpleAccess extends FieldAccess {
-    private String   name;
     private FieldEnv env;
     private int      size;
 
     public SimpleAccess(Id id, FieldEnv env) {
         super(id.getPos());
-        this.name = id.getName();
+        id.getName();
         this.env  = env;
     }
 

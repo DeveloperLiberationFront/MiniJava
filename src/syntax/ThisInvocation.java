@@ -12,13 +12,12 @@ import interp.*;
 /** Represents a method invocation through this.
  */
 public final class ThisInvocation extends Invocation {
-    private String  name;
     private MethEnv menv;
     private int     size;
 
     public ThisInvocation(Id id, Args args, MethEnv menv) {
         super(id.getPos(), args);
-        this.name = id.getName();
+        id.getName();
         this.menv = menv;
     }
 

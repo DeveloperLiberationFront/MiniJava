@@ -12,7 +12,6 @@ import interp.*;
 /** Provides a representation for class types.
  */
 public final class ClassType extends Type {
-    private Modifiers mods;
     private Id        id;
     private Type      extendsType;
     private Decls     decls;
@@ -23,7 +22,6 @@ public final class ClassType extends Type {
     private MethEnv[] vtable;   // virtual function table for this class
 
     public ClassType(Modifiers mods, Id id, Type extendsType, Decls decls) {
-        this.mods        = mods;
         this.id          = id;
         this.extendsType = extendsType;
         this.decls       = decls;

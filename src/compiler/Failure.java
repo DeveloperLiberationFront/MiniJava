@@ -8,7 +8,12 @@ package compiler;
  *  we resisted the temptation to call this class Error.
  */
 public class Failure extends Diagnostic {
-    /** Construct a simple failure report with a fixed description.
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 19675477966691708L;
+
+	/** Construct a simple failure report with a fixed description.
      */
     public Failure(String text) {
         super(text);

@@ -9,7 +9,11 @@ package compiler;
  *  warnings are normally implemented as as subclasses of Warning.
  */
 public abstract class Diagnostic extends Exception {
-    /** Used to hold a simple description of the problem that
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2232773650493102389L;
+	/** Used to hold a simple description of the problem that
      *  occurred.  This field is used only by the default
      *  implementation of getDescription() that is provided in
      *  this class.  More complex diagnostics are likely to
