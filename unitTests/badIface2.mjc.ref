@@ -1,3 +1,0 @@
-ERROR: "unitTests/badIface2.j", line 6
-Can only implement interface types. SomeOtherClass is not an interface.
-

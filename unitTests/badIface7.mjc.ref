@@ -1,3 +1,0 @@
-ERROR: "unitTests/badIface7.j", line 5
-Class If2 extends itself!
-
