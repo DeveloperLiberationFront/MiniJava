@@ -47,13 +47,6 @@ class Main {
             of.h = ot.c + x;
             x = x + 1;
         }
-
-        System.out.println(Integer.toString(oo.a));
-        System.out.println(Integer.toString(oo.b));
-        System.out.println(Integer.toString(ot.c));
-        System.out.println(Integer.toString(ot.d));
-        System.out.println(Integer.toString(of.g));
-        System.out.println(Integer.toString(of.h));
     }
 }
 

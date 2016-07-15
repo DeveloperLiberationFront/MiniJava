@@ -12,7 +12,6 @@ class Main {
         int x;
         int loops;
         TestObjOne oo;
-        TestObjOne ocopy = null;
 
         oo = new TestObjOne();
         oo.x = 42;
@@ -23,11 +22,10 @@ class Main {
         while (x < loops) {
             oo = new TestObjOne();
             oo.x = x;
+            TestObjOne ocopy;
             ocopy = oo;
             x = x + 1;
         }
-        System.out.println(Integer.toString(oo.x));
-        System.out.println(Integer.toString(ocopy.x));
     }
 }
 

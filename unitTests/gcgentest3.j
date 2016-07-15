@@ -41,9 +41,6 @@ class Main {
             ot.too.z = 42;
             x = x + 1;
         }
-        System.out.println(Integer.toString(oo.x));
-        System.out.println(Integer.toString(ot.too.z));
-        System.out.println(Integer.toString(old.too.z));
     }
 }
 

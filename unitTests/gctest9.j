@@ -27,7 +27,6 @@ class Main {
         }
 
         Stat.stc.x = 42;
-        System.out.println(Integer.toString(Stat.stc.x));
     }
 }
 
