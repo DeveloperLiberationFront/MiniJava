@@ -29,6 +29,7 @@ public final class ObjectInvocation extends Invocation {
         Type receiver = object.typeOf(ctxt, env);
         ClassType cls = receiver.isClass();
         if (cls==null) {
+        	//again, premature optimization: isClass always returns true (no interfaces yet)
             throw new Failure(pos,
                       "Cannot access field " + name +
                       " in a value of type " + receiver);
