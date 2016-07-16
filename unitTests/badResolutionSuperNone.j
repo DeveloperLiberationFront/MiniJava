@@ -3,3 +3,4 @@ class X{
     	super.foo();
     }
 }
+//not a problem for Java

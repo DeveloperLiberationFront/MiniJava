@@ -5,3 +5,4 @@ class X extends Y{
     	super.foo();
     }
 }
+//kinda CantResolve.java
