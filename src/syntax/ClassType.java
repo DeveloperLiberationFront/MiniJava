@@ -93,6 +93,7 @@ public final class ClassType extends Type {
                 }
                 extendsClass = extendsType.isClass();
                 if (extendsClass==null) {
+                	//TODO: premature abstraction: isClass always returns null now
                     ctxt.report(new Failure(id.getPos(),
                                 "Illegal superclass"));
                     extendsType = null;
