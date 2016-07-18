@@ -29,6 +29,7 @@ public final class ObjectAccess extends FieldAccess {
         Type receiver = object.typeOf(ctxt, env);
         ClassType cls = receiver.isClass();
         if (cls==null) {
+        	//currently not reachable
             throw new Failure(pos,
                       "Cannot access field " + name +
                       " in a value of type " + receiver);
