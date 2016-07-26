@@ -1,5 +1,4 @@
 class MissingReturnStatement {
-    int m() {
-    }
+    int m() {}
 }
 //MissingReturnStatement.java
