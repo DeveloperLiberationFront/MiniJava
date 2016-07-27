@@ -5,3 +5,8 @@ class X {
     }
 }
 //CompressedDiags.java
+
+//Concepts: variables, types
+//References: expression, assignment, type declaration
+//Link: mismatch(type declaration, expression type)
+//Hint: (none)

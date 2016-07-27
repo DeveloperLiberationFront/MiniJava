@@ -5,3 +5,8 @@ class X {
     }
 }
 //kinda NonStaticCantBeRef.java
+
+//Concepts: fields, static methods
+//References: i reference in static context, i field decl
+//Link: unbound
+//Hint: cantCallFromContext/99% 

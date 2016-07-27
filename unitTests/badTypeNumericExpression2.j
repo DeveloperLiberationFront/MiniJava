@@ -4,3 +4,8 @@ class CompressedDiags {
     }
 }
 //CompressedDiags.java
+
+//Concepts: numeric operators, types
+//References: num-op, lhs, phantom num-op type signature, (phantom) right expression signature
+//Link: phantom(+), call(+,+), mismatch(typeof(num-op), typeof(rhs))
+//Hint: (none)

@@ -5,3 +5,8 @@ class X {
 	}
 }
 //AlreadyDefined.java
+
+//Concepts: namespaces
+//References: i declaration, i declaration, class scope?
+//Link: cantCoexist
+//Hint: (none)

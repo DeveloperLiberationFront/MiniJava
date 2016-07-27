@@ -3,3 +3,8 @@ class X {
     int m();
 }
 //kinda AlreadyDefined.java
+
+//Concepts: namespaces
+//References: m declaration, m declaration, class scope?
+//Link: cantCoexist
+//Hint: (none)
